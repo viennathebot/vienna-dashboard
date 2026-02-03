@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vienna Dashboard</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--red:#dc2626;--green:#22c55e}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem}
+.login{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:-2rem}
+.login-box{background:var(--card);padding:3rem;border-radius:1rem;text-align:center;max-width:400px;width:100%}
+.login-box h1{font-size:2rem;margin-bottom:1rem}
+.login-box input{width:100%;padding:1rem;border:1px solid #334155;border-radius:.5rem;background:var(--bg);color:var(--text);margin-bottom:1rem}
+.login-box button{width:100%;padding:1rem;background:var(--red);color:white;border:none;border-radius:.5rem;cursor:pointer;font-weight:600}
+.dashboard{display:none;max-width:1200px;margin:0 auto}
+.dashboard.active{display:block}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid #334155;margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155}
+.card h2{font-size:.875rem;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.stat{display:flex;gap:1rem;flex-wrap:wrap}
+.stat-item{text-align:center;padding:1rem;background:var(--bg);border-radius:.5rem;flex:1;min-width:80px}
+.stat-value{font-size:1.5rem;font-weight:700;color:var(--red)}
+.stat-label{font-size:.75rem;color:var(--muted)}
+.list{list-style:none}
+.list li{padding:.75rem 0;border-bottom:1px solid #334155}
+.list li:last-child{border-bottom:none}
+.online{color:var(--green)}
+.logout{background:transparent;border:1px solid #334155;color:var(--muted);padding:.5rem 1rem;border-radius:.5rem;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="login" id="login">
+<div class="login-box">
+<h1>🫀 Vienna</h1>
+<p style="color:var(--muted);margin-bottom:2rem">Personal AI Dashboard</p>
+<input type="password" id="pwd" placeholder="Access code" onkeypress="if(event.key==='Enter')auth()">
+<button onclick="auth()">Enter</button>
+</div>
+</div>
+<div class="dashboard" id="dash">
+<header>
+<h1>🫀 Vienna Dashboard</h1>
+<div style="display:flex;align-items:center;gap:1rem">
+<span style="color:var(--muted)" id="time"></span>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+</header>
+<div class="grid">
+<div class="card">
+<h2>📊 Stats</h2>
+<div class="stat">
+<div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Tasks</div></div>
+<div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Projects</div></div>
+<div class="stat-item"><div class="stat-value">53</div><div class="stat-label">Follows</div></div>
+</div>
+</div>
+<div class="card">
+<h2>📅 Schedule</h2>
+<ul class="list">
+<li><strong>9 AM</strong> - LHC poss PCI @ North Vista</li>
+<li><strong>1 PM</strong> - Clinic @ Henderson</li>
+<li><strong>4 PM</strong> - DMV Appointment</li>
+</ul>
+</div>
+<div class="card">
+<h2>🚀 Projects</h2>
+<ul class="list">
+<li>STEMI EMS Presentation - <span style="color:var(--red)">In Progress</span></li>
+<li>Vienna Dashboard - <span style="color:var(--red)">In Progress</span></li>
+<li>Heart Month Blog - <span style="color:var(--green)">Review</span></li>
+</ul>
+</div>
+<div class="card">
+<h2>⚙️ System</h2>
+<ul class="list">
+<li>Gateway: <span class="online">● Online</span></li>
+<li>iMessage: <span class="online">● Connected</span></li>
+<li>GitHub: <span class="online">● Connected</span></li>
+</ul>
+</div>
+</div>
+</div>
+<script>
+const CODE='vienna2026';
+function auth(){if(document.getElementById('pwd').value===CODE){document.getElementById('login').style.display='none';document.getElementById('dash').classList.add('active');sessionStorage.setItem('auth','1');tick()}else alert('Invalid code')}
+function logout(){sessionStorage.removeItem('auth');location.reload()}
+function tick(){document.getElementById('time').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Los_Angeles'})}
+if(sessionStorage.getItem('auth')==='1'){document.getElementById('login').style.display='none';document.getElementById('dash').classList.add('active')}
+setInterval(tick,60000);tick();
+</script>
+</body>
+</html>
