@@ -3,29 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Brief - February 1, 2026</title>
+<title>Morning Brief - February 1, 2026</title>
 <style>
-:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48}
+:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6;--purple:#a855f7}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:2rem}
-.container{max-width:800px;margin:0 auto}
+.container{max-width:900px;margin:0 auto}
 .back{color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem}
+.back:hover{text-decoration:underline}
 h1{font-size:2rem;margin-bottom:.5rem}
 .meta{color:var(--muted);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
-.coming-soon{text-align:center;padding:4rem 2rem;background:var(--card);border-radius:1rem;margin-top:2rem}
-.coming-soon h2{font-size:3rem;margin-bottom:1rem}
+.study{background:var(--card);border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;border:1px solid #334155}
+.study-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+.study-badge{font-size:.7rem;padding:.35rem .75rem;border-radius:.25rem;text-transform:uppercase;letter-spacing:.05em}
+.badge-structural{background:rgba(225,29,72,.2);color:var(--accent)}
+.badge-interventional{background:rgba(59,130,246,.2);color:var(--blue)}
+.badge-review{background:rgba(34,197,94,.2);color:var(--green)}
+.study h2{font-size:1.25rem;color:var(--text);margin-bottom:.5rem}
+.study-meta{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.study-meta a{color:var(--accent);text-decoration:none}
+.study-meta a:hover{text-decoration:underline}
+.summary-box{background:rgba(225,29,72,.1);border-left:3px solid var(--accent);padding:1rem;margin:1rem 0;border-radius:0 .5rem .5rem 0}
+.summary-box h4{font-size:.85rem;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.key-numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:1rem 0}
+.key-number{background:#0f172a;padding:1rem;border-radius:.5rem;text-align:center}
+.key-number .value{font-size:1.5rem;font-weight:700;color:var(--accent)}
+.key-number .label{font-size:.75rem;color:var(--muted)}
+.clinical-pearl{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);padding:1rem;border-radius:.5rem;margin:1rem 0}
+.clinical-pearl::before{content:"💎 Clinical Pearl: ";font-weight:600;color:var(--green)}
+.social-buzz{background:rgba(59,130,246,.1);padding:1rem;border-radius:.5rem;margin:1rem 0}
+.social-buzz h4{font-size:.85rem;color:var(--blue);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.social-buzz p{font-size:.9rem;color:var(--muted)}
+ul{margin:1rem 0 1rem 1.5rem}
+li{margin:.5rem 0}
+a.study-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);text-decoration:none;font-size:.9rem;margin-top:.5rem}
+a.study-link:hover{text-decoration:underline}
+.quick-hits{background:var(--card);border-radius:1rem;padding:1.5rem;margin:2rem 0;border:1px solid #334155}
+.quick-hits h2{font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.quick-hit{padding:1rem 0;border-bottom:1px solid #334155}
+.quick-hit:last-child{border-bottom:none;padding-bottom:0}
+.quick-hit h4{font-size:1rem;margin-bottom:.5rem}
+.quick-hit p{color:var(--muted);font-size:.9rem}
+.download-section{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;border-top:1px solid #334155}
+.download{padding:1rem 2rem;background:var(--accent);color:white;text-decoration:none;border-radius:.5rem;display:inline-flex;align-items:center;gap:.5rem}
+.download:hover{opacity:.9}
+.download.secondary{background:var(--card);border:1px solid #334155}
+.footer{margin-top:3rem;color:var(--muted);font-size:.875rem;text-align:center}
 </style>
 </head>
 <body>
 <div class="container">
-<a href="../index.html#research" class="back">← Back to Dashboard</a>
-<h1>Cardiology Literature Roundup</h1>
-<p class="meta">February 1, 2026 | Prepared for Dr. Peter Bleszynski</p>
-<div class="coming-soon">
-<h2>📝</h2>
-<p>Brief being compiled from morning notes...</p>
-<p style="color:var(--muted);margin-top:1rem">Check back soon or see memory/2026-02-01.md for raw notes</p>
+<a href="../index.html#briefs" class="back">← Back to Dashboard</a>
+
+<h1>☀️ Morning Brief</h1>
+<p class="meta">Saturday, February 1, 2026 | Prepared for Dr. Peter Bleszynski, MD, FACC, FSCAI</p>
+
+<!-- STUDY 1: PCI After TAVR -->
+<div class="study">
+  <div class="study-header">
+    <span class="study-badge badge-interventional">Original Research</span>
+  </div>
+  <h2>PCI Outcomes After TAVR: Impact of Valve Frame Height</h2>
+  <p class="study-meta">
+    <strong>Authors:</strong> Pivato CA, Di Angelantonio E, Stefanini G, et al. (International Multicenter)<br>
+    <strong>Journal:</strong> JACC Cardiovasc Interv | October 2025 | <a href="https://pubmed.ncbi.nlm.nih.gov/41137839/" target="_blank">🔗 PubMed</a>
+  </p>
+  
+  <div class="summary-box">
+    <h4>Executive Summary</h4>
+    <p>Large multicenter registry examining PCI outcomes in post-TAVR patients, stratified by valve frame height. Addresses the critical question: does valve choice at TAVR impact future coronary interventions?</p>
+  </div>
+
+  <p><strong>Key Findings:</strong></p>
+  <ul>
+    <li><strong>Tall-framed valves (TFVs)</strong> associated with more challenging coronary access</li>
+    <li>Higher rates of procedural complexity with certain valve designs</li>
+    <li>Important implications for initial valve selection, especially in patients with CAD</li>
+    <li>Provides data to guide Heart Team discussions on valve choice</li>
+  </ul>
+
+  <div class="clinical-pearl">When selecting a TAVR valve in patients with known CAD or high likelihood of future PCI, valve frame height matters. This should factor into your Heart Team discussions—especially in younger patients.</div>
+
+  <div class="social-buzz">
+    <h4>📱 #CardioTwitter Buzz</h4>
+    <p>Active debate on "lifetime management" approach to valve selection. Cardiologists asking: should we routinely consider coronary access at index TAVR? #TAVR #PCI</p>
+  </div>
+
+  <a href="https://pubmed.ncbi.nlm.nih.gov/41137839/" target="_blank" class="study-link">📄 Read Full Study →</a>
 </div>
+
+<!-- STUDY 2: TAVR + PCI vs SAVR + CABG -->
+<div class="study">
+  <div class="study-header">
+    <span class="study-badge badge-structural">Registry Data</span>
+  </div>
+  <h2>TAVR + PCI vs SAVR + CABG: Long-Term Multicenter Registry</h2>
+  <p class="study-meta">
+    <strong>Authors:</strong> Stundl A, Bleiziffer S, Kupatt C, et al. (German Centers)<br>
+    <strong>Journal:</strong> Clin Res Cardiol | September 2025 | <a href="https://pubmed.ncbi.nlm.nih.gov/40932482/" target="_blank">🔗 PubMed</a>
+  </p>
+  
+  <div class="summary-box">
+    <h4>Executive Summary</h4>
+    <p>Multicenter German registry comparing long-term outcomes in patients with AS + CAD treated with either TAVR+PCI or SAVR+CABG. Critical data for the intermediate-risk population eligible for either approach.</p>
+  </div>
+
+  <p><strong>Key Points:</strong></p>
+  <ul>
+    <li>Addresses real-world outcomes in dual-pathology patients (AS + CAD)</li>
+    <li>Long-term follow-up data comparing interventional vs surgical approach</li>
+    <li>Intermediate-risk patients are the key population of interest</li>
+    <li>Relevant for Heart Team decision-making in complex cases</li>
+  </ul>
+
+  <div class="clinical-pearl">This data is directly relevant to your practice. When you have a patient with both AS and significant CAD, the choice between TAVR+PCI vs SAVR+CABG isn't always clear-cut. Registry data like this helps inform those discussions.</div>
+
+  <a href="https://pubmed.ncbi.nlm.nih.gov/40932482/" target="_blank" class="study-link">📄 Read Full Study →</a>
+</div>
+
+<!-- STUDY 3: Optimal PCI Timing with TAVR -->
+<div class="study">
+  <div class="study-header">
+    <span class="study-badge badge-review">Network Meta-Analysis</span>
+  </div>
+  <h2>Optimal Timing for PCI in TAVR Patients: Network Meta-Analysis</h2>
+  <p class="study-meta">
+    <strong>Authors:</strong> Carvalho PEP, Nascimento BR, Taramasso M, Garot P, et al.<br>
+    <strong>Journal:</strong> Cardiovasc Revasc Med | March 2025 | <a href="https://pubmed.ncbi.nlm.nih.gov/40102169/" target="_blank">🔗 PubMed</a>
+  </p>
+  
+  <div class="summary-box">
+    <h4>Executive Summary</h4>
+    <p>Network meta-analysis comparing outcomes of concomitant PCI+TAVR vs staged PCI before TAVR vs staged PCI after TAVR. Aims to answer: what's the optimal revascularization timing strategy?</p>
+  </div>
+
+  <p><strong>Key Findings:</strong></p>
+  <ul>
+    <li>Compares <strong>three strategies:</strong> concomitant, staged before, staged after</li>
+    <li>Analyzes safety and efficacy endpoints</li>
+    <li>Provides hierarchy of approaches based on available evidence</li>
+    <li>Important for procedural planning in CAD + AS patients</li>
+  </ul>
+
+  <div class="clinical-pearl">The timing question comes up constantly. This meta-analysis provides a framework for discussing revascularization strategy with patients. Consider patient factors: symptom driver, lesion complexity, and procedural risk.</div>
+
+  <a href="https://pubmed.ncbi.nlm.nih.gov/40102169/" target="_blank" class="study-link">📄 Read Full Study →</a>
+</div>
+
+<!-- QUICK HITS -->
+<div class="quick-hits">
+  <h2>⚡ Quick Hits</h2>
+  
+  <div class="quick-hit">
+    <h4>🔬 Digital Twins in Interventional Cardiology</h4>
+    <p><strong>Eur Heart J Digit Health</strong> | <a href="https://pubmed.ncbi.nlm.nih.gov/41624567/" target="_blank">Full Text</a><br><br>
+    Review of digital twin technology for patient-specific virtual modeling in TAVR and PCI planning. Emerging tool for personalized procedural simulation—watch this space for clinical implementation.</p>
+  </div>
+  
+  <div class="quick-hit">
+    <h4>📊 Agatston Scoring for CAD Assessment Pre-TAVR</h4>
+    <p><strong>Int J Cardiovasc Imaging</strong> | <a href="https://pubmed.ncbi.nlm.nih.gov/40748415/" target="_blank">Full Text</a><br><br>
+    CT-derived Agatston scores from pre-TAVR imaging can help assess coronary disease burden. Simplifies CAD evaluation without additional testing—useful in your pre-procedural workup.</p>
+  </div>
+
+  <div class="quick-hit">
+    <h4>🩺 TAVR Beyond Severe AS: JACC State-of-the-Art Review</h4>
+    <p><strong>JACC | March 2025</strong> | <a href="https://pubmed.ncbi.nlm.nih.gov/40044299/" target="_blank">Full Text</a><br><br>
+    Comprehensive review of TAVR expansion beyond traditional severe AS indications. Discusses moderate AS, asymptomatic patients, and younger populations. Essential reading for understanding where the field is headed.</p>
+  </div>
+</div>
+
+<div class="download-section">
+  <a href="pdf/2026-02-01-printable.html" class="download" target="_blank">📥 View Printable Brief</a>
+</div>
+
+<p class="footer">Compiled by Vienna | February 1, 2026<br>Sources: JACC, EuroIntervention, PubMed</p>
 </div>
 </body>
 </html>
