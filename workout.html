@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Program - Vienna Dashboard</title>
+<style>
+:root{--bg:#0f172a;--sidebar:#1e293b;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--red:#dc2626;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6;--yellow:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+.sidebar{width:260px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
+.logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
+.logo-icon{font-size:2rem}
+.logo-text h1{font-size:1.25rem;font-weight:700}
+.logo-text p{font-size:.75rem;color:var(--muted)}
+.nav-section{margin-bottom:1.5rem}
+.nav-section h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem;padding-left:.5rem}
+.nav-link{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.5rem;color:var(--text);text-decoration:none;transition:all .2s;margin-bottom:.25rem}
+.nav-link:hover{background:rgba(255,255,255,.05)}
+.nav-link.active{background:var(--accent);color:white}
+.nav-link span{font-size:1.1rem}
+.main{margin-left:260px;flex:1;padding:2rem;min-height:100vh;max-width:1200px}
+.header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
+.header h2{font-size:1.75rem;margin-bottom:.5rem}
+.header p{color:var(--muted)}
+
+/* Week Overview */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin-bottom:2rem}
+.day-card{background:var(--card);border-radius:.75rem;padding:1rem;text-align:center;border:1px solid #334155}
+.day-card.rest{background:rgba(34,197,94,.1);border-color:var(--green)}
+.day-card.today{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.day-card h4{font-size:.875rem;margin-bottom:.5rem}
+.day-card p{font-size:.75rem;color:var(--muted)}
+.day-card .type{font-size:.65rem;padding:.25rem .5rem;border-radius:.25rem;display:inline-block;margin-top:.5rem}
+.day-card .type.push{background:rgba(239,68,68,.2);color:#ef4444}
+.day-card .type.pull{background:rgba(59,130,246,.2);color:#3b82f6}
+.day-card .type.legs{background:rgba(168,85,247,.2);color:#a855f7}
+.day-card .type.rest{background:rgba(34,197,94,.2);color:var(--green)}
+.day-card .type.cardio{background:rgba(234,179,8,.2);color:var(--yellow)}
+
+/* Workout Sections */
+.workout-section{margin-bottom:2rem}
+.workout-section h3{font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.workout-section h3 span{font-size:1.5rem}
+
+.workout-table{width:100%;background:var(--card);border-radius:1rem;border:1px solid #334155;overflow:hidden}
+.workout-table thead{background:#334155}
+.workout-table th{padding:1rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.workout-table td{padding:1rem;border-top:1px solid #334155}
+.workout-table tr:hover td{background:rgba(255,255,255,.02)}
+.exercise-name{font-weight:600}
+.sets-reps{color:var(--accent);font-weight:500}
+.notes{font-size:.875rem;color:var(--muted)}
+
+/* Day Header */
+.day-header{display:flex;justify-content:space-between;align-items:center;background:var(--card);padding:1.25rem 1.5rem;border-radius:1rem 1rem 0 0;border:1px solid #334155;border-bottom:none}
+.day-header h4{font-size:1.1rem}
+.day-header .badge{font-size:.7rem;padding:.35rem .75rem;border-radius:.25rem}
+.day-header .badge.push{background:rgba(239,68,68,.2);color:#ef4444}
+.day-header .badge.pull{background:rgba(59,130,246,.2);color:#3b82f6}
+.day-header .badge.legs{background:rgba(168,85,247,.2);color:#a855f7}
+
+/* Tips Section */
+.tips{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155;margin-bottom:2rem}
+.tips h3{font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.tips ul{list-style:none}
+.tips li{padding:.5rem 0;padding-left:1.5rem;position:relative;color:var(--muted);font-size:.9rem}
+.tips li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+@media(max-width:768px){
+  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid #334155}
+  .main{margin-left:0}
+  body{flex-direction:column}
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="logo">
+    <span class="logo-icon">🫀</span>
+    <div class="logo-text">
+      <h1>Vienna</h1>
+      <p>AI Executive Assistant</p>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <h3>Dashboard</h3>
+    <a href="index.html" class="nav-link"><span>🏠</span> Home</a>
+    <a href="schedule.html" class="nav-link"><span>📅</span> Schedule</a>
+    <a href="workout.html" class="nav-link active"><span>💪</span> Workout</a>
+    <a href="index.html#briefs" class="nav-link"><span>☀️</span> Morning Briefs</a>
+    <a href="ideas.html" class="nav-link"><span>💡</span> Project Ideas</a>
+    <a href="gallery.html" class="nav-link"><span>🖼️</span> Vienna Gallery</a>
+  </div>
+
+  <div class="nav-section">
+    <h3>Projects</h3>
+    <a href="https://github.com/peterblez/stemi-presentation" class="nav-link" target="_blank"><span>📊</span> STEMI Presentation</a>
+    <a href="https://github.com/peterblez/case-logger" class="nav-link" target="_blank"><span>📋</span> Case Logger</a>
+    <a href="https://github.com/peterblez/cardiology-website" class="nav-link" target="_blank"><span>🌐</span> Personal Website</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="header">
+    <h2>💪 Push/Pull/Legs Training Program</h2>
+    <p>5-Day Split with Strategic Cardio • Rest Days: Monday & Friday</p>
+  </div>
+
+  <!-- Week Overview -->
+  <div class="week-grid">
+    <div class="day-card rest">
+      <h4>Mon</h4>
+      <p>Rest</p>
+      <span class="type rest">Recovery</span>
+    </div>
+    <div class="day-card">
+      <h4>Tue</h4>
+      <p>Push A</p>
+      <span class="type push">Strength</span>
+    </div>
+    <div class="day-card">
+      <h4>Wed</h4>
+      <p>Pull A</p>
+      <span class="type pull">+ Deadlifts</span>
+    </div>
+    <div class="day-card">
+      <h4>Thu</h4>
+      <p>Legs</p>
+      <span class="type legs">Full</span>
+    </div>
+    <div class="day-card rest">
+      <h4>Fri</h4>
+      <p>Rest</p>
+      <span class="type rest">Recovery</span>
+    </div>
+    <div class="day-card">
+      <h4>Sat</h4>
+      <p>Push B</p>
+      <span class="type push">+ Pilates</span>
+    </div>
+    <div class="day-card">
+      <h4>Sun</h4>
+      <p>Pull B</p>
+      <span class="type cardio">+ Spin</span>
+    </div>
+  </div>
+
+  <!-- Tuesday: Push A -->
+  <div class="workout-section">
+    <div class="day-header">
+      <h4>Tuesday — Push A (Strength Focus)</h4>
+      <span class="badge push">PUSH</span>
+    </div>
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets × Reps</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="exercise-name">Barbell Bench Press</td><td class="sets-reps">4 × 6-8</td><td class="notes">Compound strength, control eccentric</td></tr>
+        <tr><td class="exercise-name">Seated DB Overhead Press</td><td class="sets-reps">3 × 8-10</td><td class="notes">Full range of motion</td></tr>
+        <tr><td class="exercise-name">Incline Dumbbell Press</td><td class="sets-reps">3 × 10-12</td><td class="notes">30-45° angle</td></tr>
+        <tr><td class="exercise-name">Cable Lateral Raises</td><td class="sets-reps">3 × 12-15</td><td class="notes">Constant tension, controlled</td></tr>
+        <tr><td class="exercise-name">Tricep Pushdowns (Rope)</td><td class="sets-reps">3 × 12-15</td><td class="notes">Squeeze at bottom</td></tr>
+        <tr><td class="exercise-name">Overhead Tricep Extension</td><td class="sets-reps">3 × 12-15</td><td class="notes">Long head emphasis</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Wednesday: Pull A + Deadlifts -->
+  <div class="workout-section">
+    <div class="day-header">
+      <h4>Wednesday — Pull A (Strength Focus) + Deadlifts</h4>
+      <span class="badge pull">PULL</span>
+    </div>
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets × Reps</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="exercise-name">Conventional/Sumo Deadlift</td><td class="sets-reps">4 × 5-6</td><td class="notes">Heavy compound, reset each rep</td></tr>
+        <tr><td class="exercise-name">Barbell Rows</td><td class="sets-reps">4 × 6-8</td><td class="notes">Hinge at hips, pull to lower chest</td></tr>
+        <tr><td class="exercise-name">Weighted Pull-ups/Lat Pulldown</td><td class="sets-reps">4 × 6-10</td><td class="notes">Full stretch at bottom</td></tr>
+        <tr><td class="exercise-name">Seated Cable Row</td><td class="sets-reps">3 × 10-12</td><td class="notes">Squeeze shoulder blades</td></tr>
+        <tr><td class="exercise-name">Face Pulls</td><td class="sets-reps">3 × 15-20</td><td class="notes">External rotation at top</td></tr>
+        <tr><td class="exercise-name">Dumbbell Hammer Curls</td><td class="sets-reps">3 × 10-12</td><td class="notes">Brachialis emphasis</td></tr>
+        <tr><td class="exercise-name">Barbell/EZ Bar Curls</td><td class="sets-reps">3 × 10-12</td><td class="notes">Bicep peak</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Thursday: Combined Legs -->
+  <div class="workout-section">
+    <div class="day-header">
+      <h4>Thursday — Full Legs (Quads + Posterior Chain)</h4>
+      <span class="badge legs">LEGS</span>
+    </div>
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets × Reps</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="exercise-name">Barbell Back Squat</td><td class="sets-reps">4 × 6-8</td><td class="notes">Depth to parallel or below</td></tr>
+        <tr><td class="exercise-name">Romanian Deadlift</td><td class="sets-reps">3 × 8-10</td><td class="notes">Hamstring stretch, hinge pattern</td></tr>
+        <tr><td class="exercise-name">Bulgarian Split Squats</td><td class="sets-reps">3 × 10 each</td><td class="notes">Balance and unilateral strength</td></tr>
+        <tr><td class="exercise-name">Leg Press</td><td class="sets-reps">3 × 10-12</td><td class="notes">Foot placement mid-platform</td></tr>
+        <tr><td class="exercise-name">Hip Thrust</td><td class="sets-reps">3 × 10-12</td><td class="notes">Glute emphasis, pause at top</td></tr>
+        <tr><td class="exercise-name">Walking Lunges</td><td class="sets-reps">3 × 12 each</td><td class="notes">Control the descent</td></tr>
+        <tr><td class="exercise-name">Lying Leg Curls</td><td class="sets-reps">3 × 10-12</td><td class="notes">Hamstring isolation</td></tr>
+        <tr><td class="exercise-name">Leg Extensions</td><td class="sets-reps">3 × 12-15</td><td class="notes">Squeeze at top</td></tr>
+        <tr><td class="exercise-name">Standing Calf Raises</td><td class="sets-reps">4 × 12-15</td><td class="notes">Full stretch, pause at top</td></tr>
+        <tr><td class="exercise-name">Seated Calf Raises</td><td class="sets-reps">4 × 15-20</td><td class="notes">Soleus focus</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Saturday: Push B + Pilates -->
+  <div class="workout-section">
+    <div class="day-header">
+      <h4>Saturday — Push B (Hypertrophy Focus) + Mat Pilates</h4>
+      <span class="badge push">PUSH + CORE</span>
+    </div>
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets × Reps</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="exercise-name">Dumbbell Bench Press</td><td class="sets-reps">4 × 8-10</td><td class="notes">Greater ROM than barbell</td></tr>
+        <tr><td class="exercise-name">Arnold Press</td><td class="sets-reps">3 × 10-12</td><td class="notes">Rotation through the press</td></tr>
+        <tr><td class="exercise-name">Cable Flyes</td><td class="sets-reps">3 × 12-15</td><td class="notes">Squeeze at peak contraction</td></tr>
+        <tr><td class="exercise-name">Machine Shoulder Press</td><td class="sets-reps">3 × 10-12</td><td class="notes">Controlled, no ego weight</td></tr>
+        <tr><td class="exercise-name">Lateral Raises (DB)</td><td class="sets-reps">3 × 12-15</td><td class="notes">Slight forward lean</td></tr>
+        <tr><td class="exercise-name">Skull Crushers</td><td class="sets-reps">3 × 10-12</td><td class="notes">Long head tricep emphasis</td></tr>
+        <tr><td class="exercise-name">Diamond Push-ups/Dips</td><td class="sets-reps">2 × AMRAP</td><td class="notes">Finisher</td></tr>
+        <tr><td colspan="3" style="background:rgba(168,85,247,.1);text-align:center;color:#a855f7;font-weight:500">↓ Follow with 1-hour Mat Pilates/Yoga for core stability and mobility</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Sunday: Pull B + Spin -->
+  <div class="workout-section">
+    <div class="day-header">
+      <h4>Sunday — Pull B (Hypertrophy Focus) + Spin</h4>
+      <span class="badge pull">PULL + CARDIO</span>
+    </div>
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets × Reps</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="exercise-name">Chest-Supported DB Rows</td><td class="sets-reps">4 × 10-12</td><td class="notes">Removes lower back fatigue</td></tr>
+        <tr><td class="exercise-name">Neutral Grip Lat Pulldown</td><td class="sets-reps">3 × 10-12</td><td class="notes">Lats and teres major</td></tr>
+        <tr><td class="exercise-name">Single-Arm Cable Row</td><td class="sets-reps">3 × 12 each</td><td class="notes">Unilateral, anti-rotation</td></tr>
+        <tr><td class="exercise-name">Reverse Pec Deck</td><td class="sets-reps">3 × 15</td><td class="notes">Rear delts</td></tr>
+        <tr><td class="exercise-name">Incline Dumbbell Curls</td><td class="sets-reps">3 × 10-12</td><td class="notes">Stretched position</td></tr>
+        <tr><td class="exercise-name">Cable Curls</td><td class="sets-reps">3 × 12-15</td><td class="notes">Constant tension</td></tr>
+        <tr><td colspan="3" style="background:rgba(234,179,8,.1);text-align:center;color:#eab308;font-weight:500">↓ 45-min Spin Class (Zone 2-3 cardio) + stretching/foam rolling</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Training Tips -->
+  <div class="tips">
+    <h3><span>📝</span> Training Notes</h3>
+    <ul>
+      <li><strong>Rest periods:</strong> 2-3 min for compounds, 60-90 sec for accessories</li>
+      <li><strong>Progressive overload:</strong> Add 2.5-5 lbs to compounds weekly, OR 1-2 reps at same weight</li>
+      <li><strong>Intensity:</strong> Train to 1-2 RIR (reps in reserve), not to failure on compounds</li>
+      <li><strong>Post-workout:</strong> Protein shake (25g whey + 25g casein) immediately after</li>
+      <li><strong>Daily protein target:</strong> 175-195g</li>
+      <li><strong>Post-workout protocol:</strong> Sauna 15-20 min → shower → cold finish</li>
+    </ul>
+  </div>
+
+</main>
+
+</body>
+</html>
