@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAVR Case: MTV BarBar - Vienna Dashboard</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6;--yellow:#eab308;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:2rem}
+.container{max-width:1000px;margin:0 auto}
+.back{color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem}
+.back:hover{text-decoration:underline}
+
+.header{margin-bottom:2rem}
+.header h1{font-size:1.75rem;margin-bottom:.5rem}
+.header-meta{display:flex;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.badge{padding:.25rem .75rem;border-radius:.25rem;font-size:.75rem;font-weight:600}
+.badge-green{background:rgba(34,197,94,.2);color:var(--green)}
+.badge-yellow{background:rgba(234,179,8,.2);color:var(--yellow)}
+.badge-blue{background:rgba(59,130,246,.2);color:var(--blue)}
+
+/* Grid Layout */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155}
+.card h3{font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.card-full{grid-column:1/-1}
+
+/* Data Table */
+.data-table{width:100%}
+.data-table tr{border-bottom:1px solid #334155}
+.data-table tr:last-child{border-bottom:none}
+.data-table td{padding:.5rem 0}
+.data-table td:first-child{color:var(--muted);width:50%}
+.data-table td:last-child{font-weight:500;text-align:right}
+.highlight{color:var(--green)}
+.caution{color:var(--yellow)}
+.alert{color:var(--accent)}
+
+/* Recommendation Box */
+.recommendation{background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(34,197,94,.05));border:2px solid var(--green);border-radius:1rem;padding:1.5rem;margin-bottom:2rem}
+.recommendation h2{color:var(--green);font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.recommendation .primary{font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.recommendation .rationale{color:var(--muted);margin-top:1rem}
+
+/* Valve Comparison */
+.valve-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+.valve-option{background:#0f172a;border-radius:.75rem;padding:1rem;border:2px solid transparent}
+.valve-option.recommended{border-color:var(--green)}
+.valve-option h4{font-size:.9rem;margin-bottom:.5rem}
+.valve-option .size{font-size:1.25rem;font-weight:700;color:var(--accent)}
+.valve-option ul{font-size:.85rem;color:var(--muted);margin-top:.5rem;padding-left:1rem}
+.valve-option li{margin:.25rem 0}
+.pros{color:var(--green)}
+.cons{color:var(--yellow)}
+
+/* Considerations */
+.considerations{list-style:none}
+.considerations li{padding:.75rem;margin:.5rem 0;border-radius:.5rem;display:flex;align-items:flex-start;gap:.75rem}
+.considerations li.pro{background:rgba(34,197,94,.1)}
+.considerations li.con{background:rgba(234,179,8,.1)}
+.considerations li.note{background:rgba(59,130,246,.1)}
+.considerations .icon{font-size:1.25rem}
+
+/* Footer */
+.footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #334155;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../tavr-planning.html" class="back">← Back to TAVR Case Planning</a>
+
+<div class="header">
+  <h1>🫀 TAVR Case Analysis: MTV BarBar</h1>
+  <div class="header-meta">
+    <span>Case ID: 31788016</span>
+    <span>•</span>
+    <span>Analyzed: Feb 4, 2026</span>
+    <span>•</span>
+    <span class="badge badge-green">✓ Straightforward Anatomy</span>
+  </div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="recommendation">
+  <h2>✅ Vienna's Recommendation</h2>
+  <div class="primary">SAPIEN 3 Ultra 29mm</div>
+  <p>Excellent anatomical fit with minimal oversizing (-1.5%). Good coronary clearance, adequate sinuses, and favorable access.</p>
+  <div class="rationale">
+    <strong>Key factors:</strong> Large annulus (29mm) with proportionate LVOT • Coronary heights well above frame (LCA 15.8mm, RCA 19.9mm) • Sinuses >33mm provide adequate room • Bilateral femoral access amenable for 16F
+  </div>
+</div>
+
+<!-- PATIENT INFO -->
+<div class="grid">
+  <div class="card">
+    <h3>👤 Patient Demographics</h3>
+    <table class="data-table">
+      <tr><td>Age</td><td>86 years (M)</td></tr>
+      <tr><td>Height</td><td>1.85 m (6'1")</td></tr>
+      <tr><td>Weight</td><td>115.7 kg (255 lbs)</td></tr>
+      <tr><td>BMI</td><td>33.81 kg/m²</td></tr>
+      <tr><td>BSA</td><td>2.38 m²</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>📐 Annulus Measurements</h3>
+    <table class="data-table">
+      <tr><td>Annulus Area</td><td class="highlight">658.9 mm²</td></tr>
+      <tr><td>Area-Derived Ø</td><td class="highlight">29.0 mm</td></tr>
+      <tr><td>LVOT Area</td><td>667.0 mm²</td></tr>
+      <tr><td>LVOT Ø</td><td>29.1 mm</td></tr>
+      <tr><td>Annulus Angle</td><td>43°</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>🔺 Sinus & STJ</h3>
+    <table class="data-table">
+      <tr><td>LCC Sinus</td><td class="highlight">35.9 mm</td></tr>
+      <tr><td>RCC Sinus</td><td>33.0 mm</td></tr>
+      <tr><td>NCC Sinus</td><td>36.7 mm</td></tr>
+      <tr><td>STJ Height</td><td>26.3 mm</td></tr>
+      <tr><td>STJ Diameter</td><td>31.1 mm</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>❤️ Coronary Heights</h3>
+    <table class="data-table">
+      <tr><td>LCA Height</td><td class="highlight">15.8 mm</td></tr>
+      <tr><td>RCA Height</td><td class="highlight">19.9 mm</td></tr>
+      <tr><td>Coplanar View</td><td>LAO 12° / CRA 1°</td></tr>
+      <tr><td>Valve Morphology</td><td>Tri-leaflet</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- VALVE OPTIONS -->
+<div class="card card-full">
+  <h3>⚖️ Valve Selection Analysis</h3>
+  
+  <div class="valve-compare">
+    <div class="valve-option recommended">
+      <h4>SAPIEN 3 Ultra</h4>
+      <div class="size">29mm ✓</div>
+      <p style="font-size:.8rem;color:var(--green);margin:.5rem 0">RECOMMENDED</p>
+      <ul>
+        <li class="pros">-1.5% oversizing (ideal range)</li>
+        <li class="pros">Excellent hemodynamics expected</li>
+        <li class="pros">Low PVL risk with outer skirt</li>
+        <li class="pros">16F compatible access</li>
+        <li>Coronary clearance: LCA 95/5, RCA 100/0</li>
+      </ul>
+    </div>
+
+    <div class="valve-option">
+      <h4>Evolut FX+</h4>
+      <div class="size">29mm</div>
+      <ul>
+        <li class="pros">Supra-annular design → lower gradients</li>
+        <li class="pros">Recapturable/repositionable</li>
+        <li class="cons">Higher PPI risk (~10-15%)</li>
+        <li>Good option if concerned about gradients</li>
+      </ul>
+    </div>
+
+    <div class="valve-option">
+      <h4>Navitor</h4>
+      <div class="size">29mm</div>
+      <ul>
+        <li class="pros">Intra-annular self-expanding</li>
+        <li class="pros">Lower PPI vs Evolut</li>
+        <li>Limited long-term data</li>
+        <li>Consider if BEV not preferred</li>
+      </ul>
+    </div>
+
+    <div class="valve-option">
+      <h4>SAPIEN 3 Ultra</h4>
+      <div class="size">26mm</div>
+      <ul>
+        <li class="cons">Would be significantly undersized</li>
+        <li class="cons">Risk of PVL</li>
+        <li class="alert">Not recommended</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- KEY CONSIDERATIONS -->
+<div class="card card-full">
+  <h3>📋 Case Considerations</h3>
+  
+  <ul class="considerations">
+    <li class="pro">
+      <span class="icon">✅</span>
+      <div>
+        <strong>Favorable Coronary Access</strong><br>
+        LCA at 15.8mm and RCA at 19.9mm are well above the 29mm S3 frame height (~20mm). Simulation shows LCA 95/5 and RCA 100/0 clearance. Future PCI access should be straightforward.
+      </div>
+    </li>
+    <li class="pro">
+      <span class="icon">✅</span>
+      <div>
+        <strong>Adequate Sinus Dimensions</strong><br>
+        All sinuses >33mm with STJ at 31mm. No concern for coronary obstruction. Good room for valve expansion.
+      </div>
+    </li>
+    <li class="pro">
+      <span class="icon">✅</span>
+      <div>
+        <strong>Good Vascular Access</strong><br>
+        Bilateral femoral access amenable for 16F Resheath+. Straightforward transfemoral approach.
+      </div>
+    </li>
+    <li class="note">
+      <span class="icon">📝</span>
+      <div>
+        <strong>Non-Horizontal Root Angle (43°)</strong><br>
+        Moderate angulation—standard deployment technique should work. May need slightly more LAO to optimize coplanar view.
+      </div>
+    </li>
+    <li class="note">
+      <span class="icon">📝</span>
+      <div>
+        <strong>Elevated BMI (33.8)</strong><br>
+        Consider for PPM assessment. With BSA 2.38 m², target iEOA >0.65 cm²/m² to avoid moderate PPM. The 29mm S3 should provide EOA ~3.0-3.5 cm² → iEOA ~1.3-1.5 cm²/m² (no PPM concern).
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- PROCEDURAL PLANNING -->
+<div class="card card-full">
+  <h3>🎯 Procedural Planning Notes</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div>
+      <h4 style="color:var(--accent);margin-bottom:.5rem">Deployment</h4>
+      <ul style="color:var(--muted);font-size:.9rem;padding-left:1rem">
+        <li>Coplanar: LAO 12° / CRA 1°</li>
+        <li>Standard slow deployment</li>
+        <li>Target 80-85% ventricular depth at initial placement</li>
+        <li>-1.5% oversizing → no aggressive post-dilation expected</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:var(--accent);margin-bottom:.5rem">Considerations</h4>
+      <ul style="color:var(--muted);font-size:.9rem;padding-left:1rem">
+        <li>Tri-leaflet valve → straightforward crossing</li>
+        <li>Good quality scan per 3mensio</li>
+        <li>Pre-dilation to operator preference</li>
+        <li>Verify annulus sizing intra-procedurally with root angio</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Analysis by Vienna | Feb 4, 2026</span>
+  <span>Source: 3mensio Structural Heart 10.6 SP2</span>
+  <a href="../uploads/MTV%20BarBar%2031788016.pdf" style="color:var(--accent)" download>📥 Download Original CT Report</a>
+</div>
+</div>
+</body>
+</html>
