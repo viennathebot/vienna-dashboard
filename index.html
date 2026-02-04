@@ -94,6 +94,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <div class="nav-section">
     <h3>Dashboard</h3>
     <a href="#home" class="nav-link active" onclick="showPage('home')"><span>🏠</span> Home</a>
+    <a href="#schedule" class="nav-link" onclick="showPage('schedule')"><span>📅</span> Schedule</a>
     <a href="#briefs" class="nav-link" onclick="showPage('briefs')"><span>☀️</span> Morning Briefs</a>
     <a href="#ideas" class="nav-link" onclick="showPage('ideas')"><span>💡</span> Project Ideas</a>
     <a href="#gallery" class="nav-link" onclick="showPage('gallery')"><span>🖼️</span> Vienna Gallery</a>
@@ -128,6 +129,50 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       <h2>Welcome back, Dr. B</h2>
       <div class="header-meta">
         <span id="current-time"></span>
+      </div>
+    </div>
+
+    <!-- TODAY'S SCHEDULE -->
+    <div class="section" style="margin-bottom:2rem">
+      <div class="card" style="background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);border:2px solid var(--accent)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+          <h3 style="font-size:1.25rem">📅 Today's Schedule — <span id="today-date">Wednesday, February 4</span></h3>
+          <a href="schedule/2026-02.md" style="color:var(--accent);font-size:.875rem">Full Schedule →</a>
+        </div>
+        <div id="today-schedule">
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(225,29,72,0.1);border-radius:.5rem;margin-bottom:.5rem">
+            <span style="font-size:1.5rem">🏥</span>
+            <div>
+              <strong style="font-size:1.1rem">8:00 AM - 12:00 PM</strong>
+              <p style="color:var(--muted);margin:0">Clinic @ Fort Apache</p>
+            </div>
+          </div>
+          <p style="color:var(--muted);font-size:.875rem;margin-top:1rem">No STEMI call today. Next STEMI: Feb 6 (Fri)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPCOMING THIS WEEK -->
+    <div class="section" style="margin-bottom:2rem">
+      <div class="section-header">
+        <h3>📆 Upcoming This Week</h3>
+      </div>
+      <div class="list">
+        <div class="list-item">
+          <span>🩺</span>
+          <div class="list-item-content">
+            <h4>Thu, Feb 5 — TEE @ Siena</h4>
+            <p>12:30 PM • Cary Rosenthal (USAP Anesthesia)</p>
+          </div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content">
+            <h4>Fri, Feb 6 — STEMI Call + Procedures @ San Martin</h4>
+            <p>7:30 AM: PFO (Rivera) • 9 AM: LHC (Morrison) • 10:30 AM: TER-R (McDougal) • 12 PM: TTE (Miller) • 2 PM: LHC (McLaughlin)</p>
+          </div>
+          <div class="list-item-meta" style="color:var(--accent)">⚠️ No procedures after 12 PM</div>
+        </div>
       </div>
     </div>
 
@@ -295,6 +340,99 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
         </a>
       </div>
     </div>
+  </div>
+
+  <!-- SCHEDULE PAGE -->
+  <div id="schedule" class="page">
+    <div class="header">
+      <h2>📅 Schedule</h2>
+      <div class="header-meta">February 2026 • Dr. Peter Bleszynski</div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:1rem">🚨 STEMI Call Schedule</h3>
+      <div class="list">
+        <div class="list-item" style="opacity:0.5">
+          <span>✓</span>
+          <div class="list-item-content"><h4>Mon, Feb 2</h4><p>NV + SM STEMI | ER Call 7am-5pm</p></div>
+          <div class="list-item-meta">Completed</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Fri, Feb 6</h4><p>NV + SM STEMI (7am-7pm) | ER Call 7am-5pm</p></div>
+          <div class="list-item-meta" style="color:var(--accent)">Upcoming</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Tue, Feb 10</h4><p>NV + SM STEMI | ER Call 24h (7am-7am)</p></div>
+          <div class="list-item-meta">Upcoming</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Thu, Feb 12</h4><p>NV + SM STEMI | ER Call 7am-5pm</p></div>
+          <div class="list-item-meta">Upcoming</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Mon, Feb 16</h4><p>NV + SM STEMI</p></div>
+          <div class="list-item-meta">Upcoming</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Fri-Sun, Feb 20-22</h4><p>NV + SM STEMI (Weekend)</p></div>
+          <div class="list-item-meta">Upcoming</div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Thu, Feb 26</h4><p>NV + SM STEMI</p></div>
+          <div class="list-item-meta">Upcoming</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:1rem">📆 This Week (Feb 2-8)</h3>
+      <div class="list">
+        <div class="list-item" style="opacity:0.5">
+          <span>✓</span>
+          <div class="list-item-content"><h4>Mon, Feb 2</h4><p>9 AM: LHC (Thandi Nlbapo) @ NV | 1-5 PM: Clinic @ Henderson</p></div>
+        </div>
+        <div class="list-item" style="opacity:0.5">
+          <span>✓</span>
+          <div class="list-item-content"><h4>Tue, Feb 3</h4><p>9 AM-5 PM: Clinic @ Fort Apache | 4:15 PM: DMV License Renewal @ Henderson</p></div>
+        </div>
+        <div class="list-item" style="background:rgba(225,29,72,0.1)">
+          <span>📍</span>
+          <div class="list-item-content"><h4>Wed, Feb 4 — TODAY</h4><p>8 AM-12 PM: Clinic @ Fort Apache</p></div>
+          <div class="list-item-meta" style="color:var(--green)">Current</div>
+        </div>
+        <div class="list-item">
+          <span>🩺</span>
+          <div class="list-item-content"><h4>Thu, Feb 5</h4><p>12:30 PM: TEE (Cary Rosenthal) @ Siena (USAP Anesthesia)</p></div>
+        </div>
+        <div class="list-item">
+          <span>🚨</span>
+          <div class="list-item-content"><h4>Fri, Feb 6 — STEMI CALL</h4><p>7:30 AM: PFO (Rivera) | 9 AM: LHC (Morrison) | 10:30 AM: TER-R (McDougal) | 12 PM: TTE (Miller) | 2 PM: LHC (McLaughlin)</p></div>
+          <div class="list-item-meta" style="color:var(--accent)">⚠️ No procedures after 12 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:1rem">📆 Next Week (Feb 9-15)</h3>
+      <div class="list">
+        <div class="list-item">
+          <span>🩺</span>
+          <div class="list-item-content"><h4>Thu, Feb 10 — STEMI CALL (24h)</h4><p>7:30 AM: Assist Dr. Woods (Austin Jerico) @ Siena | 9:30 AM: Assist Dr. Woods (Judith Hernandez) | 11:30 AM: MitraClip (Koel, Keith) | 1:30 PM: MitraClip (Carter, Darlene)</p></div>
+        </div>
+        <div class="list-item">
+          <span>📋</span>
+          <div class="list-item-content"><h4>Wed, Feb 11</h4><p>11:30 AM: PBC Meeting @ North Vista (MD NOT AVAILABLE)</p></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);margin-top:2rem;font-size:.875rem">📍 NV = North Vista | SM = San Martin | Full schedule: <a href="schedule/2026-02.md" style="color:var(--accent)">schedule/2026-02.md</a></p>
   </div>
 
   <!-- PROJECT IDEAS PAGE -->
