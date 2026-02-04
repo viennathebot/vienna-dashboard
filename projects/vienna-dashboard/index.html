@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vienna Dashboard</title>
+    <style>
+        :root {
+            --primary: #dc2626;
+            --primary-dark: #b91c1c;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: -2rem;
+        }
+        
+        .login-box {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .login-box h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .login-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .login-box button:hover {
+            background: var(--primary-dark);
+        }
+        
+        .dashboard {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .dashboard.active {
+            display: block;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .card h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+        
+        .task-status.done {
+            background: var(--success);
+            border-color: var(--success);
+        }
+        
+        .task-status.in-progress {
+            border-color: var(--warning);
+        }
+        
+        .task-text {
+            flex: 1;
+        }
+        
+        .task-text.done {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+        
+        .project-item {
+            background: var(--bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-name {
+            font-weight: 600;
+        }
+        
+        .project-progress {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        .schedule-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-time {
+            color: var(--primary);
+            font-weight: 600;
+            min-width: 60px;
+        }
+        
+        .schedule-event {
+            flex: 1;
+        }
+        
+        .schedule-location {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .activity-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-time {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+        
+        .system-status {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .system-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            background: var(--bg);
+            border-radius: 0.25rem;
+        }
+        
+        .system-label {
+            color: var(--text-muted);
+        }
+        
+        .system-value {
+            font-weight: 600;
+        }
+        
+        .system-value.online {
+            color: var(--success);
+        }
+        
+        .wide {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 768px) {
+            .wide {
+                grid-column: span 1;
+            }
+            
+            body {
+                padding: 1rem;
+            }
+        }
+        
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .logout-btn:hover {
+            background: var(--bg-card-hover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1>🫀 Vienna</h1>
+            <p>Personal AI Assistant Dashboard</p>
+            <input type="password" id="password" placeholder="Enter access code" onkeypress="if(event.key==='Enter')login()">
+            <button onclick="login()">Access Dashboard</button>
+        </div>
+    </div>
+    
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <header>
+            <h1>🫀 Vienna Dashboard</h1>
+            <div class="header-right">
+                <div class="status-dot"></div>
+                <span id="currentTime"></span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </header>
+        
+        <div class="grid">
+            <!-- Quick Stats -->
+            <div class="card">
+                <h2>📊 Quick Stats</h2>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value" id="tasksToday">5</div>
+                        <div class="stat-label">Tasks Today</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="tasksCompleted">5</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="projectsActive">4</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="twitterFollows">53</div>
+                        <div class="stat-label">Follows Today</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Today's Schedule -->
+            <div class="card">
+                <h2>📅 Today's Schedule</h2>
+                <div id="schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">9:00 AM</div>
+                        <div>
+                            <div class="schedule-event">LHC poss PCI - Thandi Nlbapo</div>
+                            <div class="schedule-location">North Vista ⚠️ Iodine Allergy</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">1:00 PM</div>
+                        <div>
+                            <div class="schedule-event">Clinic</div>
+                            <div class="schedule-location">Henderson Office</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">4:00 PM</div>
+                        <div>
+                            <div class="schedule-event">DMV Appointment</div>
+                            <div class="schedule-location">Henderson DMV - License Renewal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks -->
+            <div class="card">
+                <h2>✅ Today's Tasks</h2>
+                <ul class="task-list" id="taskList">
+                    <li class="task-item">
+                        <div class="task-status done">✓</div>
+                        <span class="task-text done">Morning briefing</span>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-status done">✓</div>
+                        <span class="task-text done">Twitter follows (53)</span>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-status done">✓</div>
+                        <span class="task-text done">GitHub account setup</span>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-status done">✓</div>
+                        <span class="task-text done">STEMI presentation for EMS</span>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-status done">✓</div>
+                        <span class="task-text done">Deploy Vienna dashboard</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Active Projects -->
+            <div class="card">
+                <h2>🚀 Active Projects</h2>
+                <div id="projects">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-name">📊 STEMI EMS Presentation</span>
+                            <span class="project-progress">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted)">
+                            40 slides • 12 EKG images • Ready for review
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-name">✅ Vienna Dashboard</span>
+                            <span class="project-progress">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-name">Heart Month Blog Post</span>
+                            <span class="project-progress">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-name">Twitter Trial Bot</span>
+                            <span class="project-progress">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card wide">
+                <h2>📝 Recent Activity</h2>
+                <div id="activity">
+                    <div class="activity-item">
+                        <div>📧 Emailed STEMI presentation to Dr. B</div>
+                        <div class="activity-time">7:33 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>📸 Downloaded 12 EKG images for presentation</div>
+                        <div class="activity-time">7:12 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>📊 Completed STEMI PowerPoint (40 slides)</div>
+                        <div class="activity-time">7:05 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>🚀 Dashboard deployed to GitHub Pages</div>
+                        <div class="activity-time">6:48 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>Created GitHub account: viennathebot</div>
+                        <div class="activity-time">6:22 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>Twitter: 53 cardiology accounts followed</div>
+                        <div class="activity-time">9:00 AM</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Status -->
+            <div class="card">
+                <h2>⚙️ System Status</h2>
+                <div class="system-status">
+                    <div class="system-row">
+                        <span class="system-label">Gateway</span>
+                        <span class="system-value online">● Online</span>
+                    </div>
+                    <div class="system-row">
+                        <span class="system-label">iMessage</span>
+                        <span class="system-value online">● Connected</span>
+                    </div>
+                    <div class="system-row">
+                        <span class="system-label">Twitter (@viennathebot)</span>
+                        <span class="system-value online">● Active</span>
+                    </div>
+                    <div class="system-row">
+                        <span class="system-label">GitHub</span>
+                        <span class="system-value online">● Connected</span>
+                    </div>
+                    <div class="system-row">
+                        <span class="system-label">Cron Jobs</span>
+                        <span class="system-value" style="color: var(--warning)">⚠ OAuth Expired</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEMI Call Schedule -->
+            <div class="card">
+                <h2>🏥 February STEMI Call</h2>
+                <div id="stemiSchedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">Feb 2</div>
+                        <div class="schedule-event">Today ✓</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">Feb 6</div>
+                        <div class="schedule-event">7am - 7pm</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">Feb 10</div>
+                        <div class="schedule-event">24h call</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">Feb 12</div>
+                        <div class="schedule-event">7am - 7pm</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">Feb 16</div>
+                        <div class="schedule-event">7am - 7pm</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple password protection (not secure for sensitive data, but sufficient for basic access control)
+        const ACCESS_CODE = 'vienna2026'; // Can be changed
+        
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === ACCESS_CODE) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboard').classList.add('active');
+                sessionStorage.setItem('authenticated', 'true');
+                updateTime();
+            } else {
+                alert('Invalid access code');
+            }
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('authenticated');
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('password').value = '';
+        }
+        
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                timeZone: 'America/Los_Angeles'
+            };
+            document.getElementById('currentTime').textContent = now.toLocaleString('en-US', options);
+        }
+        
+        // Check if already authenticated
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').classList.add('active');
+        }
+        
+        // Update time every minute
+        setInterval(updateTime, 60000);
+        updateTime();
+    </script>
+</body>
+</html>
