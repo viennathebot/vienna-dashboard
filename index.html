@@ -94,7 +94,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <div class="nav-section">
     <h3>Dashboard</h3>
     <a href="#home" class="nav-link active" onclick="showPage('home')"><span>🏠</span> Home</a>
-    <a href="#research" class="nav-link" onclick="showPage('research')"><span>📚</span> Research Briefs</a>
+    <a href="#briefs" class="nav-link" onclick="showPage('briefs')"><span>☀️</span> Morning Briefs</a>
+    <a href="#ideas" class="nav-link" onclick="showPage('ideas')"><span>💡</span> Project Ideas</a>
     <a href="#gallery" class="nav-link" onclick="showPage('gallery')"><span>🖼️</span> Vienna Gallery</a>
   </div>
 
@@ -137,22 +138,22 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       </div>
       <div class="stat">
         <div class="stat-value">4</div>
-        <div class="stat-label">Research Briefs</div>
+        <div class="stat-label">Morning Briefs</div>
       </div>
       <div class="stat">
-        <div class="stat-value">8</div>
-        <div class="stat-label">Active Projects</div>
+        <div class="stat-value">5</div>
+        <div class="stat-label">Project Ideas</div>
       </div>
       <div class="stat">
-        <div class="stat-value">✓</div>
-        <div class="stat-label">System Online</div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Completed</div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-header">
-        <h3>📚 Latest Research Briefs</h3>
-        <a href="#research" class="section-link" onclick="showPage('research')">View All →</a>
+        <h3>☀️ Latest Morning Briefs</h3>
+        <a href="#briefs" class="section-link" onclick="showPage('briefs')">View All →</a>
       </div>
       <div class="list">
         <a href="research-briefs/2026-02-04.html" class="list-item">
@@ -237,66 +238,175 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     </div>
   </div>
 
-  <!-- RESEARCH PAGE -->
-  <div id="research" class="page">
+  <!-- MORNING BRIEFS PAGE -->
+  <div id="briefs" class="page">
     <div class="header">
-      <h2>📚 Research Briefs</h2>
-      <div class="header-meta">Daily cardiology literature roundups</div>
+      <h2>☀️ Morning Briefs</h2>
+      <div class="header-meta">Daily cardiology literature roundups & research summaries</div>
     </div>
     
-    <div class="list">
-      <a href="research-briefs/2026-02-04.html" class="list-item">
-        <span>📄</span>
-        <div class="list-item-content">
-          <h4>February 4, 2026</h4>
-          <p>NAVULTRA Registry, DurAVR Biomimetic THV, Residual Mean Gradient, 3D ICE Review, Leadless Pacemakers</p>
-        </div>
-        <div class="list-item-meta">Today</div>
-      </a>
-      <a href="research-briefs/2026-02-03.html" class="list-item">
-        <span>📄</span>
-        <div class="list-item-content">
-          <h4>February 3, 2026</h4>
-          <p>Cardiology literature roundup</p>
-        </div>
-        <div class="list-item-meta">Yesterday</div>
-      </a>
-      <a href="research-briefs/2026-02-02.html" class="list-item">
-        <span>📄</span>
-        <div class="list-item-content">
-          <h4>February 2, 2026</h4>
-          <p>Cardiology literature roundup</p>
-        </div>
-        <div class="list-item-meta">2 days ago</div>
-      </a>
-      <a href="research-briefs/2026-02-01.html" class="list-item">
-        <span>📄</span>
-        <div class="list-item-content">
-          <h4>February 1, 2026</h4>
-          <p>Cardiology literature roundup</p>
-        </div>
-        <div class="list-item-meta">3 days ago</div>
-      </a>
+    <p style="color:var(--muted);margin-bottom:2rem">Each morning, Vienna compiles the latest cardiology research, trials, and publications into a digestible brief for Dr. B.</p>
+    
+    <div class="section">
+      <h3 style="margin-bottom:1rem">📅 February 2026</h3>
+      <div class="list">
+        <a href="research-briefs/2026-02-04.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>Tuesday, February 4, 2026</h4>
+            <p>NAVULTRA Registry, DurAVR Biomimetic THV, Residual Mean Gradient, 3D ICE Review, Leadless Pacemakers</p>
+          </div>
+          <div class="list-item-meta"><a href="research-briefs/pdf/2026-02-04.pdf" download style="color:var(--accent)">PDF ↓</a></div>
+        </a>
+        <a href="research-briefs/2026-02-03.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>Monday, February 3, 2026</h4>
+            <p>Cardiology literature roundup</p>
+          </div>
+          <div class="list-item-meta">Pending</div>
+        </a>
+        <a href="research-briefs/2026-02-02.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>Sunday, February 2, 2026</h4>
+            <p>Cardiology literature roundup</p>
+          </div>
+          <div class="list-item-meta">Pending</div>
+        </a>
+        <a href="research-briefs/2026-02-01.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>Saturday, February 1, 2026</h4>
+            <p>Cardiology literature roundup</p>
+          </div>
+          <div class="list-item-meta">Pending</div>
+        </a>
+      </div>
     </div>
     
-    <div style="margin-top:2rem">
-      <h3 style="margin-bottom:1rem">Download PDFs</h3>
+    <div class="section" style="margin-top:2rem">
+      <h3 style="margin-bottom:1rem">📥 Quick Download</h3>
       <div class="grid">
         <a href="research-briefs/pdf/2026-02-04.pdf" class="card" download style="text-decoration:none">
           <span style="font-size:2rem">📥</span>
           <h3>Feb 4 PDF</h3>
           <p>Download today's brief</p>
         </a>
-        <a href="research-briefs/pdf/2026-02-03.pdf" class="card" download style="text-decoration:none">
-          <span style="font-size:2rem">📥</span>
-          <h3>Feb 3 PDF</h3>
-          <p>Download brief</p>
-        </a>
-        <a href="research-briefs/pdf/2026-02-02.pdf" class="card" download style="text-decoration:none">
-          <span style="font-size:2rem">📥</span>
-          <h3>Feb 2 PDF</h3>
-          <p>Download brief</p>
-        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT IDEAS PAGE -->
+  <div id="ideas" class="page">
+    <div class="header">
+      <h2>💡 Project Ideas</h2>
+      <div class="header-meta">Future projects and improvements Vienna is tracking</div>
+    </div>
+    
+    <div class="section">
+      <h3 style="margin-bottom:1rem">🔥 High Priority</h3>
+      <div class="list">
+        <div class="list-item">
+          <span>📧</span>
+          <div class="list-item-content">
+            <h4>Email Integration (gog)</h4>
+            <p>Set up Gmail CLI so Vienna can send morning briefs and research summaries via email</p>
+          </div>
+          <div class="list-item-meta" style="color:var(--accent)">In Progress</div>
+        </div>
+        <div class="list-item">
+          <span>📱</span>
+          <div class="list-item-content">
+            <h4>Renal Denervation Program Materials</h4>
+            <p>Create educational content, referral materials, and patient information for the RDN program</p>
+          </div>
+          <div class="list-item-meta">Planned</div>
+        </div>
+        <div class="list-item">
+          <span>🐦</span>
+          <div class="list-item-content">
+            <h4>@ICPeteB Content Automation</h4>
+            <p>Automated trial summaries and cardiology content for Twitter/X presence</p>
+          </div>
+          <div class="list-item-meta">Planned</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:1rem">📋 Backlog</h3>
+      <div class="list">
+        <div class="list-item">
+          <span>📊</span>
+          <div class="list-item-content">
+            <h4>Case Volume Dashboard</h4>
+            <p>Visual dashboard for tracking procedure volumes, outcomes, and trends</p>
+          </div>
+          <div class="list-item-meta">Idea</div>
+        </div>
+        <div class="list-item">
+          <span>📅</span>
+          <div class="list-item-content">
+            <h4>Conference Calendar</h4>
+            <p>Track cardiology conferences, abstract deadlines, and speaking opportunities</p>
+          </div>
+          <div class="list-item-meta">Idea</div>
+        </div>
+        <div class="list-item">
+          <span>🎓</span>
+          <div class="list-item-content">
+            <h4>Fellowship Teaching Resources</h4>
+            <p>Curated educational materials for cardiology fellows and trainees</p>
+          </div>
+          <div class="list-item-meta">Idea</div>
+        </div>
+        <div class="list-item">
+          <span>📝</span>
+          <div class="list-item-content">
+            <h4>Personal Website (drbleszynski.com)</h4>
+            <p>Professional portfolio site with bio, publications, and contact info</p>
+          </div>
+          <div class="list-item-meta">Idea</div>
+        </div>
+        <div class="list-item">
+          <span>🏥</span>
+          <div class="list-item-content">
+            <h4>STEMI Protocol Optimization</h4>
+            <p>Door-to-balloon time tracking and protocol improvement tools</p>
+          </div>
+          <div class="list-item-meta">Idea</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:1rem">✅ Completed</h3>
+      <div class="list">
+        <div class="list-item" style="opacity:0.7">
+          <span>✓</span>
+          <div class="list-item-content">
+            <h4>STEMI EMS Presentation</h4>
+            <p>Educational slides for EMS providers on STEMI recognition</p>
+          </div>
+          <div class="list-item-meta" style="color:var(--green)">Done</div>
+        </div>
+        <div class="list-item" style="opacity:0.7">
+          <span>✓</span>
+          <div class="list-item-content">
+            <h4>Vienna Dashboard</h4>
+            <p>Central hub for all projects and resources</p>
+          </div>
+          <div class="list-item-meta" style="color:var(--green)">Done</div>
+        </div>
+        <div class="list-item" style="opacity:0.7">
+          <span>✓</span>
+          <div class="list-item-content">
+            <h4>Case Logger App</h4>
+            <p>Web app for tracking interventional cardiology cases</p>
+          </div>
+          <div class="list-item-meta" style="color:var(--green)">Done</div>
+        </div>
       </div>
     </div>
   </div>
