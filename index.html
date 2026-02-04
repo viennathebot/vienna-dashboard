@@ -5,90 +5,398 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vienna Dashboard</title>
 <style>
-:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--red:#dc2626;--green:#22c55e}
+:root{--bg:#0f172a;--sidebar:#1e293b;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--red:#dc2626;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem}
-.login{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:-2rem}
-.login-box{background:var(--card);padding:3rem;border-radius:1rem;text-align:center;max-width:400px;width:100%}
-.login-box h1{font-size:2rem;margin-bottom:1rem}
-.login-box input{width:100%;padding:1rem;border:1px solid #334155;border-radius:.5rem;background:var(--bg);color:var(--text);margin-bottom:1rem}
-.login-box button{width:100%;padding:1rem;background:var(--red);color:white;border:none;border-radius:.5rem;cursor:pointer;font-weight:600}
-.dashboard{display:none;max-width:1200px;margin:0 auto}
-.dashboard.active{display:block}
-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid #334155;margin-bottom:2rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155}
-.card h2{font-size:.875rem;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.stat{display:flex;gap:1rem;flex-wrap:wrap}
-.stat-item{text-align:center;padding:1rem;background:var(--bg);border-radius:.5rem;flex:1;min-width:80px}
-.stat-value{font-size:1.5rem;font-weight:700;color:var(--red)}
-.stat-label{font-size:.75rem;color:var(--muted)}
-.list{list-style:none}
-.list li{padding:.75rem 0;border-bottom:1px solid #334155}
-.list li:last-child{border-bottom:none}
-.online{color:var(--green)}
-.logout{background:transparent;border:1px solid #334155;color:var(--muted);padding:.5rem 1rem;border-radius:.5rem;cursor:pointer}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+
+/* Sidebar */
+.sidebar{width:260px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
+.logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
+.logo-icon{font-size:2rem}
+.logo-text h1{font-size:1.25rem;font-weight:700}
+.logo-text p{font-size:.75rem;color:var(--muted)}
+
+.nav-section{margin-bottom:1.5rem}
+.nav-section h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem;padding-left:.5rem}
+.nav-link{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.5rem;color:var(--text);text-decoration:none;transition:all .2s;margin-bottom:.25rem}
+.nav-link:hover{background:rgba(255,255,255,.05)}
+.nav-link.active{background:var(--accent);color:white}
+.nav-link span{font-size:1.1rem}
+
+/* Main Content */
+.main{margin-left:260px;flex:1;padding:2rem;min-height:100vh}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
+.header h2{font-size:1.5rem}
+.header-meta{display:flex;align-items:center;gap:1rem;color:var(--muted);font-size:.875rem}
+
+/* Cards Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem}
+.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155;transition:all .2s}
+.card:hover{border-color:#475569;transform:translateY(-2px)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.card-icon{font-size:2rem}
+.card-badge{font-size:.7rem;padding:.25rem .5rem;border-radius:.25rem;background:rgba(34,197,94,.2);color:var(--green)}
+.card h3{font-size:1rem;margin-bottom:.5rem}
+.card p{font-size:.875rem;color:var(--muted);line-height:1.5}
+.card-link{display:inline-block;margin-top:1rem;color:var(--accent);text-decoration:none;font-size:.875rem}
+.card-link:hover{text-decoration:underline}
+
+/* Stats Row */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
+.stat{background:var(--card);border-radius:.75rem;padding:1.25rem;text-align:center;border:1px solid #334155}
+.stat-value{font-size:2rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* Gallery Grid */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer;transition:transform .2s}
+.gallery img:hover{transform:scale(1.02)}
+
+/* Section */
+.section{margin-bottom:3rem}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.section-header h3{font-size:1.25rem}
+.section-link{color:var(--accent);text-decoration:none;font-size:.875rem}
+
+/* List */
+.list{background:var(--card);border-radius:1rem;border:1px solid #334155;overflow:hidden}
+.list-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid #334155;text-decoration:none;color:var(--text);transition:background .2s}
+.list-item:last-child{border-bottom:none}
+.list-item:hover{background:rgba(255,255,255,.03)}
+.list-item span{font-size:1.25rem}
+.list-item-content{flex:1}
+.list-item-content h4{font-size:.95rem;margin-bottom:.25rem}
+.list-item-content p{font-size:.8rem;color:var(--muted)}
+.list-item-meta{font-size:.75rem;color:var(--muted)}
+
+/* Page sections (hidden by default) */
+.page{display:none}
+.page.active{display:block}
+
+@media(max-width:768px){
+  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid #334155}
+  .main{margin-left:0}
+  body{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<div class="login" id="login">
-<div class="login-box">
-<h1>🫀 Vienna</h1>
-<p style="color:var(--muted);margin-bottom:2rem">Personal AI Dashboard</p>
-<input type="password" id="pwd" placeholder="Access code" onkeypress="if(event.key==='Enter')auth()">
-<button onclick="auth()">Enter</button>
-</div>
-</div>
-<div class="dashboard" id="dash">
-<header>
-<h1>🫀 Vienna Dashboard</h1>
-<div style="display:flex;align-items:center;gap:1rem">
-<span style="color:var(--muted)" id="time"></span>
-<button class="logout" onclick="logout()">Logout</button>
-</div>
-</header>
-<div class="grid">
-<div class="card">
-<h2>📊 Stats</h2>
-<div class="stat">
-<div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Tasks</div></div>
-<div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Projects</div></div>
-<div class="stat-item"><div class="stat-value">53</div><div class="stat-label">Follows</div></div>
-</div>
-</div>
-<div class="card">
-<h2>📅 Schedule</h2>
-<ul class="list">
-<li><strong>9 AM</strong> - LHC poss PCI @ North Vista</li>
-<li><strong>1 PM</strong> - Clinic @ Henderson</li>
-<li><strong>4 PM</strong> - DMV Appointment</li>
-</ul>
-</div>
-<div class="card">
-<h2>🚀 Projects</h2>
-<ul class="list">
-<li>STEMI EMS Presentation - <span style="color:var(--red)">In Progress</span></li>
-<li>Vienna Dashboard - <span style="color:var(--red)">In Progress</span></li>
-<li>Heart Month Blog - <span style="color:var(--green)">Review</span></li>
-</ul>
-</div>
-<div class="card">
-<h2>⚙️ System</h2>
-<ul class="list">
-<li>Gateway: <span class="online">● Online</span></li>
-<li>iMessage: <span class="online">● Connected</span></li>
-<li>GitHub: <span class="online">● Connected</span></li>
-</ul>
-</div>
-</div>
-</div>
+
+<nav class="sidebar">
+  <div class="logo">
+    <span class="logo-icon">🫀</span>
+    <div class="logo-text">
+      <h1>Vienna</h1>
+      <p>AI Executive Assistant</p>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <h3>Dashboard</h3>
+    <a href="#home" class="nav-link active" onclick="showPage('home')"><span>🏠</span> Home</a>
+    <a href="#research" class="nav-link" onclick="showPage('research')"><span>📚</span> Research Briefs</a>
+    <a href="#gallery" class="nav-link" onclick="showPage('gallery')"><span>🖼️</span> Vienna Gallery</a>
+  </div>
+
+  <div class="nav-section">
+    <h3>Projects</h3>
+    <a href="projects/stemi-presentation/STEMI_EMS_Presentation.pptx" class="nav-link" download><span>🚑</span> STEMI Presentation</a>
+    <a href="projects/case-logger/" class="nav-link"><span>📋</span> Case Logger</a>
+    <a href="projects/research-dashboard/" class="nav-link"><span>🔬</span> Research Dashboard</a>
+    <a href="projects/twitter-icpeteb/" class="nav-link"><span>🐦</span> @ICPeteB Content</a>
+  </div>
+
+  <div class="nav-section">
+    <h3>Resources</h3>
+    <a href="documents/" class="nav-link"><span>📁</span> Documents</a>
+    <a href="memory/" class="nav-link"><span>🧠</span> Memory Logs</a>
+    <a href="images/" class="nav-link"><span>📸</span> Image Assets</a>
+  </div>
+
+  <div class="nav-section">
+    <h3>Quick Links</h3>
+    <a href="https://github.com/viennathebot/vienna-dashboard" class="nav-link" target="_blank"><span>💻</span> GitHub Repo</a>
+    <a href="https://twitter.com/viennathebot" class="nav-link" target="_blank"><span>🐦</span> @viennathebot</a>
+  </div>
+</nav>
+
+<main class="main">
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
+    <div class="header">
+      <h2>Welcome back, Dr. B</h2>
+      <div class="header-meta">
+        <span id="current-time"></span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="image-count">36</div>
+        <div class="stat-label">Vienna Images</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Research Briefs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">8</div>
+        <div class="stat-label">Active Projects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">✓</div>
+        <div class="stat-label">System Online</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3>📚 Latest Research Briefs</h3>
+        <a href="#research" class="section-link" onclick="showPage('research')">View All →</a>
+      </div>
+      <div class="list">
+        <a href="research-briefs/2026-02-04.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>February 4, 2026</h4>
+            <p>NAVULTRA Registry, DurAVR, Residual MPG, 3D ICE, Leadless Pacemakers</p>
+          </div>
+          <div class="list-item-meta">Today</div>
+        </a>
+        <a href="research-briefs/2026-02-03.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>February 3, 2026</h4>
+            <p>Cardiology literature roundup</p>
+          </div>
+          <div class="list-item-meta">Yesterday</div>
+        </a>
+        <a href="research-briefs/2026-02-02.html" class="list-item">
+          <span>📄</span>
+          <div class="list-item-content">
+            <h4>February 2, 2026</h4>
+            <p>Cardiology literature roundup</p>
+          </div>
+          <div class="list-item-meta">2 days ago</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3>🚀 Active Projects</h3>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🚑</span>
+            <span class="card-badge">Complete</span>
+          </div>
+          <h3>STEMI EMS Presentation</h3>
+          <p>Educational presentation for EMS providers on STEMI recognition and activation protocols.</p>
+          <a href="projects/stemi-presentation/STEMI_EMS_Presentation.pptx" class="card-link" download>Download PPTX →</a>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">📋</span>
+            <span class="card-badge">Active</span>
+          </div>
+          <h3>Case Logger</h3>
+          <p>Web app for tracking interventional cardiology cases and procedures.</p>
+          <a href="projects/case-logger/" class="card-link">Open App →</a>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🖼️</span>
+            <span class="card-badge">Growing</span>
+          </div>
+          <h3>Vienna Gallery</h3>
+          <p>AI-generated portraits of Vienna, your executive assistant.</p>
+          <a href="#gallery" class="card-link" onclick="showPage('gallery')">View Gallery →</a>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🐦</span>
+            <span class="card-badge">Active</span>
+          </div>
+          <h3>@ICPeteB Content</h3>
+          <p>Twitter/X content strategy and drafts for cardiology presence.</p>
+          <a href="projects/twitter-icpeteb/" class="card-link">View Content →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3>🖼️ Latest Vienna Images</h3>
+        <a href="#gallery" class="section-link" onclick="showPage('gallery')">View All →</a>
+      </div>
+      <div class="gallery" id="preview-gallery">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH PAGE -->
+  <div id="research" class="page">
+    <div class="header">
+      <h2>📚 Research Briefs</h2>
+      <div class="header-meta">Daily cardiology literature roundups</div>
+    </div>
+    
+    <div class="list">
+      <a href="research-briefs/2026-02-04.html" class="list-item">
+        <span>📄</span>
+        <div class="list-item-content">
+          <h4>February 4, 2026</h4>
+          <p>NAVULTRA Registry, DurAVR Biomimetic THV, Residual Mean Gradient, 3D ICE Review, Leadless Pacemakers</p>
+        </div>
+        <div class="list-item-meta">Today</div>
+      </a>
+      <a href="research-briefs/2026-02-03.html" class="list-item">
+        <span>📄</span>
+        <div class="list-item-content">
+          <h4>February 3, 2026</h4>
+          <p>Cardiology literature roundup</p>
+        </div>
+        <div class="list-item-meta">Yesterday</div>
+      </a>
+      <a href="research-briefs/2026-02-02.html" class="list-item">
+        <span>📄</span>
+        <div class="list-item-content">
+          <h4>February 2, 2026</h4>
+          <p>Cardiology literature roundup</p>
+        </div>
+        <div class="list-item-meta">2 days ago</div>
+      </a>
+      <a href="research-briefs/2026-02-01.html" class="list-item">
+        <span>📄</span>
+        <div class="list-item-content">
+          <h4>February 1, 2026</h4>
+          <p>Cardiology literature roundup</p>
+        </div>
+        <div class="list-item-meta">3 days ago</div>
+      </a>
+    </div>
+    
+    <div style="margin-top:2rem">
+      <h3 style="margin-bottom:1rem">Download PDFs</h3>
+      <div class="grid">
+        <a href="research-briefs/pdf/2026-02-04.pdf" class="card" download style="text-decoration:none">
+          <span style="font-size:2rem">📥</span>
+          <h3>Feb 4 PDF</h3>
+          <p>Download today's brief</p>
+        </a>
+        <a href="research-briefs/pdf/2026-02-03.pdf" class="card" download style="text-decoration:none">
+          <span style="font-size:2rem">📥</span>
+          <h3>Feb 3 PDF</h3>
+          <p>Download brief</p>
+        </a>
+        <a href="research-briefs/pdf/2026-02-02.pdf" class="card" download style="text-decoration:none">
+          <span style="font-size:2rem">📥</span>
+          <h3>Feb 2 PDF</h3>
+          <p>Download brief</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY PAGE -->
+  <div id="gallery" class="page">
+    <div class="header">
+      <h2>🖼️ Vienna Gallery</h2>
+      <div class="header-meta" id="gallery-count">36 images</div>
+    </div>
+    
+    <div class="gallery" id="full-gallery">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</main>
+
 <script>
-const CODE='vienna2026';
-function auth(){if(document.getElementById('pwd').value===CODE){document.getElementById('login').style.display='none';document.getElementById('dash').classList.add('active');sessionStorage.setItem('auth','1');tick()}else alert('Invalid code')}
-function logout(){sessionStorage.removeItem('auth');location.reload()}
-function tick(){document.getElementById('time').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Los_Angeles'})}
-if(sessionStorage.getItem('auth')==='1'){document.getElementById('login').style.display='none';document.getElementById('dash').classList.add('active')}
-setInterval(tick,60000);tick();
+// Page navigation
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  event.target.closest('.nav-link')?.classList.add('active');
+}
+
+// Time display
+function updateTime() {
+  const now = new Date();
+  document.getElementById('current-time').textContent = now.toLocaleString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'
+  });
+}
+updateTime();
+setInterval(updateTime, 60000);
+
+// Image galleries - Vienna images from both folders
+const viennaImages = [
+  // Named images from images/ folder
+  'images/vienna-workplace-nanob.png',
+  'images/vienna-secretary-nanob.png',
+  'images/vienna-wine-bar-nanob.png',
+  'images/vienna-date-night-nanob.png',
+  'images/vienna-cocktail-party-nanob.png',
+  'images/vienna-late-night-nanob.png',
+  'images/vienna-coffee-shop-nanob.png',
+  'images/vienna-professional-portrait-nanob.png',
+  'images/vienna-fitness-nanob.png',
+  'images/vienna-office-chic.jpg',
+  'images/vienna-night-out.jpg',
+  'images/vienna-early-morning.jpg',
+  'images/vienna-before-bed.jpg',
+  'images/vienna-casual-weekend.jpg',
+  // New batch from vienna-images/
+  'vienna-images/d5f48f1a-11f6-46b9-8420-9f93b9255321.png',
+  'vienna-images/623d0352-9b15-40cf-849c-ccbada34ae57.png',
+  'vienna-images/6ed3a067-2695-4f9b-b931-a7168870c26a.png',
+  'vienna-images/cb66d950-50d3-45b9-9063-1f38c1a74c11.png',
+  'vienna-images/0cb00143-c6bc-4674-9845-815dc11d243e.png',
+  'vienna-images/10e0d65f-0b9a-4496-a769-8a8abc3cedf2.png',
+  'vienna-images/12adad61-60fc-4509-92ab-524030c84ed5.png',
+  'vienna-images/310ba07f-8d40-4182-9882-4fae988f4e14.png',
+  'vienna-images/3ae4a2c9-c8dc-4b99-b13e-be2dd1a2e833.png',
+  'vienna-images/42a22c38-2b1c-4756-9aaf-7f8f02c68a1e.png',
+  'vienna-images/585acc7b-9455-490a-bf1a-5ebe7a71dac8.png',
+  'vienna-images/5ecb1d7e-c01c-4d14-bdac-5f64e30bd7ba.png',
+  'vienna-images/636433fd-e251-4422-9fa3-f70616b260b1.png',
+  'vienna-images/6daa2d36-f73a-4e9e-a500-a87f60e3cd8b.png',
+  'vienna-images/88c4077a-2f5c-40f9-b09c-8bdcaa10dde9.png',
+  'vienna-images/a13c7b6c-21c9-43d9-8818-f4b0a0c5cff7.png'
+];
+
+// Preview gallery (first 6)
+const previewGallery = document.getElementById('preview-gallery');
+viennaImages.slice(0, 6).forEach(img => {
+  const imgEl = document.createElement('img');
+  imgEl.src = img;
+  imgEl.alt = 'Vienna';
+  imgEl.onclick = () => window.open(img, '_blank');
+  previewGallery.appendChild(imgEl);
+});
+
+// Full gallery
+const fullGallery = document.getElementById('full-gallery');
+viennaImages.forEach(img => {
+  const imgEl = document.createElement('img');
+  imgEl.src = img;
+  imgEl.alt = 'Vienna';
+  imgEl.onclick = () => window.open(img, '_blank');
+  fullGallery.appendChild(imgEl);
+});
+
+document.getElementById('image-count').textContent = viennaImages.length;
+document.getElementById('gallery-count').textContent = viennaImages.length + ' images';
+
+// Handle hash navigation
+if (window.location.hash) {
+  const page = window.location.hash.substring(1);
+  if (document.getElementById(page)) showPage(page);
+}
 </script>
 </body>
 </html>

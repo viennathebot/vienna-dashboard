@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology Research Dashboard | Dr. B</title>
+    <style>
+        :root {
+            --primary: #8B0000;
+            --primary-light: #A52A2A;
+            --bg-dark: #1a1a2e;
+            --bg-card: #16213e;
+            --text: #eaeaea;
+            --text-muted: #a0a0a0;
+            --accent: #e94560;
+            --success: #00d26a;
+            --info: #17a2b8;
+            --border: #2a2a4a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 { font-size: 1.6rem; }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .search-box button:hover { background: var(--primary-light); }
+        
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        
+        .tab:hover { border-color: var(--accent); }
+        .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .article {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .article:last-child { border-bottom: none; }
+        
+        .article h3 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .article h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .article h3 a:hover { color: var(--accent); }
+        
+        .article .meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge.jacc { background: rgba(233,69,96,0.2); color: var(--accent); }
+        .badge.circulation { background: rgba(23,162,184,0.2); color: var(--info); }
+        .badge.nejm { background: rgba(0,210,106,0.2); color: var(--success); }
+        .badge.pubmed { background: rgba(255,193,7,0.2); color: #ffc107; }
+        .badge.trial { background: rgba(156,39,176,0.2); color: #9c27b0; }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+        
+        .loading .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .error {
+            background: rgba(233,69,96,0.1);
+            border: 1px solid var(--accent);
+            padding: 15px;
+            border-radius: 8px;
+            color: var(--accent);
+        }
+        
+        .quick-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+        .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .refresh-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .refresh-btn:hover { background: rgba(255,255,255,0.1); }
+        
+        #lastUpdate { font-size: 0.85rem; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>🔬 Cardiology Research Dashboard</h1>
+            <div id="lastUpdate">Last updated: --</div>
+        </div>
+        <button class="refresh-btn" onclick="refreshAll()">↻ Refresh All</button>
+    </div>
+    
+    <div class="search-box">
+        <input type="text" id="searchQuery" placeholder="Search PubMed (e.g., TAVR outcomes 2024, MitraClip trials...)" onkeypress="if(event.key==='Enter')searchPubMed()">
+        <button onclick="searchPubMed()">🔍 Search</button>
+    </div>
+    
+    <div class="quick-filters">
+        <button class="filter-btn active" onclick="setFilter('all')">All</button>
+        <button class="filter-btn" onclick="setFilter('TAVR')">TAVR</button>
+        <button class="filter-btn" onclick="setFilter('MitraClip TEER')">MitraClip/TEER</button>
+        <button class="filter-btn" onclick="setFilter('PCI')">PCI</button>
+        <button class="filter-btn" onclick="setFilter('CTO')">CTO</button>
+        <button class="filter-btn" onclick="setFilter('LAAO Watchman')">LAAO/Watchman</button>
+        <button class="filter-btn" onclick="setFilter('heart failure')">Heart Failure</button>
+        <button class="filter-btn" onclick="setFilter('renal denervation')">Renal Denervation</button>
+    </div>
+    
+    <div class="grid">
+        <!-- PubMed Latest -->
+        <div class="card">
+            <h2>📚 PubMed - Latest Interventional</h2>
+            <div id="pubmedResults">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading PubMed...
+                </div>
+            </div>
+        </div>
+        
+        <!-- Clinical Trials -->
+        <div class="card">
+            <h2>🧪 Active Clinical Trials</h2>
+            <div id="trialsResults">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading trials...
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Results -->
+        <div class="card" id="searchResultsCard" style="display:none;">
+            <h2>🔍 Search Results</h2>
+            <div id="searchResults"></div>
+        </div>
+        
+        <!-- Saved/Bookmarked -->
+        <div class="card">
+            <h2>⭐ Quick Links</h2>
+            <div class="article">
+                <h3><a href="https://www.jacc.org/toc/jacc/current" target="_blank">JACC - Current Issue</a></h3>
+                <div class="meta"><span class="badge jacc">JACC</span></div>
+            </div>
+            <div class="article">
+                <h3><a href="https://www.ahajournals.org/journal/circ" target="_blank">Circulation - Latest</a></h3>
+                <div class="meta"><span class="badge circulation">Circulation</span></div>
+            </div>
+            <div class="article">
+                <h3><a href="https://www.nejm.org/medical-research/cardiology" target="_blank">NEJM Cardiology</a></h3>
+                <div class="meta"><span class="badge nejm">NEJM</span></div>
+            </div>
+            <div class="article">
+                <h3><a href="https://eurointervention.pcronline.com/" target="_blank">EuroIntervention</a></h3>
+                <div class="meta"><span class="badge pubmed">EuroInt</span></div>
+            </div>
+            <div class="article">
+                <h3><a href="https://twitter.com/search?q=%23CardioTwitter&f=live" target="_blank">#CardioTwitter Live</a></h3>
+                <div class="meta"><span class="badge trial">Twitter</span></div>
+            </div>
+            <div class="article">
+                <h3><a href="https://clinicaltrials.gov/search?cond=cardiovascular&aggFilters=status:rec" target="_blank">ClinicalTrials.gov - Recruiting</a></h3>
+                <div class="meta"><span class="badge trial">Trials</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const PUBMED_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+        const TRIALS_BASE = 'https://clinicaltrials.gov/api/v2/studies';
+        
+        let currentFilter = 'interventional cardiology structural heart';
+        
+        async function fetchPubMed(query) {
+            try {
+                // Search for IDs
+                const searchUrl = `${PUBMED_BASE}esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=10&sort=date&retmode=json`;
+                const searchRes = await fetch(searchUrl);
+                const searchData = await searchRes.json();
+                
+                if (!searchData.esearchresult?.idlist?.length) {
+                    return '<div class="error">No results found</div>';
+                }
+                
+                // Fetch summaries
+                const ids = searchData.esearchresult.idlist.join(',');
+                const summaryUrl = `${PUBMED_BASE}esummary.fcgi?db=pubmed&id=${ids}&retmode=json`;
+                const summaryRes = await fetch(summaryUrl);
+                const summaryData = await summaryRes.json();
+                
+                let html = '';
+                for (const id of searchData.esearchresult.idlist) {
+                    const article = summaryData.result[id];
+                    if (!article || !article.title) continue;
+                    
+                    const date = article.pubdate || 'Recent';
+                    const journal = article.source || 'Journal';
+                    const authors = article.authors?.slice(0,2).map(a => a.name).join(', ') || '';
+                    
+                    html += `
+                        <div class="article">
+                            <h3><a href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank">${article.title}</a></h3>
+                            <div class="meta">
+                                <span class="badge pubmed">${journal.substring(0,15)}</span>
+                                <span>${date}</span>
+                                <span>${authors}${article.authors?.length > 2 ? ' et al.' : ''}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                return html || '<div class="error">No results</div>';
+            } catch (e) {
+                return `<div class="error">Error loading PubMed: ${e.message}</div>`;
+            }
+        }
+        
+        async function fetchTrials(query) {
+            try {
+                const url = `${TRIALS_BASE}?query.cond=${encodeURIComponent(query)}&filter.overallStatus=RECRUITING&pageSize=8&sort=LastUpdatePostDate:desc`;
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (!data.studies?.length) {
+                    return '<div class="error">No recruiting trials found</div>';
+                }
+                
+                let html = '';
+                for (const study of data.studies) {
+                    const title = study.protocolSection?.identificationModule?.briefTitle || 'Untitled';
+                    const nctId = study.protocolSection?.identificationModule?.nctId || '';
+                    const status = study.protocolSection?.statusModule?.overallStatus || '';
+                    const phase = study.protocolSection?.designModule?.phases?.[0] || '';
+                    
+                    html += `
+                        <div class="article">
+                            <h3><a href="https://clinicaltrials.gov/study/${nctId}" target="_blank">${title}</a></h3>
+                            <div class="meta">
+                                <span class="badge trial">${phase || 'Trial'}</span>
+                                <span>${nctId}</span>
+                                <span>${status}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                return html;
+            } catch (e) {
+                return `<div class="error">Error loading trials: ${e.message}</div>`;
+            }
+        }
+        
+        async function searchPubMed() {
+            const query = document.getElementById('searchQuery').value;
+            if (!query) return;
+            
+            document.getElementById('searchResultsCard').style.display = 'block';
+            document.getElementById('searchResults').innerHTML = '<div class="loading"><div class="spinner"></div>Searching...</div>';
+            
+            const html = await fetchPubMed(query);
+            document.getElementById('searchResults').innerHTML = html;
+        }
+        
+        function setFilter(filter) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (filter === 'all') {
+                currentFilter = 'interventional cardiology structural heart';
+            } else {
+                currentFilter = filter + ' cardiology';
+            }
+            
+            refreshAll();
+        }
+        
+        async function refreshAll() {
+            document.getElementById('lastUpdate').textContent = 'Updating...';
+            
+            document.getElementById('pubmedResults').innerHTML = '<div class="loading"><div class="spinner"></div>Loading...</div>';
+            document.getElementById('trialsResults').innerHTML = '<div class="loading"><div class="spinner"></div>Loading...</div>';
+            
+            const [pubmed, trials] = await Promise.all([
+                fetchPubMed(currentFilter + ' 2024 2025 2026'),
+                fetchTrials(currentFilter.split(' ')[0])
+            ]);
+            
+            document.getElementById('pubmedResults').innerHTML = pubmed;
+            document.getElementById('trialsResults').innerHTML = trials;
+            
+            document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+        }
+        
+        // Initial load
+        refreshAll();
+    </script>
+</body>
+</html>
