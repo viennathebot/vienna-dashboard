@@ -16,3 +16,4 @@ __pycache__/
 
 # Sensitive
 *.env
+vienna-dashboard/
