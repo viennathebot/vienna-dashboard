@@ -55,6 +55,13 @@
 - Supplements: magnesium, L-theanine, arginine, cherry extract, apigenin, NeuroMag (nighttime); creatine, omega-3, CoQ10, vitamin D3+K, vitamin C, boron complex, L-methylfolate (daytime)
 - Post-workout protocol: sauna 15-20 min, shower, cold finish
 
+## Music
+- Loves: EDM, 2000s alternative, punk rock, nu metal, electro metal, death metal
+- Favorites: Limp Bizkit, Disturbed ("Down with the Sickness"), Linkin Park
+- Gym playlist: mostly metal
+- NOT what people expect from a Rolex-wearing interventional cardiologist
+- Definitely not a jazz/classical guy
+
 ## Sports and Hobbies
 - Grew up skiing in Canada
 - Played tennis growing up

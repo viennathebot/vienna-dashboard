@@ -53,7 +53,8 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 | Twilio | viennathebot@gmail.com | Phone: +1 (702) 820-1936 |
 | Ideogram | viennathebot (Google) | Free tier |
 | Playground | Vienna | Free tier |
-| X/Twitter | @viennathebot | Needs cookie auth |
+| X/Twitter | Vienna ✦ (@viennathebot) | Active, rebranded |
+| LinkedIn | Vienna Hart | New account, no pic yet |
 
 ---
 
@@ -84,3 +85,30 @@ npx openclaw gateway restart
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+---
+
+## Leonardo AI (@viennathebot)
+- **URL:** https://app.leonardo.ai
+- **Account:** viennathebot@gmail.com (Google OAuth)
+- **Free Tier:** 150 tokens/day
+- **Status:** Active, logged in
+- **Models:** Phoenix (portraits), PhotoReal (ultra-detail)
+- **Best for:** Volume generation, photorealistic portraits
+
+## Recraft AI (@viennathebot)
+- **URL:** https://www.recraft.ai
+- **Account:** viennathebot@gmail.com (Google OAuth)
+- **Free Tier:** 60 credits/day (2 images per generation = 1 credit each)
+- **Status:** Active, logged in, working!
+- **Image DL:** Only 300px thumbnails on free tier (paid = full res)
+- **Content Filter:** PERMISSIVE — allows thigh-highs, short skirts, cocktails (what Leonardo blocks!)
+- **Best for:** Edgier prompts that other platforms filter out
+
+## Mage.space (@viennathebot)
+- **URL:** https://www.mage.space
+- **Account:** viennathebot@gmail.com (Google OAuth)  
+- **Free Tier:** Unlimited (unverified = blurred suggestive content)
+- **Status:** Active, needs verification for full access
+- **Models:** Z-Image Turbo, Mango, FLUX, SDXL
+- **Note:** Account verification needed for non-blurred suggestive images

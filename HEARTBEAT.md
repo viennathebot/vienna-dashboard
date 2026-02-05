@@ -1,5 +1,13 @@
 # HEARTBEAT.md
 
+## Usage Monitoring (EVERY HEARTBEAT — FIRST THING)
+- Run `session_status` to check context usage
+- **At 90% (180k/200k): WARNING** — send Dr. B alert, slow down, spawn sub-agents for heavy work
+- **At 95%+: STOP** — only critical responses, wait for compaction/reset
+- If approaching rate limits: pause non-urgent work
+- Dr. B prefers I pace myself rather than hit walls
+- **Use sub-agents (sessions_spawn) for heavy work** to preserve main session context
+
 ## Critical Checks (Every Heartbeat)
 
 ### System Health
@@ -21,6 +29,12 @@
 
 ### Research Check
 - If research files are stale (>24h), run fetch-research.js
+
+## Quiet Hours (DO NOT MESSAGE DR. B)
+- **9 PM - 4 AM PST** — No iMessages to Dr. B during this window
+- Queue all updates for after 4 AM
+- Keep working on projects overnight, solve problems independently
+- Sign up for new accounts / try alternative platforms as needed — don't ask, just do
 
 ## Notes
 - Space out follows to avoid rate limits
