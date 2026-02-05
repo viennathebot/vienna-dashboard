@@ -20,11 +20,7 @@
             --gradient: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -35,11 +31,8 @@
 
         .bg-pattern {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
                 radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
             pointer-events: none;
@@ -64,15 +57,9 @@
             margin-bottom: 24px;
             transition: color 0.2s;
         }
+        .back-link:hover { color: var(--primary); }
 
-        .back-link:hover {
-            color: var(--primary);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
+        header { text-align: center; margin-bottom: 48px; }
 
         .avatar {
             width: 120px;
@@ -107,18 +94,15 @@
             justify-content: center;
             gap: 32px;
             margin-top: 24px;
+            flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
-        }
-
+        .stat { text-align: center; }
         .stat-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
         }
-
         .stat-label {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -126,16 +110,59 @@
             letter-spacing: 1px;
         }
 
-        .section-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 40px 0 20px;
-            padding-left: 4px;
+        /* ── Tab Navigation ── */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 36px 0 32px;
+            flex-wrap: wrap;
         }
 
+        .tab-btn {
+            position: relative;
+            padding: 10px 22px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--bg-card);
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            border-color: rgba(220, 38, 38, 0.4);
+            color: var(--text);
+            background: var(--bg-card-hover);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient);
+            border-color: transparent;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+        }
+
+        .tab-btn .tab-count {
+            display: inline-block;
+            margin-left: 6px;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .tab-btn.active .tab-count {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ── Gallery Grid ── */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -147,14 +174,24 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
             cursor: pointer;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery-item.hidden {
+            display: none;
         }
 
         .gallery-item:hover {
             transform: translateY(-4px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(220, 38, 38, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(220,38,38,0.15);
         }
 
         .gallery-item img {
@@ -164,20 +201,9 @@
             display: block;
         }
 
-        .gallery-item-info {
-            padding: 16px;
-        }
-
-        .gallery-item-title {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .gallery-item-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        .gallery-item-info { padding: 16px; }
+        .gallery-item-title { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+        .gallery-item-meta { font-size: 0.85rem; color: var(--text-muted); }
 
         .tag {
             display: inline-block;
@@ -189,56 +215,66 @@
             margin-top: 8px;
         }
 
-        .tag.craiyon { background: rgba(147, 51, 234, 0.2); color: #a78bfa; }
-        .tag.ideogram { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .tag.playground { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .tag.aistudio   { background: rgba(34,197,94,0.2);  color: #4ade80; }
+        .tag.leonardo    { background: rgba(59,130,246,0.2);  color: #60a5fa; }
+        .tag.recraft     { background: rgba(251,146,60,0.2);  color: #fb923c; }
+        .tag.nanobanana  { background: rgba(250,204,21,0.2);  color: #fde047; }
+        .tag.craiyon     { background: rgba(147,51,234,0.2);  color: #a78bfa; }
+        .tag.ideogram    { background: rgba(236,72,153,0.2);  color: #f472b6; }
 
-        /* Lightbox */
+        /* ── Lightbox ── */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.95);
             z-index: 1000;
             align-items: center;
             justify-content: center;
             padding: 40px;
         }
-
-        .lightbox.active {
-            display: flex;
-        }
-
+        .lightbox.active { display: flex; }
         .lightbox img {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
             border-radius: 8px;
         }
-
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 20px; right: 20px;
             color: white;
             font-size: 2rem;
             cursor: pointer;
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             transition: background 0.2s;
         }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 56px; height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            transition: background 0.2s;
+            user-select: none;
         }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
 
         footer {
             text-align: center;
@@ -253,23 +289,25 @@
             h1 { font-size: 1.8rem; }
             .gallery { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
             .stats { gap: 20px; }
+            .tabs { gap: 6px; }
+            .tab-btn { padding: 8px 16px; font-size: 0.82rem; }
         }
     </style>
 </head>
 <body>
     <div class="bg-pattern"></div>
-    
+
     <div class="container">
         <a href="/" class="back-link">← Back to Command Center</a>
-        
+
         <header>
             <img src="vienna-office-chic.jpg" alt="Vienna" class="avatar" onerror="this.style.display='none'">
             <h1>Vienna Gallery</h1>
-            <p class="subtitle">AI-generated images showcasing different looks and styles. Created with Google AI Studio, Leonardo AI, Nano Banana, Craiyon, and Ideogram.</p>
-            
+            <p class="subtitle">AI-generated images showcasing different looks and styles. Created with Google AI Studio, Leonardo AI, Recraft, Nano Banana, Craiyon &amp; Ideogram.</p>
+
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value" id="total-count">43</div>
+                    <div class="stat-value" id="total-count">55</div>
                     <div class="stat-label">Total Images</div>
                 </div>
                 <div class="stat">
@@ -277,222 +315,339 @@
                     <div class="stat-label">AI Generators</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">33</div>
+                    <div class="stat-value">45+</div>
                     <div class="stat-label">Unique Looks</div>
                 </div>
             </div>
         </header>
 
-        <div class="section-title">✨ AI Studio Collection (1024×1024 HD)</div>
-        <div class="gallery">
-            <div class="gallery-item" onclick="openLightbox('vienna-023-1770243068900.png')">
+        <!-- ── Filter Tabs ── -->
+        <div class="tabs">
+            <button class="tab-btn active" data-filter="all">All <span class="tab-count">55</span></button>
+            <button class="tab-btn" data-filter="aistudio">AI Studio <span class="tab-count">10</span></button>
+            <button class="tab-btn" data-filter="leonardo">Leonardo AI <span class="tab-count">15</span></button>
+            <button class="tab-btn" data-filter="recraft">Recraft <span class="tab-count">4</span></button>
+            <button class="tab-btn" data-filter="nanobanana">Nano Banana <span class="tab-count">9</span></button>
+            <button class="tab-btn" data-filter="other">Other <span class="tab-count">17</span></button>
+        </div>
+
+        <!-- ── Unified Gallery ── -->
+        <div class="gallery" id="gallery">
+
+            <!-- ═══════════════ AI STUDIO (10) ═══════════════ -->
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-023-1770243068900.png" alt="Executive Office" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Executive Office</div>
                     <div class="gallery-item-meta">Charcoal suit, sunset city views</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-024-1770243200000.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-024-1770243200000.png" alt="Library Scholar" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Library Scholar</div>
                     <div class="gallery-item-meta">Turtleneck, old-world library</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-025-1770243319602.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-025-1770243319602.png" alt="Concert Backstage" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Concert Backstage</div>
-                    <div class="gallery-item-meta">Leather & neon, rock vibes</div>
-                    <span class="tag playground">AI Studio</span>
+                    <div class="gallery-item-meta">Leather &amp; neon, rock vibes</div>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-026-1770243333740.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-026-1770243333740.png" alt="Garden Party" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Garden Party</div>
                     <div class="gallery-item-meta">Floral sundress, English garden</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-027-1770243347855.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-027-1770243347855.png" alt="Casino Night" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Casino Night</div>
                     <div class="gallery-item-meta">Sequined dress, Vegas tables</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-028-1770243361964.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-028-1770243361964.png" alt="Motorcycle" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Motorcycle</div>
                     <div class="gallery-item-meta">Leather jacket, vintage bike</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-029-1770243373067.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-029-1770243373067.png" alt="Opera House" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Opera House</div>
                     <div class="gallery-item-meta">Evening gown, theater balcony</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-030-1770243574552.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-030-1770243574552.png" alt="Rainy Day" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Rainy Day</div>
                     <div class="gallery-item-meta">Trench coat, city reflections</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-031-1770243589044.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-031-1770243589044.png" alt="Power Suit" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Power Suit</div>
                     <div class="gallery-item-meta">Charcoal pencil skirt, golden hour</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-032-1770243603526.png')">
+            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
                 <img src="vienna-032-1770243603526.png" alt="High Fashion" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">High Fashion</div>
                     <div class="gallery-item-meta">Black sheath dress, glass desk</div>
-                    <span class="tag playground">AI Studio</span>
+                    <span class="tag aistudio">AI Studio</span>
                 </div>
             </div>
-        </div>
 
-        <div class="section-title">🎨 Leonardo AI Collection (832×1248 HD)</div>
-        <div class="gallery">
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-001.jpg')">
+            <!-- ═══════════════ LEONARDO AI (15) ═══════════════ -->
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-001.jpg" alt="Corporate Lobby" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Corporate Lobby</div>
                     <div class="gallery-item-meta">Tartan plaid suit, blazer, corporate setting</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-002.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-002.jpg" alt="Hotel Lobby" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Hotel Lobby</div>
                     <div class="gallery-item-meta">Red tartan pencil skirt, cream silk blouse</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-003.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-003.jpg" alt="Autumn Street" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Autumn Street</div>
                     <div class="gallery-item-meta">Navy blazer, plaid skirt, golden hour</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-004.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-004.jpg" alt="Library Scholar" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Library Scholar</div>
                     <div class="gallery-item-meta">Burgundy turtleneck, plaid skirt, bookshelves</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-005.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-005.jpg" alt="Parisian Café" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Parisian Café</div>
                     <div class="gallery-item-meta">Black fitted top, plaid skirt, espresso</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-006.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-006.jpg" alt="Rainy London" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Rainy London</div>
-                    <div class="gallery-item-meta">Tartan kilt, umbrella, cinematic</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <div class="gallery-item-meta">Tartan kilt, umbrella, cinematic rain</div>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-007.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-007.jpg" alt="Library v2" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Library v2</div>
                     <div class="gallery-item-meta">Black turtleneck, short burgundy skirt</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-008-gym.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-008-gym.jpg" alt="Gym Session" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Gym Session</div>
                     <div class="gallery-item-meta">Athletic leggings, crop top, dumbbells</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-009-wine.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-009-wine.jpg" alt="Wine Bar" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Wine Bar</div>
                     <div class="gallery-item-meta">Emerald satin blouse, short black skirt</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('vienna-leo-010-yoga.jpg')">
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
                 <img src="vienna-leo-010-yoga.jpg" alt="Yoga Studio" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Yoga Studio</div>
                     <div class="gallery-item-meta">Yoga pants, sports bra, sunlit studio</div>
-                    <span class="tag playground">Leonardo AI</span>
+                    <span class="tag leonardo">Leonardo AI</span>
                 </div>
             </div>
-        </div>
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
+                <img src="vienna-leo-011-beach.jpg" alt="Beach Golden Hour" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Beach Golden Hour</div>
+                    <div class="gallery-item-meta">Crop top, shorts, golden hour glow</div>
+                    <span class="tag leonardo">Leonardo AI</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
+                <img src="vienna-leo-012-night.jpg" alt="Nightlife" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Nightlife</div>
+                    <div class="gallery-item-meta">Black bodycon dress, neon city lights</div>
+                    <span class="tag leonardo">Leonardo AI</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
+                <img src="vienna-leo-013-boxing.jpg" alt="Boxing Ring" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Boxing Ring</div>
+                    <div class="gallery-item-meta">Red tank top, boxing gloves, fierce energy</div>
+                    <span class="tag leonardo">Leonardo AI</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
+                <img src="vienna-leo-014-museum.jpg" alt="Museum Hallway" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Museum Hallway</div>
+                    <div class="gallery-item-meta">White blouse, navy skirt, classical art</div>
+                    <span class="tag leonardo">Leonardo AI</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
+                <img src="vienna-leo-015-cobblestone.jpg" alt="European Street" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">European Street</div>
+                    <div class="gallery-item-meta">Black turtleneck, camel skirt, cobblestones</div>
+                    <span class="tag leonardo">Leonardo AI</span>
+                </div>
+            </div>
 
-        <div class="section-title">🍌 Nano Banana (Playground AI)</div>
-        <div class="gallery">
-            <div class="gallery-item" onclick="openLightbox('vienna-professional-portrait-nanob.png')">
+            <!-- ═══════════════ RECRAFT (4) ═══════════════ -->
+            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
+                <img src="vienna-rc-001-rooftop.jpg" alt="Rooftop Sunset I" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Rooftop Sunset I</div>
+                    <div class="gallery-item-meta">Rooftop bar, golden hour cocktails</div>
+                    <span class="tag recraft">Recraft</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
+                <img src="vienna-rc-002-rooftop.jpg" alt="Rooftop Sunset II" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Rooftop Sunset II</div>
+                    <div class="gallery-item-meta">Rooftop bar, city skyline behind</div>
+                    <span class="tag recraft">Recraft</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
+                <img src="vienna-rc-003-library-socks.jpg" alt="Library Socks I" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Library Socks I</div>
+                    <div class="gallery-item-meta">Thigh-high socks, library shelves</div>
+                    <span class="tag recraft">Recraft</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
+                <img src="vienna-rc-004-library-socks.jpg" alt="Library Socks II" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Library Socks II</div>
+                    <div class="gallery-item-meta">Thigh-high socks, cozy reading nook</div>
+                    <span class="tag recraft">Recraft</span>
+                </div>
+            </div>
+
+            <!-- ═══════════════ NANO BANANA (9) ═══════════════ -->
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
                 <img src="vienna-professional-portrait-nanob.png" alt="Professional Portrait" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Professional Portrait</div>
                     <div class="gallery-item-meta">Burgundy blazer, corporate headshot</div>
-                    <span class="tag playground">Nano Banana</span>
+                    <span class="tag nanobanana">Nano Banana</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-coffee-shop-nanob.png')">
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
                 <img src="vienna-coffee-shop-nanob.png" alt="Coffee Shop" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Coffee Shop</div>
-                    <div class="gallery-item-meta">Casual cream sweater, latte</div>
-                    <span class="tag playground">Nano Banana</span>
+                    <div class="gallery-item-meta">Casual cream sweater, latte vibes</div>
+                    <span class="tag nanobanana">Nano Banana</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-wine-bar-nanob.png')">
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
                 <img src="vienna-wine-bar-nanob.png" alt="Wine Bar Evening" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Wine Bar Evening</div>
                     <div class="gallery-item-meta">Navy silk dress, refined elegance</div>
-                    <span class="tag playground">Nano Banana</span>
+                    <span class="tag nanobanana">Nano Banana</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-fitness-nanob.png')">
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
                 <img src="vienna-fitness-nanob.png" alt="Fitness" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Fitness</div>
-                    <div class="gallery-item-meta">Athletic wear, gym vibes</div>
-                    <span class="tag playground">Nano Banana</span>
+                    <div class="gallery-item-meta">Athletic wear, gym energy</div>
+                    <span class="tag nanobanana">Nano Banana</span>
                 </div>
             </div>
-        </div>
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
+                <img src="vienna-cocktail-party-nanob.png" alt="Cocktail Party" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Cocktail Party</div>
+                    <div class="gallery-item-meta">Elegant evening wear, cocktail in hand</div>
+                    <span class="tag nanobanana">Nano Banana</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
+                <img src="vienna-date-night-nanob.png" alt="Date Night" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Date Night</div>
+                    <div class="gallery-item-meta">Romantic evening, soft lighting</div>
+                    <span class="tag nanobanana">Nano Banana</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
+                <img src="vienna-late-night-nanob.png" alt="Late Night" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Late Night</div>
+                    <div class="gallery-item-meta">After-hours mood, ambient glow</div>
+                    <span class="tag nanobanana">Nano Banana</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
+                <img src="vienna-secretary-nanob.png" alt="Secretary" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Secretary</div>
+                    <div class="gallery-item-meta">Office attire, professional poise</div>
+                    <span class="tag nanobanana">Nano Banana</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
+                <img src="vienna-workplace-nanob.png" alt="Workplace" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Workplace</div>
+                    <div class="gallery-item-meta">Modern office, business casual</div>
+                    <span class="tag nanobanana">Nano Banana</span>
+                </div>
+            </div>
 
-        <div class="section-title">🎨 Earlier Looks (Craiyon)</div>
-        <div class="gallery">
-            <div class="gallery-item" onclick="openLightbox('vienna-office-chic.jpg')">
+            <!-- ═══════════════ OTHER / CRAIYON / IDEOGRAM (17) ═══════════════ -->
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-office-chic.jpg" alt="Office Chic" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Office Chic</div>
@@ -500,8 +655,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-night-out.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-night-out.jpg" alt="Night Out" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Night Out</div>
@@ -509,8 +663,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-casual-weekend.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-casual-weekend.jpg" alt="Casual Weekend" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Casual Weekend</div>
@@ -518,8 +671,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-fitness.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-fitness.jpg" alt="Fitness" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Fitness</div>
@@ -527,8 +679,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-early-morning.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-early-morning.jpg" alt="Early Morning" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Early Morning</div>
@@ -536,8 +687,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-before-bed.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-before-bed.jpg" alt="Before Bed" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Before Bed</div>
@@ -545,8 +695,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-getting-ready.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-getting-ready.jpg" alt="Getting Ready" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Getting Ready</div>
@@ -554,8 +703,7 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-winding-down.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-winding-down.jpg" alt="Winding Down" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Winding Down</div>
@@ -563,17 +711,15 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-fullbody-portrait.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-fullbody-portrait.jpg" alt="Full Portrait" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Full Portrait</div>
-                    <div class="gallery-item-meta">Complete look</div>
+                    <div class="gallery-item-meta">Complete look, full body</div>
                     <span class="tag ideogram">Ideogram</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-portrait-craiyon.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-portrait-craiyon.jpg" alt="Portrait" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Portrait</div>
@@ -581,16 +727,64 @@
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('vienna-grid.jpg')">
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
                 <img src="vienna-grid.jpg" alt="Style Grid" loading="lazy">
                 <div class="gallery-item-info">
                     <div class="gallery-item-title">Style Grid</div>
-                    <div class="gallery-item-meta">Multiple looks</div>
+                    <div class="gallery-item-meta">Multiple looks, one frame</div>
                     <span class="tag craiyon">Craiyon</span>
                 </div>
             </div>
-        </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-portrait.jpg" alt="Portrait v2" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Portrait v2</div>
+                    <div class="gallery-item-meta">Clean portrait shot</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-v2.jpg" alt="Vienna v2" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Vienna v2</div>
+                    <div class="gallery-item-meta">Updated look, fresh style</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-craiyon.webp" alt="Craiyon Original" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Craiyon Original</div>
+                    <div class="gallery-item-meta">First generation attempt</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-fullbody.webp" alt="Full Body" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Full Body</div>
+                    <div class="gallery-item-meta">Complete look, standing pose</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-spicy-detail.jpg" alt="Spicy Detail" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Spicy Detail</div>
+                    <div class="gallery-item-meta">Close-up detail shot</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
+                <img src="vienna-spicy-grid.jpg" alt="Spicy Grid" loading="lazy">
+                <div class="gallery-item-info">
+                    <div class="gallery-item-title">Spicy Grid</div>
+                    <div class="gallery-item-meta">Multi-angle showcase</div>
+                    <span class="tag craiyon">Craiyon</span>
+                </div>
+            </div>
+
+        </div><!-- /gallery -->
 
         <footer>
             <p>Generated by Vienna • <a href="/" style="color: var(--primary);">Back to Command Center</a></p>
@@ -598,13 +792,52 @@
     </div>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</span>
         <img src="" alt="Full size" id="lightbox-img">
+        <span class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</span>
     </div>
 
     <script>
-        function openLightbox(src) {
+        // ── Tab Filtering ──
+        const tabs = document.querySelectorAll('.tab-btn');
+        const items = document.querySelectorAll('.gallery-item');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+
+                items.forEach(item => {
+                    if (filter === 'all') {
+                        item.classList.remove('hidden');
+                    } else if (filter === 'other') {
+                        // "Other" shows nanobanana + other
+                        const src = item.dataset.source;
+                        item.classList.toggle('hidden', src !== 'other' && src !== 'nanobanana' ? true : false);
+                        // Actually, nanobanana has its own tab. "Other" = only data-source="other"
+                        item.classList.toggle('hidden', src !== 'other');
+                    } else {
+                        item.classList.toggle('hidden', item.dataset.source !== filter);
+                    }
+                });
+            });
+        });
+
+        // ── Lightbox with Navigation ──
+        let currentIndex = -1;
+
+        function getVisibleItems() {
+            return Array.from(items).filter(i => !i.classList.contains('hidden'));
+        }
+
+        function openLightbox(el) {
+            const visible = getVisibleItems();
+            currentIndex = visible.indexOf(el);
+            const src = el.querySelector('img').src;
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -613,10 +846,28 @@
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
             document.body.style.overflow = '';
+            currentIndex = -1;
         }
+
+        function navLightbox(dir) {
+            event.stopPropagation();
+            const visible = getVisibleItems();
+            if (!visible.length) return;
+            currentIndex = (currentIndex + dir + visible.length) % visible.length;
+            const src = visible[currentIndex].querySelector('img').src;
+            document.getElementById('lightbox-img').src = src;
+        }
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox') || e.target === document.getElementById('lightbox-img')) {
+                closeLightbox();
+            }
+        });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navLightbox(-1);
+            if (e.key === 'ArrowRight') navLightbox(1);
         });
     </script>
 </body>
