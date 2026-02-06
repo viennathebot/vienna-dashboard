@@ -453,18 +453,22 @@
 <script>
 const posts = [
   { num:1, title:"Meet Dr. Bleszynski", type:"carousel", category:"lifestyle", week:1, day:"Tuesday", time:"11:00 AM",
+    image:"images/post01-slide1.png",
     caption:"Meet Dr. Maria E. Bleszynski — the heart behind Surrey Women's Clinic. For over 35 years, she has been a passionate advocate for women's health. Medical degree from Jagiellonian University (1977), inspired by her work in French Guinea, Africa. NAMS member since 1991.",
     prompt:"Warm portrait-style photo of a compassionate female physician in her 60s, white coat over elegant blouse, soft smile, modern clinic with warm lighting, botanical plants. Rose gold and cream palette." },
   { num:2, title:"What is VTone?", type:"carousel", category:"educational", week:1, day:"Wednesday", time:"12:00 PM",
+    image:"images/post02-lifestyle.png",
     caption:"VTone is an FDA-cleared, non-surgical pelvic floor treatment using gentle electrical muscle stimulation (EMS). Strengthens weak pelvic floor muscles, retrains muscle memory, reduces urinary incontinence. No surgery, no downtime.",
     prompt:"Bold typographic card on warm blush gradient — 'What is VTone?' in elegant serif, subtle pelvic floor line art, rose gold accents. Clean, modern medical aesthetic." },
   { num:3, title:"Testimonial: \"Life-Changing\"", type:"single", category:"testimonial", week:1, day:"Thursday", time:"11:00 AM",
     caption:"\"After completing my sessions, I've noticed a dramatic improvement. I no longer have to get up at night, have increased sensation, and improved muscle strength. It's truly life-changing!\" — FormaV & VTone patient",
     prompt:"Elegant testimonial card on deep plum background with gold quotation marks. White text, botanical eucalyptus corner. Magazine-quality layout." },
   { num:4, title:"Myth vs Fact: Incontinence", type:"carousel", category:"myth", week:1, day:"Friday", time:"10:00 AM",
+    image:"images/post04-women-walking.png",
     caption:"MYTH: Incontinence is just part of aging. FACT: 1 in 3 women experience urinary incontinence — but non-surgical treatments like VTone can strengthen your pelvic floor. You don't have to live with it.",
     prompt:"Bold 'MYTH vs FACT' graphic. Left: faded gray myth text. Right: vibrant rose fact. Dark background with gold accents. Eye-catching scroll-stopper." },
   { num:5, title:"FormaV Explained", type:"carousel", category:"educational", week:1, day:"Saturday", time:"10:00 AM",
+    image:"images/post05-relaxed-woman.png",
     caption:"FormaV is a non-invasive radiofrequency treatment for vaginal rejuvenation. Delivers deep heating to stimulate collagen production. Benefits: improved laxity, reduced dryness, enhanced sensation, better bladder control.",
     prompt:"Sleek title card — warm gradient rose to cream. Elegant serif typography. Subtle RF wave illustration. Premium medical aesthetic." },
   { num:6, title:"Did You Know? Pelvic Floor Facts", type:"single", category:"educational", week:2, day:"Tuesday", time:"11:00 AM",
@@ -474,6 +478,7 @@ const posts = [
     caption:"\"Two weeks after my first treatment, I started to notice a difference. The difference is remarkable. I didn't realize I could feel so healthy and quite youthful 'down there'.\" — VTone & FormaV patient",
     prompt:"Warm testimonial on cream background with blush watercolor edges. Rose-gold quotation marks. Five gold stars. Botanical eucalyptus footer." },
   { num:8, title:"Menopause Empowerment Reel", type:"reel", category:"lifestyle", week:2, day:"Thursday", time:"11:00 AM",
+    image:"images/post08-silver-hair-portrait.png",
     caption:"Menopause is a chapter — not the ending. Hot flashes, dryness, discomfort — these symptoms are common but don't have to define this stage. Dr. Bleszynski specializes in menopausal care (NAMS member since 1991).",
     prompt:"Radiant woman in her 50s, silver-streaked hair, warm smile, cream sweater, golden-hour window light. Text: 'Menopause is NOT the end.' Rose gold sparkles." },
   { num:9, title:"Treatment FAQ Carousel", type:"carousel", category:"educational", week:2, day:"Friday", time:"10:00 AM",
@@ -510,6 +515,7 @@ const posts = [
     caption:"MYTH: Vaginal rejuvenation is just cosmetic. FACT: These treatments address real medical conditions — incontinence, atrophy, dryness, painful intimacy. Your intimate health IS your health.",
     prompt:"Bold myth-buster — struck-through myth text, rose gold FACT revealed below. Dark background, dramatic lighting. Then medical reality cards." },
   { num:20, title:"Your Body, Your Decision", type:"reel", category:"lifestyle", week:4, day:"Saturday", time:"10:00 AM",
+    image:"images/post20-beach-freedom.png",
     caption:"Your body has carried you through everything — childbirth, careers, challenges, triumphs. Now it's time to give back. VTone, FormaV, Votiva, Morpheus8. Your body. Your confidence. Your decision.",
     prompt:"Woman standing on Crescent Beach/White Rock pier, golden hour, wind in hair, flowing linen. Text: 'Your body. Your confidence. Your decision.' Cinematic, powerful." }
 ];
@@ -522,9 +528,10 @@ function renderPosts(filter) {
     const catClass = p.category === 'educational' ? 'badge-educational' : p.category === 'testimonial' ? 'badge-testimonial' : p.category === 'myth' ? 'badge-myth' : p.category === 'lifestyle' ? 'badge-lifestyle' : 'badge-promo';
     return `
       <div class="post-card" data-category="${p.category}" id="post-${p.num}">
+        ${p.image ? `<div class="post-card-image"><img src="${p.image}" alt="${p.title}" style="width:100%;height:200px;object-fit:cover;border-radius:12px 12px 0 0;"></div>` : ''}
         <div class="post-card-header">
           <div>
-            <div class="post-card-num">Post ${p.num}</div>
+            <div class="post-card-num">Post ${p.num}${p.image ? ' ✅' : ''}</div>
             <div class="post-card-title">${p.title}</div>
           </div>
           <div class="post-card-badges">
