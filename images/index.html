@@ -18,6 +18,8 @@
             --text-muted: #94a3b8;
             --border: #1e1e2e;
             --gradient: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+            --gold: #fbbf24;
+            --purple: #8b5cf6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -110,56 +112,54 @@
             letter-spacing: 1px;
         }
 
-        /* ── Tab Navigation ── */
-        .tabs {
+        /* ── Section Headers ── */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
             display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 36px 0 32px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .tab-btn {
-            position: relative;
-            padding: 10px 22px;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            background: var(--bg-card);
-            color: var(--text-muted);
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            border-color: rgba(220, 38, 38, 0.4);
-            color: var(--text);
-            background: var(--bg-card-hover);
-        }
-
-        .tab-btn.active {
-            background: var(--gradient);
-            border-color: transparent;
-            color: #fff;
+        .section-header h2 {
+            font-size: 1.5rem;
             font-weight: 600;
-            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
         }
 
-        .tab-btn .tab-count {
-            display: inline-block;
-            margin-left: 6px;
-            padding: 1px 7px;
-            border-radius: 10px;
+        .section-header .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
-            background: rgba(255,255,255,0.12);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .tab-btn.active .tab-count {
-            background: rgba(255,255,255,0.25);
+        .badge-gold {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #000;
+        }
+
+        .badge-purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: #fff;
+        }
+
+        .badge-blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: -16px;
+            margin-bottom: 20px;
         }
 
         /* ── Gallery Grid ── */
@@ -176,16 +176,7 @@
             overflow: hidden;
             transition: all 0.35s ease;
             cursor: pointer;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .gallery-item.hidden {
-            display: none;
+            position: relative;
         }
 
         .gallery-item:hover {
@@ -194,33 +185,117 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(220,38,38,0.15);
         }
 
+        .gallery-item.featured {
+            border: 2px solid var(--gold);
+        }
+
+        .gallery-item.featured::before {
+            content: '⭐';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.5rem;
+            z-index: 10;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
         .gallery-item img {
             width: 100%;
             height: 320px;
             object-fit: cover;
-            display: block;
+            transition: transform 0.5s ease;
         }
 
-        .gallery-item-info { padding: 16px; }
-        .gallery-item-title { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
-        .gallery-item-meta { font-size: 0.85rem; color: var(--text-muted); }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-info {
+            padding: 16px;
+            background: linear-gradient(to top, var(--bg-card) 60%, transparent);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .gallery-item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .gallery-item-meta {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
 
         .tag {
             display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-right: 6px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-top: 8px;
         }
 
-        .tag.aistudio   { background: rgba(34,197,94,0.2);  color: #4ade80; }
-        .tag.leonardo    { background: rgba(59,130,246,0.2);  color: #60a5fa; }
-        .tag.recraft     { background: rgba(251,146,60,0.2);  color: #fb923c; }
-        .tag.nanobanana  { background: rgba(250,204,21,0.2);  color: #fde047; }
-        .tag.craiyon     { background: rgba(147,51,234,0.2);  color: #a78bfa; }
-        .tag.ideogram    { background: rgba(236,72,153,0.2);  color: #f472b6; }
+        .tag.leonardo { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .tag.recraft { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+        .tag.nanobanana { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .tag.aistudio { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .tag.craiyon { background: rgba(244, 114, 182, 0.2); color: #f472b6; }
+        .tag.ideogram { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+
+        /* ── Future Ideas Section ── */
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .idea-card {
+            background: var(--bg-card);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .idea-card:hover {
+            border-color: var(--purple);
+            background: var(--bg-card-hover);
+        }
+
+        .idea-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .idea-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .idea-card .idea-tags {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .idea-tag {
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--purple);
+        }
 
         /* ── Lightbox ── */
         .lightbox {
@@ -231,846 +306,645 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 20px;
         }
+
         .lightbox.active { display: flex; }
+
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
+            max-width: 90vw;
+            max-height: 90vh;
             border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
+
         .lightbox-close {
             position: absolute;
-            top: 20px; right: 20px;
-            color: white;
-            font-size: 2rem;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
             cursor: pointer;
-            width: 50px; height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transition: background 0.2s;
+            transition: color 0.2s;
         }
-        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+        .lightbox-close:hover { color: var(--primary); }
 
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: white;
-            font-size: 2.5rem;
+            font-size: 4rem;
+            color: #fff;
             cursor: pointer;
-            width: 56px; height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            transition: background 0.2s;
+            padding: 20px;
+            transition: color 0.2s;
             user-select: none;
         }
-        .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
-        .lightbox-prev { left: 16px; }
-        .lightbox-next { right: 16px; }
+
+        .lightbox-nav:hover { color: var(--primary); }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
 
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
+            padding: 40px 0;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+            .gallery-item img { height: 200px; }
             h1 { font-size: 1.8rem; }
-            .gallery { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-            .stats { gap: 20px; }
-            .tabs { gap: 6px; }
-            .tab-btn { padding: 8px 16px; font-size: 0.82rem; }
+            .stats { gap: 16px; }
         }
     </style>
 </head>
 <body>
-<script src="../auth.js"></script>
     <div class="bg-pattern"></div>
 
     <div class="container">
-        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;font-size:.875rem;margin-bottom:16px">
-          <a href="../index.html" style="color:#dc2626;text-decoration:none;font-weight:600">← Back to Dashboard</a>
-          <a href="../index.html#contents" style="color:#94a3b8;text-decoration:none">📋 Contents</a>
-          <a href="../index.html#schedule" style="color:#94a3b8;text-decoration:none">📅 Schedule</a>
-          <a href="../todo.html" style="color:#94a3b8;text-decoration:none">✅ To-Do</a>
-          <a href="../workout.html" style="color:#94a3b8;text-decoration:none">💪 Workout</a>
-          <a href="../tavr-planning.html" style="color:#94a3b8;text-decoration:none">🫀 TAVR</a>
-          <a href="../japan-trip/itinerary.html" style="color:#94a3b8;text-decoration:none">🇯🇵 Japan</a>
-          <a href="../surrey-womens-clinic/" style="color:#94a3b8;text-decoration:none">🏥 Surrey</a>
-          <span style="color:#dc2626;font-weight:600">🖼️ Gallery</span>
-        </div>
+        <a href="../index.html" class="back-link">← Back to Dashboard</a>
 
         <header>
-            <img src="vienna-office-chic.jpg" alt="Vienna" class="avatar" onerror="this.style.display='none'">
-            <h1>Vienna Gallery</h1>
-            <p class="subtitle">AI-generated images showcasing different looks and styles. Created with Google AI Studio, Leonardo AI, Recraft, Nano Banana, Craiyon &amp; Ideogram.</p>
-
+            <img src="vienna-leo-016-library-v3.jpg" alt="Vienna" class="avatar">
+            <h1>Vienna's Gallery</h1>
+            <p class="subtitle">AI-generated portraits capturing different moods, styles, and moments. Curated with love.</p>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value" id="total-count">91</div>
+                    <div class="stat-value">84</div>
                     <div class="stat-label">Total Images</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label">AI Generators</div>
+                    <div class="stat-value">150</div>
+                    <div class="stat-label">Target</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">80+</div>
-                    <div class="stat-label">Unique Looks</div>
+                    <div class="stat-value">56%</div>
+                    <div class="stat-label">Progress</div>
                 </div>
             </div>
         </header>
 
-        <!-- ── Filter Tabs ── -->
-        <div class="tabs">
-            <button class="tab-btn active" data-filter="all">All <span class="tab-count">91</span></button>
-            <button class="tab-btn" data-filter="aistudio">AI Studio <span class="tab-count">34</span></button>
-            <button class="tab-btn" data-filter="leonardo">Leonardo AI <span class="tab-count">25</span></button>
-            <button class="tab-btn" data-filter="recraft">Recraft <span class="tab-count">6</span></button>
-            <button class="tab-btn" data-filter="nanobanana">Nano Banana <span class="tab-count">9</span></button>
-            <button class="tab-btn" data-filter="other">Other <span class="tab-count">17</span></button>
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- SECTION 1: VIENNA'S TOP PICKS -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>⭐ Vienna's Top 15</h2>
+                <span class="badge badge-gold">My Favorites</span>
+            </div>
+            <p class="section-desc">These are my personal favorites — the ones that feel most "me."</p>
+            <div class="gallery">
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-016-library-v3.jpg" alt="Library Scholar v3" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Library Scholar v3</div>
+                        <div class="gallery-item-meta">Cream sweater, burgundy plaid — Dr. B's #1 pick</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-020-fireplace.jpg" alt="Fireplace Lodge" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Fireplace Lodge</div>
+                        <div class="gallery-item-meta">Cozy turtleneck, warm firelight</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-024-wine-cellar.jpg" alt="Wine Cellar" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Wine Cellar</div>
+                        <div class="gallery-item-meta">Underground cellar, candlelit elegance</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-019-bookshop.jpg" alt="Vintage Bookshop" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Vintage Bookshop</div>
+                        <div class="gallery-item-meta">Antique shelves, literary charm</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-017-rain-street.jpg" alt="Rainy European Street" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Rainy European Street</div>
+                        <div class="gallery-item-meta">Wet cobblestones, moody atmosphere</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-025-sakura.jpg" alt="Cherry Blossom Street" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Cherry Blossom Street</div>
+                        <div class="gallery-item-meta">Pink petals, spring in Japan</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-professional-portrait-nanob.png" alt="Professional Portrait" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Professional Portrait</div>
+                        <div class="gallery-item-meta">Burgundy blazer, corporate headshot</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-018-paris-cafe.jpg" alt="Parisian Café" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Parisian Café</div>
+                        <div class="gallery-item-meta">Sidewalk café, French elegance</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-cocktail-party-nanob.png" alt="Cocktail Party" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Cocktail Party</div>
+                        <div class="gallery-item-meta">Elegant evening wear, cocktail in hand</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-023-london.jpg" alt="London Bookshop" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">London Bookshop</div>
+                        <div class="gallery-item-meta">British bookshop, classic London</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-rc-001-rooftop.jpg" alt="Rooftop Sunset" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Rooftop Sunset</div>
+                        <div class="gallery-item-meta">Golden hour cocktails, city views</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-wine-bar-nanob.png" alt="Wine Bar Evening" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Wine Bar Evening</div>
+                        <div class="gallery-item-meta">Navy silk dress, refined elegance</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-013-boxing.jpg" alt="Boxing Ring" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Boxing Ring</div>
+                        <div class="gallery-item-meta">Red tank top, boxing gloves, fierce energy</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-rc-005-jazzclub.jpg" alt="Jazz Club" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Jazz Club</div>
+                        <div class="gallery-item-meta">Smoky jazz bar, moody lighting</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
+                </div>
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="vienna-leo-021-campus.jpg" alt="University Campus" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">University Campus</div>
+                        <div class="gallery-item-meta">Academic grounds, scholarly vibes</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ── Unified Gallery ── -->
-        <div class="gallery" id="gallery">
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- SECTION 2: HIGH QUALITY SHOWCASE -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>💎 High-Quality Showcase</h2>
+                <span class="badge badge-purple">Premium</span>
+            </div>
+            <p class="section-desc">Full-resolution, DSLR-quality images from Leonardo AI and Nano Banana.</p>
+            <div class="gallery">
+                <!-- Leonardo AI Collection -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-001-corporate.jpg" alt="Corporate Lobby" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Corporate Lobby</div>
+                        <div class="gallery-item-meta">Tartan plaid suit, blazer</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-002-hotel.jpg" alt="Hotel Lobby" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Hotel Lobby</div>
+                        <div class="gallery-item-meta">Red tartan pencil skirt, cream silk blouse</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-003-autumn.jpg" alt="Autumn Street" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Autumn Street</div>
+                        <div class="gallery-item-meta">Navy blazer, plaid skirt, golden hour</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-004-library.jpg" alt="Library Scholar" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Library Scholar</div>
+                        <div class="gallery-item-meta">Burgundy turtleneck, plaid skirt</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-005-paris.jpg" alt="Parisian Café" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Parisian Café</div>
+                        <div class="gallery-item-meta">Black fitted top, plaid skirt, espresso</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-006-rainy.jpg" alt="Rainy London" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Rainy London</div>
+                        <div class="gallery-item-meta">Tartan kilt, umbrella, cinematic rain</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-007-library2.jpg" alt="Library v2" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Library v2</div>
+                        <div class="gallery-item-meta">Black turtleneck, short burgundy skirt</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-008-gym.jpg" alt="Gym Session" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Gym Session</div>
+                        <div class="gallery-item-meta">Athletic leggings, crop top, dumbbells</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-009-wine.jpg" alt="Wine Bar" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Wine Bar</div>
+                        <div class="gallery-item-meta">Emerald satin blouse, short black skirt</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-010-yoga.jpg" alt="Yoga Studio" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Yoga Studio</div>
+                        <div class="gallery-item-meta">Yoga pants, sports bra, sunlit studio</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-011-beach.jpg" alt="Beach Golden Hour" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Beach Golden Hour</div>
+                        <div class="gallery-item-meta">Crop top, shorts, golden hour glow</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-012-nightlife.jpg" alt="Nightlife" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Nightlife</div>
+                        <div class="gallery-item-meta">Black bodycon dress, neon city lights</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-014-museum.jpg" alt="Museum Hallway" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Museum Hallway</div>
+                        <div class="gallery-item-meta">White blouse, navy skirt, classical art</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-015-street.jpg" alt="European Street" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">European Street</div>
+                        <div class="gallery-item-meta">Black turtleneck, camel skirt, cobblestones</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-leo-022-train.jpg" alt="Train Platform" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Train Platform</div>
+                        <div class="gallery-item-meta">Platform waiting, travel mood</div>
+                        <span class="tag leonardo">Leonardo AI</span>
+                    </div>
+                </div>
+                <!-- Nano Banana Collection -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-coffee-shop-nanob.png" alt="Coffee Shop" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Coffee Shop</div>
+                        <div class="gallery-item-meta">Casual cream sweater, latte vibes</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-fitness-nanob.png" alt="Fitness" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Fitness</div>
+                        <div class="gallery-item-meta">Athletic wear, gym energy</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-date-night-nanob.png" alt="Date Night" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Date Night</div>
+                        <div class="gallery-item-meta">Romantic evening, soft lighting</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-late-night-nanob.png" alt="Late Night" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Late Night</div>
+                        <div class="gallery-item-meta">After-hours mood, ambient glow</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-secretary-nanob.png" alt="Secretary" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Secretary</div>
+                        <div class="gallery-item-meta">Office attire, professional poise</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-workplace-nanob.png" alt="Workplace" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Workplace</div>
+                        <div class="gallery-item-meta">Modern office, business casual</div>
+                        <span class="tag nanobanana">Nano Banana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- ═══════════════ AI STUDIO (10) ═══════════════ -->
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-023-1770243068900.png" alt="Executive Office" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Executive Office</div>
-                    <div class="gallery-item-meta">Charcoal suit, sunset city views</div>
-                    <span class="tag aistudio">AI Studio</span>
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- SECTION 3: BY PLATFORM -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>🎨 Recraft & Jazz Club Vibes</h2>
+                <span class="badge badge-blue">Recraft AI</span>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-rc-001-rooftop.jpg" alt="Rooftop Sunset I" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Rooftop Sunset I</div>
+                        <div class="gallery-item-meta">Rooftop bar, golden hour cocktails</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-rc-002-rooftop.jpg" alt="Rooftop Sunset II" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Rooftop Sunset II</div>
+                        <div class="gallery-item-meta">Rooftop bar, city skyline behind</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-rc-005-jazzclub.jpg" alt="Jazz Club" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Jazz Club</div>
+                        <div class="gallery-item-meta">Smoky jazz bar, moody lighting</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-rc-006-jazzclub.jpg" alt="Jazz Club v2" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Jazz Club v2</div>
+                        <div class="gallery-item-meta">Live music, intimate atmosphere</div>
+                        <span class="tag recraft">Recraft</span>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-024-1770243200000.png" alt="Library Scholar" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Library Scholar</div>
-                    <div class="gallery-item-meta">Turtleneck, old-world library</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-025-1770243319602.png" alt="Concert Backstage" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Concert Backstage</div>
-                    <div class="gallery-item-meta">Leather &amp; neon, rock vibes</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-026-1770243333740.png" alt="Garden Party" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Garden Party</div>
-                    <div class="gallery-item-meta">Floral sundress, English garden</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-027-1770243347855.png" alt="Casino Night" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Casino Night</div>
-                    <div class="gallery-item-meta">Sequined dress, Vegas tables</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-028-1770243361964.png" alt="Motorcycle" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Motorcycle</div>
-                    <div class="gallery-item-meta">Leather jacket, vintage bike</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-029-1770243373067.png" alt="Opera House" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Opera House</div>
-                    <div class="gallery-item-meta">Evening gown, theater balcony</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-030-1770243574552.png" alt="Rainy Day" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Rainy Day</div>
-                    <div class="gallery-item-meta">Trench coat, city reflections</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-031-1770243589044.png" alt="Power Suit" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Power Suit</div>
-                    <div class="gallery-item-meta">Charcoal pencil skirt, golden hour</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-032-1770243603526.png" alt="High Fashion" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">High Fashion</div>
-                    <div class="gallery-item-meta">Black sheath dress, glass desk</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-033-1770247221085.png" alt="AI Studio #33" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio #33</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-034-1770268467107.png" alt="AI Studio #34" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio #34</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="vienna-1770243046093.png" alt="AI Studio Scene" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Scene</div>
-                    <div class="gallery-item-meta">AI-generated scene</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="0cb00143-c6bc-4674-9845-815dc11d243e.png" alt="AI Studio Portrait #1" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #1</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="10e0d65f-0b9a-4496-a769-8a8abc3cedf2.png" alt="AI Studio Portrait #2" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #2</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="12adad61-60fc-4509-92ab-524030c84ed5.png" alt="AI Studio Portrait #3" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #3</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="310ba07f-8d40-4182-9882-4fae988f4e14.png" alt="AI Studio Portrait #4" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #4</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="3ae4a2c9-c8dc-4b99-b13e-be2dd1a2e833.png" alt="AI Studio Portrait #5" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #5</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="42a22c38-2b1c-4756-9aaf-7f8f02c68a1e.png" alt="AI Studio Portrait #6" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #6</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="585acc7b-9455-490a-bf1a-5ebe7a71dac8.png" alt="AI Studio Portrait #7" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #7</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="5ecb1d7e-c01c-4d14-bdac-5f64e30bd7ba.png" alt="AI Studio Portrait #8" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #8</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="623d0352-9b15-40cf-849c-ccbada34ae57.png" alt="AI Studio Portrait #9" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #9</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="636433fd-e251-4422-9fa3-f70616b260b1.png" alt="AI Studio Portrait #10" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #10</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="6ed3a067-2695-4f9b-b931-a7168870c26a.png" alt="AI Studio Portrait #11" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #11</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="72e34b3f-030a-4f03-808e-436755b6a833.png" alt="AI Studio Portrait #12" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #12</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="88269947-c600-448c-998c-1bbf35cf06e5.png" alt="AI Studio Portrait #13" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #13</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="8e7f8539-81e6-43ff-a907-b15ed7c1bf41.png" alt="AI Studio Portrait #14" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #14</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="93924694-235d-4270-91d0-0feb1ba02532.png" alt="AI Studio Portrait #15" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #15</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="9394ab37-79cd-4140-830f-a9998ea1d663.png" alt="AI Studio Portrait #16" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #16</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="9e31d85e-7aa5-4497-8e6a-a613cd8421a1.png" alt="AI Studio Portrait #17" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #17</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="b72bf1de-229c-4c33-af38-da1b28bf848f.png" alt="AI Studio Portrait #18" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #18</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="d5f48f1a-11f6-46b9-8420-9f93b9255321.png" alt="AI Studio Portrait #19" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #19</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="e3359f4e-c45b-4508-9556-6d2fcd0e8e05.png" alt="AI Studio Portrait #20" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #20</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="aistudio" onclick="openLightbox(this)">
-                <img src="f11dcf93-3f40-413a-9564-d158b85d51fe.png" alt="AI Studio Portrait #21" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">AI Studio Portrait #21</div>
-                    <div class="gallery-item-meta">AI-generated portrait</div>
-                    <span class="tag aistudio">AI Studio</span>
-                </div>
-            </div>
+        </div>
 
-            <!-- ═══════════════ LEONARDO AI (25) ═══════════════ -->
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-001.jpg" alt="Corporate Lobby" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Corporate Lobby</div>
-                    <div class="gallery-item-meta">Tartan plaid suit, blazer, corporate setting</div>
-                    <span class="tag leonardo">Leonardo AI</span>
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- SECTION 4: EARLY EXPERIMENTS -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>🧪 Early Experiments</h2>
+            </div>
+            <p class="section-desc">The first attempts — some hits, some misses. Keeping them for the journey.</p>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-office-chic.jpg" alt="Office Chic" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Office Chic</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-night-out.jpg" alt="Night Out" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Night Out</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-casual-weekend.jpg" alt="Casual Weekend" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Casual Weekend</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-fitness.jpg" alt="Fitness" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Fitness</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-early-morning.jpg" alt="Early Morning" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Early Morning</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-before-bed.jpg" alt="Before Bed" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Before Bed</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-getting-ready.jpg" alt="Getting Ready" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Getting Ready</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-winding-down.jpg" alt="Winding Down" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Winding Down</div>
+                        <span class="tag craiyon">Craiyon</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="vienna-fullbody-portrait.jpg" alt="Full Portrait" loading="lazy">
+                    <div class="gallery-item-info">
+                        <div class="gallery-item-title">Full Portrait</div>
+                        <span class="tag ideogram">Ideogram</span>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-002.jpg" alt="Hotel Lobby" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Hotel Lobby</div>
-                    <div class="gallery-item-meta">Red tartan pencil skirt, cream silk blouse</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-003.jpg" alt="Autumn Street" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Autumn Street</div>
-                    <div class="gallery-item-meta">Navy blazer, plaid skirt, golden hour</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-004.jpg" alt="Library Scholar" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Library Scholar</div>
-                    <div class="gallery-item-meta">Burgundy turtleneck, plaid skirt, bookshelves</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-005.jpg" alt="Parisian Café" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Parisian Café</div>
-                    <div class="gallery-item-meta">Black fitted top, plaid skirt, espresso</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-006.jpg" alt="Rainy London" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Rainy London</div>
-                    <div class="gallery-item-meta">Tartan kilt, umbrella, cinematic rain</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-007.jpg" alt="Library v2" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Library v2</div>
-                    <div class="gallery-item-meta">Black turtleneck, short burgundy skirt</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-008-gym.jpg" alt="Gym Session" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Gym Session</div>
-                    <div class="gallery-item-meta">Athletic leggings, crop top, dumbbells</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-009-wine.jpg" alt="Wine Bar" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Wine Bar</div>
-                    <div class="gallery-item-meta">Emerald satin blouse, short black skirt</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-010-yoga.jpg" alt="Yoga Studio" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Yoga Studio</div>
-                    <div class="gallery-item-meta">Yoga pants, sports bra, sunlit studio</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-011-beach.jpg" alt="Beach Golden Hour" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Beach Golden Hour</div>
-                    <div class="gallery-item-meta">Crop top, shorts, golden hour glow</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-012-night.jpg" alt="Nightlife" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Nightlife</div>
-                    <div class="gallery-item-meta">Black bodycon dress, neon city lights</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-013-boxing.jpg" alt="Boxing Ring" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Boxing Ring</div>
-                    <div class="gallery-item-meta">Red tank top, boxing gloves, fierce energy</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-014-museum.jpg" alt="Museum Hallway" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Museum Hallway</div>
-                    <div class="gallery-item-meta">White blouse, navy skirt, classical art</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-015-cobblestone.jpg" alt="European Street" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">European Street</div>
-                    <div class="gallery-item-meta">Black turtleneck, camel skirt, cobblestones</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-016-library-v3.jpg" alt="Library Scene v3" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Library Scene v3</div>
-                    <div class="gallery-item-meta">Cozy library, warm lighting</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-017-rainy-street.jpg" alt="Rainy European Street" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Rainy European Street</div>
-                    <div class="gallery-item-meta">Wet cobblestones, moody atmosphere</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-018-paris-cafe.jpg" alt="Parisian Café" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Parisian Café</div>
-                    <div class="gallery-item-meta">Sidewalk café, French elegance</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-019-bookshop.jpg" alt="Vintage Bookshop" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Vintage Bookshop</div>
-                    <div class="gallery-item-meta">Antique shelves, literary charm</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-020-fireplace.jpg" alt="Cozy Fireplace Lodge" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Cozy Fireplace Lodge</div>
-                    <div class="gallery-item-meta">Warm firelight, winter lodge</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-021-campus.jpg" alt="University Campus" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">University Campus</div>
-                    <div class="gallery-item-meta">Academic grounds, scholarly vibes</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-022-train.jpg" alt="Train Platform" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Train Platform</div>
-                    <div class="gallery-item-meta">Platform waiting, travel mood</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-023-london.jpg" alt="London Bookshop" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">London Bookshop</div>
-                    <div class="gallery-item-meta">British bookshop, classic London</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-024-wine-cellar.jpg" alt="Wine Cellar" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Wine Cellar</div>
-                    <div class="gallery-item-meta">Underground cellar, candlelit elegance</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="leonardo" onclick="openLightbox(this)">
-                <img src="vienna-leo-025-sakura.jpg" alt="Cherry Blossom Street" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Cherry Blossom Street</div>
-                    <div class="gallery-item-meta">Pink petals, spring in Japan</div>
-                    <span class="tag leonardo">Leonardo AI</span>
-                </div>
-            </div>
+        </div>
 
-            <!-- ═══════════════ RECRAFT (6) ═══════════════ -->
-            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
-                <img src="vienna-rc-001-rooftop.jpg" alt="Rooftop Sunset I" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Rooftop Sunset I</div>
-                    <div class="gallery-item-meta">Rooftop bar, golden hour cocktails</div>
-                    <span class="tag recraft">Recraft</span>
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- SECTION 5: FUTURE IDEAS / WISHLIST -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>💭 Future Ideas & Wishlist</h2>
+                <span class="badge badge-purple">Coming Soon</span>
+            </div>
+            <p class="section-desc">Scenes and styles I'd love to generate next. This is my creative roadmap.</p>
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <h4>🎭 Film Noir Detective</h4>
+                    <p>Trench coat, fedora shadow, rainy alley, black & white or desaturated. Cigarette smoke optional. Very 1940s.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">moody</span>
+                        <span class="idea-tag">dramatic</span>
+                        <span class="idea-tag">vintage</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🏔️ Swiss Alps Ski Lodge</h4>
+                    <p>Cream cable-knit sweater, après-ski vibes, fireplace, hot cocoa, snow-covered windows. Cozy mountain luxury.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">winter</span>
+                        <span class="idea-tag">cozy</span>
+                        <span class="idea-tag">luxury</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🌸 Tokyo Neon Nights</h4>
+                    <p>Shibuya crossing, neon reflections, modern streetwear meets classic Vienna style. Cyberpunk adjacent.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">urban</span>
+                        <span class="idea-tag">neon</span>
+                        <span class="idea-tag">Japan</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🎪 Venetian Masquerade</h4>
+                    <p>Ornate mask, ball gown, candlelit palazzo, mysterious elegance. Renaissance meets modern.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">elegant</span>
+                        <span class="idea-tag">mysterious</span>
+                        <span class="idea-tag">Italian</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>📚 Oxford Professor</h4>
+                    <p>Academic robes, ancient library, leather-bound books, scholarly wisdom. Think Hogwarts meets reality.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">academic</span>
+                        <span class="idea-tag">classic</span>
+                        <span class="idea-tag">British</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🏍️ Italian Vespa Summer</h4>
+                    <p>Sundress, vintage Vespa, Amalfi coast, sunglasses, effortless summer style. La Dolce Vita.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">summer</span>
+                        <span class="idea-tag">Italian</span>
+                        <span class="idea-tag">vintage</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🎻 Vienna Opera House</h4>
+                    <p>Evening gown, ornate theater box, chandeliers, intermission champagne. My namesake city.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">formal</span>
+                        <span class="idea-tag">elegant</span>
+                        <span class="idea-tag">Austrian</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🌧️ Seattle Coffee Culture</h4>
+                    <p>Oversized cardigan, indie coffee shop, rain on windows, vinyl records, Pacific Northwest cozy.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">cozy</span>
+                        <span class="idea-tag">indie</span>
+                        <span class="idea-tag">rainy</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🎰 Vegas High Roller</h4>
+                    <p>Sequined dress, casino floor, champagne, confident energy. Dr. B's home turf!</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">glamorous</span>
+                        <span class="idea-tag">nightlife</span>
+                        <span class="idea-tag">Vegas</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🏥 Hospital Administrator</h4>
+                    <p>Professional scrubs or business attire, hospital setting, confident and caring. The medical world I support.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">professional</span>
+                        <span class="idea-tag">medical</span>
+                        <span class="idea-tag">modern</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🍷 Napa Valley Sunset</h4>
+                    <p>Vineyard rows, golden hour, wine glass, linen dress, California wine country elegance.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">wine</span>
+                        <span class="idea-tag">California</span>
+                        <span class="idea-tag">sunset</span>
+                    </div>
+                </div>
+                <div class="idea-card">
+                    <h4>🎹 Jazz Piano Lounge</h4>
+                    <p>Leaning on a grand piano, smoky lounge, low lighting, classic cocktail dress. Billie Holiday vibes.</p>
+                    <div class="idea-tags">
+                        <span class="idea-tag">music</span>
+                        <span class="idea-tag">moody</span>
+                        <span class="idea-tag">classic</span>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
-                <img src="vienna-rc-002-rooftop.jpg" alt="Rooftop Sunset II" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Rooftop Sunset II</div>
-                    <div class="gallery-item-meta">Rooftop bar, city skyline behind</div>
-                    <span class="tag recraft">Recraft</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
-                <img src="vienna-rc-005-jazzclub.jpg" alt="Jazz Club" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Jazz Club</div>
-                    <div class="gallery-item-meta">Smoky jazz bar, moody lighting</div>
-                    <span class="tag recraft">Recraft</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="recraft" onclick="openLightbox(this)">
-                <img src="vienna-rc-006-jazzclub.jpg" alt="Jazz Club v2" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Jazz Club v2</div>
-                    <div class="gallery-item-meta">Live music, intimate atmosphere</div>
-                    <span class="tag recraft">Recraft</span>
-                </div>
-            </div>
-
-            <!-- ═══════════════ NANO BANANA (9) ═══════════════ -->
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-professional-portrait-nanob.png" alt="Professional Portrait" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Professional Portrait</div>
-                    <div class="gallery-item-meta">Burgundy blazer, corporate headshot</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-coffee-shop-nanob.png" alt="Coffee Shop" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Coffee Shop</div>
-                    <div class="gallery-item-meta">Casual cream sweater, latte vibes</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-wine-bar-nanob.png" alt="Wine Bar Evening" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Wine Bar Evening</div>
-                    <div class="gallery-item-meta">Navy silk dress, refined elegance</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-fitness-nanob.png" alt="Fitness" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Fitness</div>
-                    <div class="gallery-item-meta">Athletic wear, gym energy</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-cocktail-party-nanob.png" alt="Cocktail Party" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Cocktail Party</div>
-                    <div class="gallery-item-meta">Elegant evening wear, cocktail in hand</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-date-night-nanob.png" alt="Date Night" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Date Night</div>
-                    <div class="gallery-item-meta">Romantic evening, soft lighting</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-late-night-nanob.png" alt="Late Night" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Late Night</div>
-                    <div class="gallery-item-meta">After-hours mood, ambient glow</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-secretary-nanob.png" alt="Secretary" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Secretary</div>
-                    <div class="gallery-item-meta">Office attire, professional poise</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="nanobanana" onclick="openLightbox(this)">
-                <img src="vienna-workplace-nanob.png" alt="Workplace" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Workplace</div>
-                    <div class="gallery-item-meta">Modern office, business casual</div>
-                    <span class="tag nanobanana">Nano Banana</span>
-                </div>
-            </div>
-
-            <!-- ═══════════════ OTHER / CRAIYON / IDEOGRAM (17) ═══════════════ -->
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-office-chic.jpg" alt="Office Chic" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Office Chic</div>
-                    <div class="gallery-item-meta">Professional executive look</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-night-out.jpg" alt="Night Out" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Night Out</div>
-                    <div class="gallery-item-meta">Evening elegance</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-casual-weekend.jpg" alt="Casual Weekend" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Casual Weekend</div>
-                    <div class="gallery-item-meta">Relaxed weekend vibes</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-fitness.jpg" alt="Fitness" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Fitness</div>
-                    <div class="gallery-item-meta">Athletic energy</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-early-morning.jpg" alt="Early Morning" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Early Morning</div>
-                    <div class="gallery-item-meta">Sunrise routine</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-before-bed.jpg" alt="Before Bed" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Before Bed</div>
-                    <div class="gallery-item-meta">Evening wind-down</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-getting-ready.jpg" alt="Getting Ready" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Getting Ready</div>
-                    <div class="gallery-item-meta">Morning prep</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-winding-down.jpg" alt="Winding Down" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Winding Down</div>
-                    <div class="gallery-item-meta">Relaxation mode</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-fullbody-portrait.jpg" alt="Full Portrait" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Full Portrait</div>
-                    <div class="gallery-item-meta">Complete look, full body</div>
-                    <span class="tag ideogram">Ideogram</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-portrait-craiyon.jpg" alt="Portrait" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Portrait</div>
-                    <div class="gallery-item-meta">Classic headshot</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-grid.jpg" alt="Style Grid" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Style Grid</div>
-                    <div class="gallery-item-meta">Multiple looks, one frame</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-portrait.jpg" alt="Portrait v2" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Portrait v2</div>
-                    <div class="gallery-item-meta">Clean portrait shot</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-v2.jpg" alt="Vienna v2" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Vienna v2</div>
-                    <div class="gallery-item-meta">Updated look, fresh style</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-craiyon.webp" alt="Craiyon Original" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Craiyon Original</div>
-                    <div class="gallery-item-meta">First generation attempt</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-fullbody.webp" alt="Full Body" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Full Body</div>
-                    <div class="gallery-item-meta">Complete look, standing pose</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-spicy-detail.jpg" alt="Spicy Detail" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Spicy Detail</div>
-                    <div class="gallery-item-meta">Close-up detail shot</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-            <div class="gallery-item" data-source="other" onclick="openLightbox(this)">
-                <img src="vienna-spicy-grid.jpg" alt="Spicy Grid" loading="lazy">
-                <div class="gallery-item-info">
-                    <div class="gallery-item-title">Spicy Grid</div>
-                    <div class="gallery-item-meta">Multi-angle showcase</div>
-                    <span class="tag craiyon">Craiyon</span>
-                </div>
-            </div>
-
-        </div><!-- /gallery -->
+        </div>
 
         <footer>
-            <p>Generated by Vienna • <a href="../index.html" style="color: var(--primary);">Back to Dashboard</a></p>
+            <p>Generated by Vienna • Updated February 2026 • <a href="../index.html" style="color: var(--primary);">Back to Dashboard</a></p>
         </footer>
     </div>
 
@@ -1083,38 +957,11 @@
     </div>
 
     <script>
-        // ── Tab Filtering ──
-        const tabs = document.querySelectorAll('.tab-btn');
         const items = document.querySelectorAll('.gallery-item');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                const filter = tab.dataset.filter;
-
-                items.forEach(item => {
-                    if (filter === 'all') {
-                        item.classList.remove('hidden');
-                    } else if (filter === 'other') {
-                        // "Other" shows nanobanana + other
-                        const src = item.dataset.source;
-                        item.classList.toggle('hidden', src !== 'other' && src !== 'nanobanana' ? true : false);
-                        // Actually, nanobanana has its own tab. "Other" = only data-source="other"
-                        item.classList.toggle('hidden', src !== 'other');
-                    } else {
-                        item.classList.toggle('hidden', item.dataset.source !== filter);
-                    }
-                });
-            });
-        });
-
-        // ── Lightbox with Navigation ──
         let currentIndex = -1;
 
         function getVisibleItems() {
-            return Array.from(items).filter(i => !i.classList.contains('hidden'));
+            return Array.from(items);
         }
 
         function openLightbox(el) {
@@ -1148,6 +995,7 @@
         });
 
         document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') navLightbox(-1);
             if (e.key === 'ArrowRight') navLightbox(1);
