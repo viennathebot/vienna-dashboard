@@ -27,6 +27,23 @@
             padding: 20px;
         }
         
+        .back-nav {
+            background: var(--bg-card);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .back-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+        .back-nav a.muted { color: var(--text-muted); }
+        
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             padding: 1.5rem 2rem;
@@ -188,6 +205,10 @@
 </head>
 <body>
 <script src="../../auth.js"></script>
+    <div class="back-nav">
+        <a href="../../index.html">← Back to Dashboard</a>
+        <a href="../../index.html#contents" class="muted">📋 Table of Contents</a>
+    </div>
     <div class="header">
         <h1>📋 Procedure Case Logger</h1>
         <p>Track your interventional and structural cases</p>
