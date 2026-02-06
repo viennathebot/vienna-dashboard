@@ -386,5 +386,5 @@ generateCalendar();
 loadData();
 </script>
 
-<script src="auth.js"></script></body>
+</body>
 </html>

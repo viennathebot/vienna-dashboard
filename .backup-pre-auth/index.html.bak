@@ -1001,5 +1001,5 @@
             if (e.key === 'ArrowRight') navLightbox(1);
         });
     </script>
-<script src="../auth.js"></script></body>
+</body>
 </html>

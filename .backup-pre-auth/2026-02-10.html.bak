@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monday, February 2, 2026 — Vienna Dashboard</title>
+<title>Tuesday, February 10, 2026 — Vienna Dashboard</title>
 <style>
 :root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6;--red:#dc2626}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -15,6 +15,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .header h1{font-size:1.75rem;margin-bottom:.5rem}
 .header p{color:var(--muted)}
 .stemi-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(225,29,72,0.2);color:var(--accent);padding:.5rem 1rem;border-radius:.5rem;font-weight:600;margin-top:1rem}
+.stemi-badge.long-shift{background:rgba(220,38,38,0.3);border:1px solid var(--red)}
 .section{margin-bottom:2rem}
 .section h2{font-size:1.1rem;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
 .event{background:var(--card);border:1px solid #334155;border-radius:.75rem;padding:1.25rem;margin-bottom:1rem;transition:border-color .2s}
@@ -24,11 +25,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .event-location{color:var(--muted);font-size:.9rem;margin-bottom:.5rem}
 .event-notes{font-size:.85rem;color:var(--muted);padding-top:.75rem;border-top:1px solid #334155;margin-top:.75rem}
 .event-notes strong{color:var(--text)}
-.tag{display:inline-block;font-size:.7rem;padding:.25rem .5rem;border-radius:.25rem;margin-right:.5rem}
-.tag-procedure{background:rgba(59,130,246,0.2);color:var(--blue)}
-.tag-clinic{background:rgba(34,197,94,0.2);color:var(--green)}
-.tag-meeting{background:rgba(168,85,247,0.2);color:#a855f7}
-.tag-stemi{background:rgba(225,29,72,0.2);color:var(--accent)}
 .nav-footer{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #334155}
 .nav-link{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
 .nav-link:hover{color:var(--accent)}
@@ -40,38 +36,43 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <a href="../index.html#schedule" class="back-btn">← Back to Schedule</a>
   
   <div class="header">
-    <h1>📅 Monday, February 2, 2026</h1>
-    <p>North Vista Hospital • Henderson Clinic</p>
-    <div class="stemi-badge">🚨 STEMI Call — NV + SM (7am-5pm ER Call)</div>
+    <h1>📅 Tuesday, February 10, 2026</h1>
+    <p>Siena Campus — MitraClip Day</p>
+    <div class="stemi-badge long-shift">🚨 STEMI Call 24h (7am-7am) + ER Call</div>
   </div>
 
   <div class="section">
     <h2>📋 Procedures</h2>
     
     <div class="event">
-      <div class="event-time">9:00 AM</div>
-      <div class="event-title">LHC poss PCI — Thandi Nlbapo</div>
-      <div class="event-location">📍 North Vista Hospital</div>
-      <div class="event-notes">
-        <strong>⚠️ Iodine Allergy</strong> — Ensure proper premedication protocol
-      </div>
+      <div class="event-time">7:30 AM</div>
+      <div class="event-title">Assist Dr. Woods — Austin Jerico</div>
+      <div class="event-location">📍 Siena Campus</div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>🏥 Clinic</h2>
-    
     <div class="event">
-      <div class="event-time">1:00 PM – 5:00 PM</div>
-      <div class="event-title">Clinic Hours</div>
-      <div class="event-location">📍 Henderson</div>
+      <div class="event-time">9:30 AM</div>
+      <div class="event-title">Assist Dr. Woods — Judith Hernandez</div>
+      <div class="event-location">📍 Siena Campus</div>
+    </div>
+
+    <div class="event">
+      <div class="event-time">11:30 AM</div>
+      <div class="event-title">MitraClip/TTE — Koel, Keith</div>
+      <div class="event-location">📍 Siena Campus</div>
+    </div>
+
+    <div class="event">
+      <div class="event-time">1:30 PM</div>
+      <div class="event-title">MitraClip/TTE — Carter, Darlene</div>
+      <div class="event-location">📍 Siena Campus</div>
     </div>
   </div>
 
   <div class="nav-footer">
-    <span class="nav-link">← Previous</span>
-    <a href="2026-02-03.html" class="nav-link">February 3 →</a>
+    <a href="2026-02-06.html" class="nav-link">← February 6</a>
+    <a href="2026-02-11.html" class="nav-link">February 11 →</a>
   </div>
 </div>
-<script src="../auth.js"></script></body>
+</body>
 </html>
