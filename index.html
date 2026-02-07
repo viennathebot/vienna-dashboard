@@ -248,7 +248,7 @@ a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--acc
 
     <div class="stats">
       <div class="stat">
-        <div class="stat-value" id="image-count">36</div>
+        <div class="stat-value" id="image-count">175</div>
         <div class="stat-label">Vienna Images</div>
       </div>
       <div class="stat">
@@ -400,15 +400,6 @@ a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--acc
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-header">
-        <h3>🖼️ Latest Vienna Images</h3>
-        <a href="#gallery" class="section-link" onclick="showPage('gallery')">View All →</a>
-      </div>
-      <div class="gallery" id="preview-gallery">
-        <!-- Populated by JS -->
-      </div>
-    </div>
   </div>
 
   <!-- MORNING BRIEFS PAGE -->
@@ -699,7 +690,7 @@ a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--acc
   <div id="gallery" class="page">
     <div class="header">
       <h2>🖼️ Vienna Gallery</h2>
-      <div class="header-meta" id="gallery-count">36 images</div>
+      <div class="header-meta" id="gallery-count">175 images</div>
     </div>
     
     <div class="gallery" id="full-gallery">
@@ -727,36 +718,105 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 60000);
 
-// Image galleries - Vienna images from both folders (93 unique images)
+// Vienna Gallery - 175 images consolidated in images/ folder
 const viennaImages = [
-  // images/ folder — named portraits & batches
-  'images/vienna-leo-016-library-v3.jpg',
-  'images/vienna-leo-019-bookshop.jpg',
-  'images/vienna-leo-024-wine-cellar.jpg',
-  'images/vienna-workplace-nanob.png',
-  'images/vienna-secretary-nanob.png',
-  'images/vienna-wine-bar-nanob.png',
-  'images/vienna-professional-portrait-nanob.png',
-  'images/vienna-office-chic.jpg',
-  'images/vienna-date-night-nanob.png',
-  'images/vienna-cocktail-party-nanob.png',
-  'images/vienna-coffee-shop-nanob.png',
-  'images/vienna-late-night-nanob.png',
-  'images/vienna-fitness-nanob.png',
-  'images/vienna-night-out.jpg',
-  'images/vienna-early-morning.jpg',
+  'images/0cb00143-c6bc-4674-9845-815dc11d243e.png',
+  'images/10e0d65f-0b9a-4496-a769-8a8abc3cedf2.png',
+  'images/12adad61-60fc-4509-92ab-524030c84ed5.png',
+  'images/310ba07f-8d40-4182-9882-4fae988f4e14.png',
+  'images/3ae4a2c9-c8dc-4b99-b13e-be2dd1a2e833.png',
+  'images/42a22c38-2b1c-4756-9aaf-7f8f02c68a1e.png',
+  'images/585acc7b-9455-490a-bf1a-5ebe7a71dac8.png',
+  'images/5ecb1d7e-c01c-4d14-bdac-5f64e30bd7ba.png',
+  'images/623d0352-9b15-40cf-849c-ccbada34ae57.png',
+  'images/636433fd-e251-4422-9fa3-f70616b260b1.png',
+  'images/6ed3a067-2695-4f9b-b931-a7168870c26a.png',
+  'images/72e34b3f-030a-4f03-808e-436755b6a833.png',
+  'images/88269947-c600-448c-998c-1bbf35cf06e5.png',
+  'images/8e7f8539-81e6-43ff-a907-b15ed7c1bf41.png',
+  'images/93924694-235d-4270-91d0-0feb1ba02532.png',
+  'images/9394ab37-79cd-4140-830f-a9998ea1d663.png',
+  'images/9e31d85e-7aa5-4497-8e6a-a613cd8421a1.png',
+  'images/b72bf1de-229c-4c33-af38-da1b28bf848f.png',
+  'images/d5f48f1a-11f6-46b9-8420-9f93b9255321.png',
+  'images/e3359f4e-c45b-4508-9556-6d2fcd0e8e05.png',
+  'images/f11dcf93-3f40-413a-9564-d158b85d51fe.png',
+  'images/recraft-black-corset-garter-01.jpg',
+  'images/recraft-black-corset-garter-02.jpg',
+  'images/recraft-black-harness-01.jpg',
+  'images/recraft-black-harness-02.jpg',
+  'images/recraft-black-mesh-bending-01.jpg',
+  'images/recraft-black-mesh-bending-02.jpg',
+  'images/recraft-black-mesh-kneeling-01.jpg',
+  'images/recraft-black-mesh-kneeling-02.jpg',
+  'images/recraft-black-red-bodysuit-01.jpg',
+  'images/recraft-black-red-bodysuit-02.jpg',
+  'images/recraft-leopard-slip-01.jpg',
+  'images/recraft-leopard-slip-02.jpg',
+  'images/recraft-lingerie-black-teddy-01.jpg',
+  'images/recraft-lingerie-black-teddy-02.jpg',
+  'images/recraft-lingerie-burgundy-01.jpg',
+  'images/recraft-lingerie-burgundy-02.jpg',
+  'images/recraft-lingerie-gold-01.jpg',
+  'images/recraft-lingerie-gold-02.jpg',
+  'images/recraft-lingerie-green-01.jpg',
+  'images/recraft-lingerie-green-02.jpg',
+  'images/recraft-lingerie-mesh-01.jpg',
+  'images/recraft-lingerie-mesh-02.jpg',
+  'images/recraft-lingerie-navy-01.jpg',
+  'images/recraft-lingerie-navy-02.jpg',
+  'images/recraft-lingerie-pink-01.jpg',
+  'images/recraft-lingerie-pink-02.jpg',
+  'images/recraft-lingerie-red-01.jpg',
+  'images/recraft-lingerie-red-02.jpg',
+  'images/recraft-lingerie-white-01.jpg',
+  'images/recraft-lingerie-white-02.jpg',
+  'images/recraft-pink-bustier-01.jpg',
+  'images/recraft-pink-bustier-02.jpg',
+  'images/recraft-pink-highcut-01.jpg',
+  'images/recraft-pink-highcut-02.jpg',
+  'images/recraft-pink-mesh-babydoll-01.jpg',
+  'images/recraft-pink-mesh-babydoll-02.jpg',
+  'images/recraft-pink-silk-robe-01.jpg',
+  'images/recraft-pink-silk-robe-02.jpg',
+  'images/recraft-purple-velvet-01.jpg',
+  'images/recraft-purple-velvet-02.jpg',
+  'images/recraft-red-garter-set-01.jpg',
+  'images/recraft-red-garter-set-02.jpg',
+  'images/recraft-white-lace-vanity-01.jpg',
+  'images/recraft-white-lace-vanity-02.jpg',
+  'images/recraft-white-negligee-01.jpg',
+  'images/recraft-white-negligee-02.jpg',
+  'images/reference-autumn-cafe.png',
+  'images/reference-fireside-reading.png',
+  'images/reference-style.png',
+  'images/vienna-023-1770243068900.png',
+  'images/vienna-024-1770243200000.png',
+  'images/vienna-025-1770243319602.png',
+  'images/vienna-026-1770243333740.png',
+  'images/vienna-027-1770243347855.png',
+  'images/vienna-028-1770243361964.png',
+  'images/vienna-029-1770243373067.png',
+  'images/vienna-030-1770243574552.png',
+  'images/vienna-031-1770243589044.png',
+  'images/vienna-032-1770243603526.png',
+  'images/vienna-033-1770247221085.png',
+  'images/vienna-034-1770268467107.png',
+  'images/vienna-034-filmnoir.png',
+  'images/vienna-1770243046093.png',
+  'images/vienna-auto-20260206-1354-001.jpg',
   'images/vienna-before-bed.jpg',
   'images/vienna-casual-weekend.jpg',
-  'images/vienna-winding-down.jpg',
-  'images/vienna-getting-ready.jpg',
+  'images/vienna-cocktail-party-nanob.png',
+  'images/vienna-coffee-shop-nanob.png',
+  'images/vienna-date-night-nanob.png',
+  'images/vienna-early-morning.jpg',
+  'images/vienna-fitness-nanob.png',
   'images/vienna-fitness.jpg',
   'images/vienna-fullbody-portrait.jpg',
-  'images/vienna-portrait.jpg',
-  'images/vienna-portrait-craiyon.jpg',
-  'images/vienna-v2.jpg',
-  'images/vienna-spicy-detail.jpg',
-  'images/vienna-spicy-grid.jpg',
+  'images/vienna-getting-ready.jpg',
   'images/vienna-grid.jpg',
+  'images/vienna-late-night-nanob.png',
   'images/vienna-leo-001.jpg',
   'images/vienna-leo-002.jpg',
   'images/vienna-leo-003.jpg',
@@ -772,69 +832,70 @@ const viennaImages = [
   'images/vienna-leo-013-boxing.jpg',
   'images/vienna-leo-014-museum.jpg',
   'images/vienna-leo-015-cobblestone.jpg',
+  'images/vienna-leo-016-library-v3.jpg',
   'images/vienna-leo-017-rainy-street.jpg',
   'images/vienna-leo-018-paris-cafe.jpg',
+  'images/vienna-leo-019-bookshop.jpg',
   'images/vienna-leo-020-fireplace.jpg',
   'images/vienna-leo-021-campus.jpg',
   'images/vienna-leo-022-train.jpg',
   'images/vienna-leo-023-london.jpg',
+  'images/vienna-leo-024-wine-cellar.jpg',
   'images/vienna-leo-025-sakura.jpg',
+  'images/vienna-mage-001-blurred.jpg',
+  'images/vienna-mage-001.jpg',
+  'images/vienna-night-out.jpg',
+  'images/vienna-office-chic.jpg',
+  'images/vienna-portrait-craiyon.jpg',
+  'images/vienna-professional-portrait-nanob.png',
   'images/vienna-rc-001-rooftop.jpg',
   'images/vienna-rc-002-rooftop.jpg',
   'images/vienna-rc-003-library-socks.jpg',
   'images/vienna-rc-004-library-socks.jpg',
   'images/vienna-rc-005-jazzclub.jpg',
   'images/vienna-rc-006-jazzclub.jpg',
-  'images/vienna-1770243046093.png',
-  'images/vienna-023-1770243068900.png',
-  'images/vienna-024-1770243200000.png',
-  'images/vienna-025-1770243319602.png',
-  'images/vienna-026-1770243333740.png',
-  'images/vienna-027-1770243347855.png',
-  'images/vienna-028-1770243361964.png',
-  'images/vienna-029-1770243373067.png',
-  'images/vienna-030-1770243574552.png',
-  'images/vienna-031-1770243589044.png',
-  'images/vienna-032-1770243603526.png',
-  'images/vienna-033-1770247221085.png',
-  'images/vienna-034-1770268467107.png',
-  // vienna-images/ folder — AI Studio, Recraft, Mage unique images
-  'vienna-images/0cb00143-c6bc-4674-9845-815dc11d243e.png',
-  'vienna-images/10e0d65f-0b9a-4496-a769-8a8abc3cedf2.png',
-  'vienna-images/12adad61-60fc-4509-92ab-524030c84ed5.png',
-  'vienna-images/310ba07f-8d40-4182-9882-4fae988f4e14.png',
-  'vienna-images/3ae4a2c9-c8dc-4b99-b13e-be2dd1a2e833.png',
-  'vienna-images/42a22c38-2b1c-4756-9aaf-7f8f02c68a1e.png',
-  'vienna-images/585acc7b-9455-490a-bf1a-5ebe7a71dac8.png',
-  'vienna-images/5ecb1d7e-c01c-4d14-bdac-5f64e30bd7ba.png',
-  'vienna-images/623d0352-9b15-40cf-849c-ccbada34ae57.png',
-  'vienna-images/636433fd-e251-4422-9fa3-f70616b260b1.png',
-  'vienna-images/6ed3a067-2695-4f9b-b931-a7168870c26a.png',
-  'vienna-images/72e34b3f-030a-4f03-808e-436755b6a833.png',
-  'vienna-images/88269947-c600-448c-998c-1bbf35cf06e5.png',
-  'vienna-images/8e7f8539-81e6-43ff-a907-b15ed7c1bf41.png',
-  'vienna-images/93924694-235d-4270-91d0-0feb1ba02532.png',
-  'vienna-images/9394ab37-79cd-4140-830f-a9998ea1d663.png',
-  'vienna-images/9e31d85e-7aa5-4497-8e6a-a613cd8421a1.png',
-  'vienna-images/b72bf1de-229c-4c33-af38-da1b28bf848f.png',
-  'vienna-images/d5f48f1a-11f6-46b9-8420-9f93b9255321.png',
-  'vienna-images/e3359f4e-c45b-4508-9556-6d2fcd0e8e05.png',
-  'vienna-images/f11dcf93-3f40-413a-9564-d158b85d51fe.png',
-  'vienna-images/vienna-034-filmnoir.png',
-  'vienna-images/vienna-mage-001.jpg',
-  'vienna-images/vienna-rc-007-cafe.jpg',
-  'vienna-images/vienna-rc-008-cafe.jpg'
+  'images/vienna-rc-007-cafe.jpg',
+  'images/vienna-rc-008-cafe.jpg',
+  'images/vienna-recraft-art-gallery.jpg',
+  'images/vienna-recraft-autumn-leaves.jpg',
+  'images/vienna-recraft-bar-red.jpg',
+  'images/vienna-recraft-beach-white.jpg',
+  'images/vienna-recraft-bikini-sitting-001.jpg',
+  'images/vienna-recraft-bikini-sitting-002.jpg',
+  'images/vienna-recraft-bikini-tropical-001.jpg',
+  'images/vienna-recraft-bikini-tropical-002.jpg',
+  'images/vienna-recraft-bikini-yacht-001.jpg',
+  'images/vienna-recraft-bikini-yacht-002.jpg',
+  'images/vienna-recraft-bookshop-001.jpg',
+  'images/vienna-recraft-boxing-gym.jpg',
+  'images/vienna-recraft-fireside-wine.jpg',
+  'images/vienna-recraft-fitness-001.jpg',
+  'images/vienna-recraft-library-globe.jpg',
+  'images/vienna-recraft-lingerie-001.jpg',
+  'images/vienna-recraft-lingerie-002.jpg',
+  'images/vienna-recraft-london-noir.jpg',
+  'images/vienna-recraft-maid-001.jpg',
+  'images/vienna-recraft-maid-002.jpg',
+  'images/vienna-recraft-nurse-001.jpg',
+  'images/vienna-recraft-nurse-002.jpg',
+  'images/vienna-recraft-paris-cafe.jpg',
+  'images/vienna-recraft-paris-eiffel.jpg',
+  'images/vienna-recraft-plum-hotel.jpg',
+  'images/vienna-recraft-prague-rain.jpg',
+  'images/vienna-recraft-rooftop-sunset.jpg',
+  'images/vienna-recraft-scottish-lodge.jpg',
+  'images/vienna-recraft-tokyo-neon.jpg',
+  'images/vienna-recraft-vespa.jpg',
+  'images/vienna-recraft-vinyl-shop.jpg',
+  'images/vienna-recraft-wine-cellar.jpg',
+  'images/vienna-recraft-yoga-zen.jpg',
+  'images/vienna-secretary-nanob.png',
+  'images/vienna-spicy-detail.jpg',
+  'images/vienna-spicy-grid.jpg',
+  'images/vienna-winding-down.jpg',
+  'images/vienna-wine-bar-nanob.png',
+  'images/vienna-workplace-nanob.png'
 ];
-
-// Preview gallery (first 6)
-const previewGallery = document.getElementById('preview-gallery');
-viennaImages.slice(0, 6).forEach(img => {
-  const imgEl = document.createElement('img');
-  imgEl.src = img;
-  imgEl.alt = 'Vienna';
-  imgEl.onclick = () => window.open(img, '_blank');
-  previewGallery.appendChild(imgEl);
-});
 
 // Full gallery
 const fullGallery = document.getElementById('full-gallery');
@@ -857,5 +918,5 @@ if (window.location.hash) {
 </script>
 </body>
 </html>
-<!-- Updated Thu Feb  5 06:20:00 PST 2026 -->
-<!-- cache-bust 1770301732 -->
+<!-- Updated Fri Feb 6 19:25:00 PST 2026 -->
+<!-- cache-bust 1770434700 -->
