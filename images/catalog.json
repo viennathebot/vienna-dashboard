@@ -1044,10 +1044,10 @@
   ],
   "updated": "2026-02-07T14:47:47.870Z",
   "stats": {
-    "total": 197,
+    "total": 252,
     "byCategory": {
       "casual": 75,
-      "intimate": 60,
+      "intimate": 115,
       "lifestyle": 28,
       "cozy": 11,
       "glamour": 19,

@@ -701,13 +701,13 @@ a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--acc
       <div id="gallery-progress" style="background:linear-gradient(90deg,var(--accent),var(--blue));height:100%;width:17.7%;transition:width .3s"></div>
     </div>
     
-    <!-- Category filters -->
+    <!-- Category filters - dynamically updated with counts -->
     <div id="gallery-filters" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
       <button class="filter-btn active" data-category="all" onclick="filterGallery('all')">All</button>
       <button class="filter-btn" data-category="intimate" onclick="filterGallery('intimate')">🔥 Intimate</button>
       <button class="filter-btn" data-category="casual" onclick="filterGallery('casual')">☕ Casual</button>
-      <button class="filter-btn" data-category="lifestyle" onclick="filterGallery('lifestyle')">🌸 Lifestyle</button>
       <button class="filter-btn" data-category="glamour" onclick="filterGallery('glamour')">✨ Glamour</button>
+      <button class="filter-btn" data-category="lifestyle" onclick="filterGallery('lifestyle')">🌸 Lifestyle</button>
       <button class="filter-btn" data-category="cozy" onclick="filterGallery('cozy')">📚 Cozy</button>
       <button class="filter-btn" data-category="professional" onclick="filterGallery('professional')">💼 Professional</button>
     </div>
