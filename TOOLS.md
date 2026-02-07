@@ -55,6 +55,7 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 | Playground | Vienna | Free tier |
 | X/Twitter | Vienna ✦ (@viennathebot) | Active, rebranded |
 | LinkedIn | Vienna Hart | New account, no pic yet |
+| ElevenLabs | Vienna (Google OAuth) | 10k credits/mo, Free tier |
 
 ---
 
@@ -99,7 +100,7 @@ Add whatever helps you do your job. This is your cheat sheet.
 ## Recraft AI (@viennathebot)
 - **URL:** https://www.recraft.ai
 - **Account:** viennathebot@gmail.com (Google OAuth)
-- **Free Tier:** 60 credits/day (2 images per generation = 1 credit each)
+- **Free Tier:** 30 credits/day (reduced from 60 as of Feb 2026)
 - **Status:** Active, logged in, working!
 - **Image DL:** Only 300px thumbnails on free tier (paid = full res)
 - **Content Filter:** PERMISSIVE — allows thigh-highs, short skirts, cocktails (what Leonardo blocks!)
@@ -112,3 +113,44 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **Status:** Active, needs verification for full access
 - **Models:** Z-Image Turbo, Mango, FLUX, SDXL
 - **Note:** Account verification needed for non-blurred suggestive images
+
+## ElevenLabs (@Vienna)
+- **URL:** https://elevenlabs.io/app
+- **Account:** viennathebot@gmail.com (Google OAuth)
+- **Platform:** Creative Platform
+- **Plan:** Free ($0/forever)
+- **Status:** Active (set up Feb 7, 2026)
+- **Credits:** 10,000/month (resets ~9th of each month)
+
+### Free Tier Limits:
+- **Text to Speech:** ~10 min (high quality) or ~20 min (turbo/flash)
+- **Voice Changer:** 10 min
+- **Custom Voices:** 3 slots (0/3 used)
+- **Studio Projects:** 3
+- **Music:** 11 min
+- **Sound Effects:** 250 seconds
+- **Voice Isolation:** 10 min
+- **Images:** Up to 40
+- **Audio Quality:** 128 kbps, 44.1kHz
+- **Concurrency:** 2 simultaneous requests
+
+### Available Voices:
+- 10,000+ community voices in Voice Library
+- Default voice: Rachel
+- Trending: Jon, Michael C. Vincent, Riley, Theo Silk
+- 70+ languages supported
+- Iconic voices: Michael Caine, Burt Reynolds, James Dean, Judy Garland
+
+### Limitations (Free):
+- ❌ No commercial license
+- ❌ No instant voice cloning
+- ❌ No professional voice cloning
+
+## SeaArt AI (@Vienna)
+- **URL:** https://www.seaart.ai
+- **Account:** viennathebot@gmail.com (Google OAuth)
+- **Free Tier:** 120 stamina/day (5 stamina per image = ~24 images/day)
+- **Status:** Active, 14 images generated
+- **Intimate prompts:** ✅ ALLOWED (lingerie, silk robes, etc.)
+- **Download issue:** Free tier doesn't save locally — images in account history
+- **Best for:** Intimate Vienna gallery images
