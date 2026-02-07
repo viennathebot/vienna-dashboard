@@ -52,6 +52,17 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer;transition:transform .2s}
 .gallery img:hover{transform:scale(1.02)}
 
+/* Lightbox */
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:.5rem}
+.lightbox-close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:white;cursor:pointer;background:none;border:none;padding:.5rem}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:white;cursor:pointer;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem;transition:background .2s}
+.lightbox-nav:hover{background:rgba(225,29,72,.7)}
+.lightbox-prev{left:1rem}
+.lightbox-next{right:1rem}
+.lightbox-counter{color:var(--muted);margin-top:1rem;font-size:.875rem}
+
 /* Section */
 .section{margin-bottom:3rem}
 .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
@@ -701,6 +712,15 @@ a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--acc
       <button class="filter-btn" data-category="professional" onclick="filterGallery('professional')">💼 Professional</button>
     </div>
     
+    <!-- Lightbox Overlay -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#8249;</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#8250;</button>
+      <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">0</span></div>
+    </div>
+
     <div class="gallery" id="full-gallery">
       <!-- Populated by JS from catalog.json -->
     </div>
@@ -760,7 +780,7 @@ function renderGallery() {
     imgEl.src = 'images/' + img.filename;
     imgEl.alt = img.category;
     imgEl.title = img.category + ': ' + img.filename;
-    imgEl.onclick = () => window.open('images/' + img.filename, '_blank');
+    imgEl.onclick = () => openLightbox(filtered.indexOf(img));
     gallery.appendChild(imgEl);
   });
   
@@ -793,6 +813,50 @@ function updateGalleryStats() {
 }
 
 loadGalleryCatalog();
+
+// Lightbox functionality
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(index) {
+  lightboxImages = currentFilter === 'all' 
+    ? galleryData.images 
+    : galleryData.images.filter(img => img.category === currentFilter);
+  lightboxIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function navigateLightbox(delta) {
+  lightboxIndex = (lightboxIndex + delta + lightboxImages.length) % lightboxImages.length;
+  updateLightbox();
+}
+
+function updateLightbox() {
+  const img = lightboxImages[lightboxIndex];
+  document.getElementById('lightbox-img').src = 'images/' + img.filename;
+  document.getElementById('lightbox-current').textContent = lightboxIndex + 1;
+  document.getElementById('lightbox-total').textContent = lightboxImages.length;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+
+// Click outside image to close
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
 
 // Handle hash navigation
 if (window.location.hash) {

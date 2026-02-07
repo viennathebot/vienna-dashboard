@@ -118,6 +118,14 @@
       "category": "casual"
     },
     {
+      "filename": "leonardo-manual-20260207-001.jpg",
+      "category": "casual"
+    },
+    {
+      "filename": "leonardo-manual-20260207-002.jpg",
+      "category": "casual"
+    },
+    {
       "filename": "recraft-black-corset-garter-01.jpg",
       "category": "intimate"
     },
@@ -311,6 +319,70 @@
     },
     {
       "filename": "reference-style.png",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-test-001.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-test-002.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-001.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-002.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-003.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-004.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-005.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-006.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-007.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-008.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-009.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-010.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-011.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-012.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-013.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-014.webp",
       "category": "casual"
     },
     {
@@ -742,11 +814,11 @@
       "category": "professional"
     }
   ],
-  "updated": "2026-02-07T03:52:26.236Z",
+  "updated": "2026-02-07T14:07:36.648Z",
   "stats": {
-    "total": 177,
+    "total": 195,
     "byCategory": {
-      "casual": 55,
+      "casual": 73,
       "intimate": 60,
       "lifestyle": 28,
       "cozy": 11,
