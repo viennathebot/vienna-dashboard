@@ -1160,14 +1160,54 @@
     {
       "filename": "recraft-vienna-20260207-edge-30.jpg",
       "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-01.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-02.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-03.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-04.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-05.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-06.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-07.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-08.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-09.jpg",
+      "category": "intimate"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-10.jpg",
+      "category": "intimate"
     }
   ],
   "updated": "2026-02-07T14:47:47.870Z",
   "stats": {
-    "total": 282,
+    "total": 292,
     "byCategory": {
       "casual": 75,
-      "intimate": 145,
+      "intimate": 155,
       "lifestyle": 28,
       "cozy": 11,
       "glamour": 19,
