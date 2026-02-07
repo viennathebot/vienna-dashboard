@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-07T12:32:00-08:00",
+  "categories": {
+    "intimate": {
+      "name": "Intimate/Boudoir",
+      "description": "Vienna in intimate, sensual settings",
+      "images": [
+        {"file": "recraft-vienna-20260207-edge-01.jpg", "prompt": "oversized white shirt unbuttoned, sitting on kitchen counter with coffee, morning light", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-02.jpg", "prompt": "oversized white shirt unbuttoned, sitting on kitchen counter with coffee, morning light", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-03.jpg", "prompt": "navy blue lace lingerie, kneeling on luxurious bed with silk sheets, boudoir photography", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-04.jpg", "prompt": "navy blue lace lingerie, kneeling on luxurious bed with silk sheets, boudoir photography", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-05.jpg", "prompt": "champagne satin lingerie set, standing by bedroom mirror, elegant boudoir", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-06.jpg", "prompt": "champagne satin lingerie set, standing by bedroom mirror, elegant boudoir", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-07.jpg", "prompt": "white lace bodysuit, lounging on daybed by window, sensual boudoir photography", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-08.jpg", "prompt": "white lace bodysuit, lounging on daybed by window, sensual boudoir photography", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-09.jpg", "prompt": "red satin slip dress, lying on bed with white sheets, sultry look at camera", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-10.jpg", "prompt": "red satin slip dress, lying on bed with white sheets, sultry look at camera", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-11.jpg", "prompt": "black lace lingerie with garter belt and thigh-high stockings, seated on elegant bed", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-12.jpg", "prompt": "black lace lingerie with garter belt and thigh-high stockings, seated on elegant bed", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-13.jpg", "prompt": "silk robe falling off shoulders, sitting on velvet chaise lounge", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-14.jpg", "prompt": "silk robe falling off shoulders, sitting on velvet chaise lounge", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-15.jpg", "prompt": "elegant black lace lingerie set, sitting on edge of white bed", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-16.jpg", "prompt": "elegant black lace lingerie set, sitting on edge of white bed", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-17.jpg", "prompt": "lying on back on bed, lace panties visible, silk camisole", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-18.jpg", "prompt": "lying on back on bed, lace panties visible, silk camisole", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-19.jpg", "prompt": "on all fours on white bed sheets, black lace lingerie, thigh-high stockings", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-20.jpg", "prompt": "on all fours on white bed sheets, black lace lingerie, thigh-high stockings", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-21.jpg", "prompt": "rose gold satin lingerie set, lounging on plush white bed, luxury boudoir editorial", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-22.jpg", "prompt": "rose gold satin lingerie set, lounging on plush white bed, luxury boudoir editorial", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-23.jpg", "prompt": "emerald green silk chemise, standing by window, golden hour sunlight", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-24.jpg", "prompt": "emerald green silk chemise, standing by window, golden hour sunlight", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-25.jpg", "prompt": "burgundy velvet corset with lace trim, sitting on antique armchair, vintage boudoir", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-26.jpg", "prompt": "burgundy velvet corset with lace trim, sitting on antique armchair, vintage boudoir", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-27.jpg", "prompt": "navy blue satin slip dress, sitting on velvet chaise lounge, intimate fashion portrait", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-28.jpg", "prompt": "navy blue satin slip dress, sitting on velvet chaise lounge, intimate fashion portrait", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-29.jpg", "prompt": "sheer white lace bodysuit, bending forward elegantly, showing curves", "source": "recraft"},
+        {"file": "recraft-vienna-20260207-edge-30.jpg", "prompt": "sheer white lace bodysuit, bending forward elegantly, showing curves", "source": "recraft"}
+      ]
+    }
+  },
+  "stats": {
+    "totalImages": 30,
+    "bySource": {
+      "recraft": 30
+    },
+    "byCategory": {
+      "intimate": 30
+    }
+  }
+}
