@@ -322,6 +322,70 @@
       "category": "casual"
     },
     {
+      "filename": "seaart-test-001.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-test-002.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-001.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-002.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-003.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-004.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-005.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-006.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-007.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-008.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-009.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-010.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-011.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-012.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-013.webp",
+      "category": "casual"
+    },
+    {
+      "filename": "seaart-vienna-014.webp",
+      "category": "casual"
+    },
+    {
       "filename": "vienna-023-1770243068900.png",
       "category": "casual"
     },
@@ -750,11 +814,11 @@
       "category": "professional"
     }
   ],
-  "updated": "2026-02-07T13:17:52.418Z",
+  "updated": "2026-02-07T14:07:33.068Z",
   "stats": {
-    "total": 179,
+    "total": 195,
     "byCategory": {
-      "casual": 57,
+      "casual": 73,
       "intimate": 60,
       "lifestyle": 28,
       "cozy": 11,
