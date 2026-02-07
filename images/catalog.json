@@ -118,6 +118,14 @@
       "category": "casual"
     },
     {
+      "filename": "gemini-vienna-intimate-001.png",
+      "category": "casual"
+    },
+    {
+      "filename": "gemini-vienna-intimate-002.png",
+      "category": "casual"
+    },
+    {
       "filename": "leonardo-manual-20260207-001.jpg",
       "category": "casual"
     },
@@ -814,11 +822,11 @@
       "category": "professional"
     }
   ],
-  "updated": "2026-02-07T14:07:36.648Z",
+  "updated": "2026-02-07T14:47:47.870Z",
   "stats": {
-    "total": 195,
+    "total": 197,
     "byCategory": {
-      "casual": 73,
+      "casual": 75,
       "intimate": 60,
       "lifestyle": 28,
       "cozy": 11,
