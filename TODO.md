@@ -1,76 +1,70 @@
 # Vienna's Active Tasks
 
-*Last updated: 2026-02-07 22:40 PST*
+*Last updated: 2026-02-07 22:45 PST*
 
 ---
 
-## 🔒 Dr. B's Security Setup (Manual)
+## 🔒 Dr. B's Manual Tasks (Need Your Password/Action)
 
-These need your password or manual action:
+These I can't do — they need your intervention:
 
-- [ ] **Open LuLu** — /Applications/LuLu.app → Approve System Extension
-- [ ] **Install Oversight** — `brew install --cask oversight` (camera/mic monitor)
-- [ ] **Get VirusTotal API key** — https://www.virustotal.com/gui/join-us (free)
-- [x] **Verify GoatCounter email** — ✅ Verified!
-- [ ] **Set ANTHROPIC_API_KEY** for full LLM skill scanning (later)
+### Security Setup
+- [ ] **Open LuLu app** → /Applications/LuLu.app → Click "Allow" for System Extension
+- [ ] **Install Oversight** → Run: `brew install --cask oversight` (needs password)
+- [ ] **Get VirusTotal API key** → https://www.virustotal.com/gui/join-us (free signup)
+- [ ] **Set ANTHROPIC_API_KEY** → For full LLM skill scanning (when ready)
+
+### Dashboard Content
+- [ ] **Send STEMI PowerPoint** → Need file to create project page
+- [ ] **Share real schedule** → Or give calendar access for accurate schedule display
+- [ ] **Review flagged skills** → home-assistant has 6 CRITICAL (false positives in docs)
 
 ---
 
-## ✅ Completed Security Setup
+## ✅ Vienna Completed Today
 
-- [x] LuLu firewall installed
-- [x] GoatCounter analytics created (viennabot.goatcounter.com)
+- [x] LuLu firewall installed (needs your approval)
+- [x] GoatCounter analytics created + email verified
 - [x] Tracking code added to vienna-dashboard
-- [x] Cisco Skill Scanner installed
-- [x] Weekly skill scan cron job configured
-- [x] SECURITY.md created with hardening guide
-- [x] ACCESS_TRACKING.md created with monitoring guide
+- [x] Cisco AI Skill Scanner installed
+- [x] Weekly skill scan cron configured (Sundays 10 AM)
+- [x] SECURITY.md hardening guide created
+- [x] ACCESS_TRACKING.md monitoring guide created
 - [x] access-monitor.sh script created
+- [x] TODO.md with your tasks
+- [x] Everything pushed to GitHub
 
 ---
 
-## Dashboard Fixes (Priority)
+## Dashboard Fixes (Vienna Will Do)
 
-- [ ] Projects as top-level nav tab (like Notes, Tasks)
+- [ ] Projects as top-level nav tab
 - [ ] Homepage loads first (not gallery)
-- [ ] Schedule shows real data (not placeholders)
+- [ ] Schedule shows real data (waiting on you)
 - [ ] Daily briefs page displays content
-- [ ] Workout Plan under Projects with detailed daily exercises
-- [ ] Update Twitter project with full details
-- [ ] Update Surrey Clinic project with full details
-- [ ] Add STEMI Presentation project (need PowerPoint from Dr. B)
-- [ ] Gallery: Intimate/Casual main tabs
-- [ ] Gallery: Sub-filters (Favorites, High Resolution)
+- [ ] Workout Plan with detailed exercises
+- [ ] Update Twitter project details
+- [ ] Update Surrey Clinic project details
+- [ ] Gallery: Intimate/Casual tabs + sub-filters
 - [ ] Re-categorize misplaced images
 
 ---
 
-## ComfyUI Generation (Tonight)
+## ComfyUI Generation (Tonight/Ongoing)
 
 - [ ] Generate Vienna images using 3 reference styles
 - [ ] Style 1: Cozy intimate (sweater, thigh-highs, wine, fireplace)
 - [ ] Style 2: Black lace bedroom (lingerie set, stockings, white sheets)
 - [ ] Style 3: Boudoir elegant (high-waisted garter belt, warm lighting)
-- [ ] Save to vienna-dashboard/images/intimate/
-- [ ] Update gallery catalog
-- [ ] Push to GitHub
-- [ ] Verify password protection
 
 ---
 
 ## Blocked/Waiting
 
-- [ ] STEMI PowerPoint - need file from Dr. B
-- [ ] Real schedule data - need from Dr. B or calendar access
-- [ ] Recraft Account #2 - email verification stuck
-- [ ] Oversight install - needs Dr. B's password
-
----
-
-## Completed Today
-
-- [x] Security scan with Cisco AI Skill Scanner
-- [x] LuLu firewall installed
-- [x] GoatCounter analytics set up
-- [x] Installed 30 ClawHub skills
-- [x] Copied 86 ComfyUI images to dashboard (297 total, 30% to 1,000 goal)
+| Task | Waiting On |
+|------|------------|
+| STEMI project page | PowerPoint from Dr. B |
+| Real schedule display | Schedule data or calendar access |
+| Recraft Account #2 | Email verification stuck |
+| Full LLM skill scan | ANTHROPIC_API_KEY |
+| VirusTotal binary scan | VT API key |
