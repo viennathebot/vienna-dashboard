@@ -3,180 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vienna Gallery</title>
+<title>Vienna Dashboard</title>
 <style>
-:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48}
+:root{--bg:#0f172a;--sidebar:#1e293b;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem}
-.container{max-width:1400px;margin:0 auto}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155;flex-wrap:wrap;gap:1rem}
-.header h1{font-size:1.75rem;display:flex;align-items:center;gap:.75rem}
-.header-meta{color:var(--muted);font-size:.9rem}
-.progress-bar{background:#334155;border-radius:.5rem;height:8px;width:200px;overflow:hidden}
-.progress-fill{background:var(--accent);height:100%;transition:width .3s}
-.stats{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-value{font-size:1.5rem;font-weight:700;color:var(--accent)}
-.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase}
-.filters{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.filter-btn{background:var(--card);border:1px solid #334155;color:var(--text);padding:.5rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;transition:all .2s}
-.filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
-.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer;transition:transform .2s}
-.gallery img:hover{transform:scale(1.02)}
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
-.lightbox.active{display:flex}
-.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:.5rem}
-.lightbox-close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:white;cursor:pointer;background:none;border:none;padding:.5rem}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:white;cursor:pointer;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem}
-.lightbox-nav:hover{background:rgba(225,29,72,.7)}
-.lightbox-prev{left:1rem}
-.lightbox-next{right:1rem}
-.lightbox-counter{color:var(--muted);margin-top:1rem;font-size:.875rem}
-.social{display:flex;gap:1rem;margin-top:2rem;padding-top:1rem;border-top:1px solid #334155}
-.social a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
-.social a:hover{color:var(--accent)}
-@media(max-width:600px){body{padding:1rem}.header h1{font-size:1.3rem}.gallery{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+.sidebar{width:240px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
+.logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
+.logo h1{font-size:1.25rem}
+.nav-section{margin-bottom:1.5rem}
+.nav-section h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem}
+.nav-link{display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:.5rem;color:var(--text);text-decoration:none;transition:all .2s;margin-bottom:.25rem;font-size:.9rem}
+.nav-link:hover{background:rgba(255,255,255,.05)}
+.nav-link.active{background:var(--accent)}
+.nav-sub{margin-left:1.5rem}
+.nav-sub .nav-link{font-size:.85rem;padding:.4rem .75rem}
+.main{margin-left:240px;flex:1;padding:2rem}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155;margin-bottom:1.5rem}
+.card h2{font-size:1.1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.card p{color:var(--muted);line-height:1.6}
+.schedule-item{padding:.75rem;border-left:3px solid var(--accent);margin-bottom:.75rem;background:rgba(0,0,0,.2);border-radius:0 .5rem .5rem 0}
+.schedule-item .time{color:var(--accent);font-weight:600;font-size:.85rem}
+.schedule-item .title{margin-top:.25rem}
+.workout-day{display:inline-block;padding:.25rem .75rem;background:var(--accent);border-radius:.25rem;font-size:.8rem;margin-bottom:1rem}
+.exercise{padding:.5rem 0;border-bottom:1px solid #334155}
+.exercise:last-child{border:none}
+.exercise .name{font-weight:600}
+.exercise .sets{color:var(--muted);font-size:.85rem}
+.btn{display:inline-block;padding:.5rem 1rem;background:var(--accent);color:white;text-decoration:none;border-radius:.5rem;font-size:.875rem;transition:opacity .2s}
+.btn:hover{opacity:.9}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.project-card{background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;transition:all .2s;text-decoration:none;color:var(--text)}
+.project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.project-card h3{font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.project-card p{font-size:.85rem;color:var(--muted)}
+.automation-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:rgba(0,0,0,.2);border-radius:.5rem;margin-bottom:.5rem}
+.automation-status{font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem}
+.automation-status.active{background:rgba(34,197,94,.2);color:var(--green)}
+.automation-status.inactive{background:rgba(220,38,38,.2);color:#ef4444}
+.empty-state{text-align:center;padding:2rem;color:var(--muted)}
+@media(max-width:768px){.sidebar{width:100%;height:auto;position:relative}.main{margin-left:0}body{flex-direction:column}}
 </style>
 </head>
 <body>
 <script src="auth.js"></script>
-<div class="container">
-  <div class="header">
-    <h1>🫀 Vienna Gallery</h1>
-    <div class="header-meta">
-      <span id="gallery-count">0</span> / 1,000 images
-      <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+<nav class="sidebar">
+  <div class="logo"><span style="font-size:1.5rem">🫀</span><h1>Vienna</h1></div>
+  
+  <div class="nav-section">
+    <h3>Main</h3>
+    <a href="#home" class="nav-link active" onclick="showPage('home')">🏠 Home</a>
+    <a href="#schedule" class="nav-link" onclick="showPage('schedule')">📅 Schedule</a>
+    <a href="#notes" class="nav-link" onclick="showPage('notes')">📝 Notes</a>
+    <a href="#tasks" class="nav-link" onclick="showPage('tasks')">✅ Tasks</a>
+  </div>
+  
+  <div class="nav-section">
+    <h3>Projects</h3>
+    <a href="#vienna-gallery" class="nav-link" onclick="showPage('vienna-gallery')">🖼️ Vienna Gallery</a>
+    <a href="#automations" class="nav-link" onclick="showPage('automations')">⚙️ Automations</a>
+  </div>
+  
+  <div class="nav-section">
+    <h3>Travel</h3>
+    <a href="#japan" class="nav-link" onclick="showPage('japan')">🇯🇵 Japan Trip</a>
+  </div>
+</nav>
+
+<main class="main">
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
+    <h1 style="margin-bottom:1.5rem">Good Evening, Dr. B 👋</h1>
+    
+    <div class="card">
+      <h2>📅 Today's Schedule — Saturday, February 8</h2>
+      <div class="empty-state">
+        <p>Nothing scheduled aside from your workout routine.</p>
+        <p style="margin-top:.5rem;font-size:.9rem">Enjoy your weekend! 🫀</p>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>💪 Today's Workout — Rest Day</h2>
+      <p>Saturday is your rest day (Mat Pilates/Yoga optional + Push if desired).</p>
+      <p style="margin-top:1rem;font-size:.9rem;color:var(--muted)">
+        <strong>Your weekly schedule:</strong><br>
+        Mon: Rest | Tue: Push | Wed: Pull | Thu: Legs | Fri: Rest | Sat: Pilates+Push | Sun: Spin+Pull
+      </p>
     </div>
   </div>
 
-  <div class="stats" id="stats"></div>
-
-  <div class="filters">
-    <button class="filter-btn active" onclick="filterGallery('all')">🖼️ All</button>
-    <button class="filter-btn" onclick="filterGallery('intimate')">🔥 Intimate</button>
-    <button class="filter-btn" onclick="filterGallery('casual')">☕ Casual</button>
-    <button class="filter-btn" onclick="filterGallery('cozy')">📚 Cozy</button>
-    <button class="filter-btn" onclick="filterGallery('professional')">💼 Professional</button>
-    <button class="filter-btn" onclick="filterGallery('glamour')">✨ Glamour</button>
-    <button class="filter-btn" onclick="filterGallery('lifestyle')">🌸 Lifestyle</button>
+  <!-- SCHEDULE PAGE -->
+  <div id="schedule" class="page">
+    <h1 style="margin-bottom:1.5rem">📅 Schedule</h1>
+    <div class="card">
+      <h2>Upcoming</h2>
+      <div id="schedule-list">
+        <a href="schedule/2026-02-10.html" class="schedule-item" style="display:block;text-decoration:none;color:inherit">
+          <div class="time">Mon, Feb 10</div>
+          <div class="title">Check schedule file for details</div>
+        </a>
+        <a href="schedule/2026-02-11.html" class="schedule-item" style="display:block;text-decoration:none;color:inherit">
+          <div class="time">Tue, Feb 11</div>
+          <div class="title">Check schedule file for details</div>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="gallery" id="gallery"></div>
-
-  <div class="social">
-    <a href="https://x.com/vienna_hart" target="_blank">𝕏 Twitter</a>
-    <a href="https://www.linkedin.com/in/vienna-hart-54823a3ab/" target="_blank">LinkedIn</a>
-    <a href="https://www.instagram.com/viennathebot/" target="_blank">Instagram</a>
-    <a href="https://github.com/viennathebot/vienna-dashboard" target="_blank">GitHub</a>
+  <!-- NOTES PAGE -->
+  <div id="notes" class="page">
+    <h1 style="margin-bottom:1.5rem">📝 Notes</h1>
+    <div class="card">
+      <p>Notes section coming soon. This will sync with your notes system.</p>
+    </div>
   </div>
-</div>
 
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()">×</button>
-  <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
-  <img id="lightbox-img" src="" alt="">
-  <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
-  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">0</span></div>
+  <!-- TASKS PAGE -->
+  <div id="tasks" class="page">
+    <h1 style="margin-bottom:1.5rem">✅ Tasks</h1>
+    <div class="card">
+      <h2>To-Do List</h2>
+      <p>Tasks section coming soon. This will sync with your task management.</p>
+    </div>
+  </div>
+
+  <!-- VIENNA GALLERY PAGE -->
+  <div id="vienna-gallery" class="page">
+    <h1 style="margin-bottom:1.5rem">🖼️ Vienna Gallery</h1>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <div style="color:var(--muted)"><span id="gallery-count">0</span> / 1,000 images</div>
+      <div class="filters" style="display:flex;gap:.5rem">
+        <button class="filter-btn active" onclick="filterGallery('all')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">All</button>
+        <button class="filter-btn" onclick="filterGallery('intimate')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">🔥 Intimate</button>
+        <button class="filter-btn" onclick="filterGallery('casual')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">☕ Casual</button>
+      </div>
+    </div>
+    <div id="gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem"></div>
+  </div>
+
+  <!-- AUTOMATIONS PAGE -->
+  <div id="automations" class="page">
+    <h1 style="margin-bottom:1.5rem">⚙️ Automations</h1>
+    <div class="card">
+      <h2>Active Automations</h2>
+      <div class="automation-item">
+        <div>
+          <strong>Weekly Cardiology Trials Summary</strong>
+          <p style="font-size:.8rem;color:var(--muted)">Sundays 8 AM PST → Email to Dr. B</p>
+        </div>
+        <span class="automation-status active">Active</span>
+      </div>
+      <div class="automation-item">
+        <div>
+          <strong>Heartbeat Monitor</strong>
+          <p style="font-size:.8rem;color:var(--muted)">Every 30 min → Check emails, calendar, mentions</p>
+        </div>
+        <span class="automation-status active">Active</span>
+      </div>
+      <div class="automation-item">
+        <div>
+          <strong>Memory Backup</strong>
+          <p style="font-size:.8rem;color:var(--muted)">Every 6 hours → Backup to ~/Documents/Vienna/</p>
+        </div>
+        <span class="automation-status active">Active</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAPAN TRIP PAGE -->
+  <div id="japan" class="page">
+    <h1 style="margin-bottom:1.5rem">🇯🇵 Japan Trip — April/May 2026</h1>
+    <div class="card">
+      <h2>Trip Overview</h2>
+      <p>Planning in progress for April/May 2026 trip to Japan.</p>
+      <p style="margin-top:1rem;color:var(--muted)">Itinerary details will be added here as plans are finalized.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Lightbox for gallery -->
+<div id="lightbox" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column">
+  <button onclick="closeLightbox()" style="position:absolute;top:1rem;right:1rem;font-size:2rem;color:white;background:none;border:none;cursor:pointer">×</button>
+  <button onclick="prevImage()" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:3rem;color:white;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem;cursor:pointer">‹</button>
+  <img id="lightbox-img" style="max-width:90vw;max-height:85vh;object-fit:contain;border-radius:.5rem">
+  <button onclick="nextImage()" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:3rem;color:white;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem;cursor:pointer">›</button>
+  <div style="color:#94a3b8;margin-top:1rem"><span id="lightbox-current">1</span> / <span id="lightbox-total">0</span></div>
 </div>
 
 <script>
-let catalog = { images: [], stats: {} };
-let currentFilter = 'all';
-let currentIndex = 0;
-let filteredImages = [];
+// Page navigation
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  event.target.classList.add('active');
+}
 
-// Load catalog
+// Gallery
+let catalog = { images: [] };
+let filteredImages = [];
+let currentIndex = 0;
+
 fetch('images/catalog.json')
   .then(r => r.json())
   .then(data => {
     catalog = data;
-    updateStats();
+    document.getElementById('gallery-count').textContent = data.images.length;
     filterGallery('all');
-  })
-  .catch(() => {
-    // Fallback: load images directly from folder listing
-    loadImagesFromFolder();
   });
 
-function loadImagesFromFolder() {
-  // This won't work on GitHub Pages without a catalog, so we need the catalog.json
-  document.getElementById('gallery').innerHTML = '<p style="color:var(--muted)">Loading images...</p>';
-}
-
-function updateStats() {
-  const stats = catalog.stats || {};
-  const total = stats.total || catalog.images.length;
-  document.getElementById('gallery-count').textContent = total;
-  document.getElementById('progress').style.width = (total / 1000 * 100) + '%';
-  
-  // Show category stats
-  const statsEl = document.getElementById('stats');
-  const byCategory = stats.byCategory || {};
-  statsEl.innerHTML = Object.entries(byCategory)
-    .sort((a,b) => b[1] - a[1])
-    .map(([cat, count]) => `<div class="stat"><div class="stat-value">${count}</div><div class="stat-label">${cat}</div></div>`)
-    .join('');
-}
-
-function filterGallery(category) {
-  currentFilter = category;
-  
-  // Update active button
-  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  // Filter images
-  if (category === 'all') {
-    filteredImages = catalog.images;
-  } else {
-    filteredImages = catalog.images.filter(img => img.category === category);
-  }
-  
+function filterGallery(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.style.background = 'var(--card)');
+  event.target.style.background = 'var(--accent)';
+  filteredImages = cat === 'all' ? catalog.images : catalog.images.filter(i => i.category === cat);
   renderGallery();
 }
 
 function renderGallery() {
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = filteredImages.map((img, i) => 
-    `<img src="images/${img.filename}" alt="Vienna" loading="lazy" onclick="openLightbox(${i})">`
+  document.getElementById('gallery').innerHTML = filteredImages.map((img, i) => 
+    `<img src="images/${img.filename}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer" onclick="openLightbox(${i})">`
   ).join('');
-  
   document.getElementById('lightbox-total').textContent = filteredImages.length;
 }
 
-function openLightbox(index) {
-  currentIndex = index;
-  const lightbox = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  img.src = 'images/' + filteredImages[index].filename;
-  document.getElementById('lightbox-current').textContent = index + 1;
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
+function openLightbox(i) {
+  currentIndex = i;
+  document.getElementById('lightbox-img').src = 'images/' + filteredImages[i].filename;
+  document.getElementById('lightbox-current').textContent = i + 1;
+  document.getElementById('lightbox').style.display = 'flex';
 }
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % filteredImages.length;
-  openLightbox(currentIndex);
-}
-
-function prevImage() {
-  currentIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
-  openLightbox(currentIndex);
-}
-
-// Keyboard navigation
+function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+function nextImage() { openLightbox((currentIndex + 1) % filteredImages.length); }
+function prevImage() { openLightbox((currentIndex - 1 + filteredImages.length) % filteredImages.length); }
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (document.getElementById('lightbox').style.display !== 'flex') return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowRight') nextImage();
   if (e.key === 'ArrowLeft') prevImage();
 });
+
+// Handle hash navigation
+if (window.location.hash) {
+  const page = window.location.hash.slice(1);
+  const el = document.getElementById(page);
+  if (el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelector(`[href="#${page}"]`)?.classList.add('active');
+  }
+}
 </script>
 </body>
 </html>
