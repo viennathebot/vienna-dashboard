@@ -1,21 +1,21 @@
 {
   "goal": 1000,
-  "lastUpdated": "2026-02-08T03:38:56.749Z",
+  "lastUpdated": "2026-02-08T03:40:42.807Z",
   "stats": {
-    "total": 232,
+    "total": 211,
     "byCategory": {
-      "casual": 164,
       "intimate": 57,
+      "casual": 143,
       "cozy": 6,
       "glamour": 1,
       "lifestyle": 2,
       "professional": 2
     },
     "bySource": {
-      "seaart": 37,
       "gemini": 11,
       "unknown": 66,
       "recraft": 116,
+      "seaart": 16,
       "mage": 2
     }
   },
@@ -52,111 +52,6 @@
     }
   },
   "images": [
-    {
-      "filename": "0cb00143-c6bc-4674-9845-815dc11d243e.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "10e0d65f-0b9a-4496-a769-8a8abc3cedf2.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "12adad61-60fc-4509-92ab-524030c84ed5.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "310ba07f-8d40-4182-9882-4fae988f4e14.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "3ae4a2c9-c8dc-4b99-b13e-be2dd1a2e833.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "42a22c38-2b1c-4756-9aaf-7f8f02c68a1e.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "585acc7b-9455-490a-bf1a-5ebe7a71dac8.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "5ecb1d7e-c01c-4d14-bdac-5f64e30bd7ba.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "623d0352-9b15-40cf-849c-ccbada34ae57.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "636433fd-e251-4422-9fa3-f70616b260b1.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "6ed3a067-2695-4f9b-b931-a7168870c26a.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "72e34b3f-030a-4f03-808e-436755b6a833.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "88269947-c600-448c-998c-1bbf35cf06e5.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "8e7f8539-81e6-43ff-a907-b15ed7c1bf41.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "93924694-235d-4270-91d0-0feb1ba02532.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "9394ab37-79cd-4140-830f-a9998ea1d663.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "9e31d85e-7aa5-4497-8e6a-a613cd8421a1.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "b72bf1de-229c-4c33-af38-da1b28bf848f.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "d5f48f1a-11f6-46b9-8420-9f93b9255321.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "e3359f4e-c45b-4508-9556-6d2fcd0e8e05.png",
-      "category": "casual",
-      "source": "seaart"
-    },
-    {
-      "filename": "f11dcf93-3f40-413a-9564-d158b85d51fe.png",
-      "category": "casual",
-      "source": "seaart"
-    },
     {
       "filename": "gemini-vienna-intimate-001.png",
       "category": "intimate",
