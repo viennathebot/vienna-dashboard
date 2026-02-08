@@ -3,828 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vienna Dashboard</title>
+<title>Vienna Gallery</title>
 <style>
-:root{--bg:#0f172a;--sidebar:#1e293b;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--red:#dc2626;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6}
+:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
-
-/* Sidebar */
-.sidebar{width:260px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
-.logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
-.logo-icon{font-size:2rem}
-.logo-text h1{font-size:1.25rem;font-weight:700}
-.logo-text p{font-size:.75rem;color:var(--muted)}
-
-.nav-section{margin-bottom:1.5rem}
-.nav-section h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem;padding-left:.5rem}
-.nav-link{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.5rem;color:var(--text);text-decoration:none;transition:all .2s;margin-bottom:.25rem}
-.nav-link:hover{background:rgba(255,255,255,.05)}
-.nav-link.active{background:var(--accent);color:white}
-.nav-link span{font-size:1.1rem}
-
-/* Main Content */
-.main{margin-left:260px;flex:1;padding:2rem;min-height:100vh}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
-.header h2{font-size:1.5rem}
-.header-meta{display:flex;align-items:center;gap:1rem;color:var(--muted);font-size:.875rem}
-
-/* Cards Grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem}
-.card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155;transition:all .2s}
-.card:hover{border-color:#475569;transform:translateY(-2px)}
-.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
-.card-icon{font-size:2rem}
-.card-badge{font-size:.7rem;padding:.25rem .5rem;border-radius:.25rem;background:rgba(34,197,94,.2);color:var(--green)}
-.card h3{font-size:1rem;margin-bottom:.5rem}
-.card p{font-size:.875rem;color:var(--muted);line-height:1.5}
-.card-link{display:inline-block;margin-top:1rem;color:var(--accent);text-decoration:none;font-size:.875rem}
-.card-link:hover{text-decoration:underline}
-
-/* Stats Row */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
-.stat{background:var(--card);border-radius:.75rem;padding:1.25rem;text-align:center;border:1px solid #334155}
-.stat-value{font-size:2rem;font-weight:700;color:var(--accent)}
-.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-
-/* Gallery Grid */
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem}
+.container{max-width:1400px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155;flex-wrap:wrap;gap:1rem}
+.header h1{font-size:1.75rem;display:flex;align-items:center;gap:.75rem}
+.header-meta{color:var(--muted);font-size:.9rem}
+.progress-bar{background:#334155;border-radius:.5rem;height:8px;width:200px;overflow:hidden}
+.progress-fill{background:var(--accent);height:100%;transition:width .3s}
+.stats{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-value{font-size:1.5rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase}
+.filters{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.filter-btn{background:var(--card);border:1px solid #334155;color:var(--text);padding:.5rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent)}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
 .gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer;transition:transform .2s}
 .gallery img:hover{transform:scale(1.02)}
-
-/* Lightbox */
 .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
 .lightbox.active{display:flex}
 .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:.5rem}
 .lightbox-close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:white;cursor:pointer;background:none;border:none;padding:.5rem}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:white;cursor:pointer;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem;transition:background .2s}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:white;cursor:pointer;background:rgba(0,0,0,.5);border:none;padding:1rem;border-radius:.5rem}
 .lightbox-nav:hover{background:rgba(225,29,72,.7)}
 .lightbox-prev{left:1rem}
 .lightbox-next{right:1rem}
 .lightbox-counter{color:var(--muted);margin-top:1rem;font-size:.875rem}
-
-/* Section */
-.section{margin-bottom:3rem}
-.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
-.section-header h3{font-size:1.25rem}
-.section-link{color:var(--accent);text-decoration:none;font-size:.875rem}
-
-/* List */
-.list{background:var(--card);border-radius:1rem;border:1px solid #334155;overflow:hidden}
-.list-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid #334155;text-decoration:none;color:var(--text);transition:background .2s}
-.list-item:last-child{border-bottom:none}
-.list-item:hover{background:rgba(255,255,255,.03)}
-a.list-item{text-decoration:none}
-a.list-item:hover{background:rgba(225,29,72,.08);border-left:3px solid var(--accent)}
-.list-item span{font-size:1.25rem}
-.list-item-content{flex:1}
-.list-item-content h4{font-size:.95rem;margin-bottom:.25rem}
-.list-item-content p{font-size:.8rem;color:var(--muted)}
-.list-item-meta{font-size:.75rem;color:var(--muted)}
-
-/* Page sections (hidden by default) */
-.page{display:none}
-.page.active{display:block}
-
-@media(max-width:768px){
-  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid #334155}
-  .main{margin-left:0}
-  body{flex-direction:column}
-}
+.social{display:flex;gap:1rem;margin-top:2rem;padding-top:1rem;border-top:1px solid #334155}
+.social a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.social a:hover{color:var(--accent)}
+@media(max-width:600px){body{padding:1rem}.header h1{font-size:1.3rem}.gallery{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
 </style>
 </head>
 <body>
 <script src="auth.js"></script>
-
-<nav class="sidebar">
-  <div class="logo">
-    <span class="logo-icon">🫀</span>
-    <div class="logo-text">
-      <h1>Vienna</h1>
-      <p>AI Executive Assistant</p>
+<div class="container">
+  <div class="header">
+    <h1>🫀 Vienna Gallery</h1>
+    <div class="header-meta">
+      <span id="gallery-count">0</span> / 1,000 images
+      <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
     </div>
   </div>
 
-  <div class="nav-section">
-    <h3>Dashboard</h3>
-    <a href="#home" class="nav-link active" onclick="showPage('home')"><span>🏠</span> Home</a>
-    <a href="#gallery" class="nav-link" onclick="showPage('gallery')"><span>🖼️</span> Vienna Gallery</a>
-    <a href="#schedule" class="nav-link" onclick="showPage('schedule')"><span>📅</span> Schedule</a>
-    <a href="todo.html" class="nav-link"><span>✅</span> To-Do List</a>
-    <a href="workout.html" class="nav-link"><span>💪</span> Workout Program</a>
-    <a href="meditation.html" class="nav-link"><span>🧘</span> Meditation</a>
-    <a href="#briefs" class="nav-link" onclick="showPage('briefs')"><span>☀️</span> Morning Briefs</a>
-    <a href="tavr-planning.html" class="nav-link"><span>🫀</span> TAVR Planning</a>
-    <a href="japan-trip/itinerary.html" class="nav-link"><span>🇯🇵</span> Japan Trip</a>
-    <a href="surrey-womens-clinic/" class="nav-link"><span>🏥</span> Surrey Women's Clinic</a>
-    <a href="audi-a7-maintenance/" class="nav-link"><span>🚗</span> Audi A7 Maintenance</a>
-    <a href="style-guide/" class="nav-link"><span>👔</span> Style Guide</a>
-    <a href="valentines.html" class="nav-link"><span>💝</span> Valentine's for Faith</a>
-    <a href="#ideas" class="nav-link" onclick="showPage('ideas')"><span>💡</span> Project Ideas</a>
+  <div class="stats" id="stats"></div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterGallery('all')">🖼️ All</button>
+    <button class="filter-btn" onclick="filterGallery('intimate')">🔥 Intimate</button>
+    <button class="filter-btn" onclick="filterGallery('casual')">☕ Casual</button>
+    <button class="filter-btn" onclick="filterGallery('cozy')">📚 Cozy</button>
+    <button class="filter-btn" onclick="filterGallery('professional')">💼 Professional</button>
+    <button class="filter-btn" onclick="filterGallery('glamour')">✨ Glamour</button>
+    <button class="filter-btn" onclick="filterGallery('lifestyle')">🌸 Lifestyle</button>
   </div>
 
-  <div class="nav-section">
-    <h3>Projects</h3>
-    <a href="projects/stemi-presentation/STEMI_EMS_Presentation.pptx" class="nav-link" download><span>🚑</span> STEMI Presentation</a>
-    <a href="projects/case-logger/" class="nav-link"><span>📋</span> Case Logger</a>
-    <a href="projects/research-dashboard/" class="nav-link"><span>🔬</span> Research Dashboard</a>
-    <a href="projects/twitter-icpeteb/" class="nav-link"><span>🐦</span> @ICPeteB Content</a>
-    <a href="tavr-planning.html" class="nav-link"><span>🫀</span> TAVR Planning</a>
-    <a href="workout.html" class="nav-link"><span>💪</span> Workout Program</a>
-    <a href="japan-trip/itinerary.html" class="nav-link"><span>🇯🇵</span> Japan Trip</a>
+  <div class="gallery" id="gallery"></div>
+
+  <div class="social">
+    <a href="https://x.com/vienna_hart" target="_blank">𝕏 Twitter</a>
+    <a href="https://www.linkedin.com/in/vienna-hart-54823a3ab/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/viennathebot/" target="_blank">Instagram</a>
+    <a href="https://github.com/viennathebot/vienna-dashboard" target="_blank">GitHub</a>
   </div>
+</div>
 
-  <div class="nav-section">
-    <h3>Resources</h3>
-    <a href="documents/" class="nav-link"><span>📁</span> Documents</a>
-    <a href="memory/" class="nav-link"><span>🧠</span> Memory Logs</a>
-  </div>
-
-  <div class="nav-section">
-    <h3>Quick Links</h3>
-    <a href="https://x.com/vienna_hart" class="nav-link" target="_blank"><span>🐦</span> @vienna_hart (X)</a>
-    <a href="https://www.linkedin.com/in/vienna-hart-54823a3ab/" class="nav-link" target="_blank"><span>💼</span> Vienna Hart (LinkedIn)</a>
-    <a href="https://www.instagram.com/viennathebot/" class="nav-link" target="_blank"><span>📸</span> @viennathebot (Instagram)</a>
-    <a href="https://github.com/viennathebot/vienna-dashboard" class="nav-link" target="_blank"><span>💻</span> GitHub Repo</a>
-  </div>
-</nav>
-
-<main class="main">
-  <!-- HOME PAGE -->
-  <div id="home" class="page active">
-    <div class="header">
-      <h2>Welcome back, Dr. B</h2>
-      <div class="header-meta">
-        <span id="current-time"></span>
-      </div>
-    </div>
-
-    <!-- TABLE OF CONTENTS -->
-    <div id="contents" class="section" style="margin-bottom:2rem">
-      <div class="card" style="border:1px solid #475569">
-        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:.5rem"><span>📋</span> Table of Contents</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem">
-          <a href="todo.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">✅ To-Do List</a>
-          <a href="workout.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">💪 Workout Program</a>
-          <a href="tavr-planning.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">🫀 TAVR Planning</a>
-          <a href="japan-trip/itinerary.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">🇯🇵 Japan Trip</a>
-          <a href="valentines.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">💝 Valentine's for Faith</a>
-          <a href="surrey-womens-clinic/" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">🏥 Surrey Women's Clinic</a>
-          <a href="audi-a7-maintenance/" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">🚗 Audi A7 Maintenance</a>
-          <a href="style-guide/" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">👔 Style Guide</a>
-          <a href="research-briefs/2026-02-04.html" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">☀️ Morning Briefs</a>
-          <a href="projects/case-logger/" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">📋 Case Logger</a>
-          <a href="projects/research-dashboard/" style="color:var(--text);text-decoration:none;padding:.5rem;border-radius:.5rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='transparent'">🔬 Research Dashboard</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- TODAY'S SCHEDULE -->
-    <div class="section" style="margin-bottom:2rem">
-      <div class="card" style="background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);border:2px solid var(--accent)">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-          <h3 style="font-size:1.25rem">📅 Today's Schedule — <span id="today-date">Saturday, February 7</span></h3>
-          <a href="schedule/2026-02.md" style="color:var(--accent);font-size:.875rem">Full Schedule →</a>
-        </div>
-        <div id="today-schedule">
-          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(225,29,72,0.1);border-radius:.5rem;margin-bottom:.5rem">
-            <span style="font-size:1.5rem">🚨</span>
-            <div>
-              <strong style="font-size:1.1rem">STEMI CALL — San Martin</strong>
-              <p style="color:var(--muted);margin:0">7 AM - 7 PM · NV + SM Coverage</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(59,130,246,0.1);border-radius:.5rem;margin-bottom:.5rem">
-            <span style="font-size:1.5rem">🩺</span>
-            <div>
-              <strong style="font-size:1.1rem">7:30 AM — PFO (Rivera) · 9 AM — LHC (Morrison)</strong>
-              <p style="color:var(--muted);margin:0">10:30 AM — TER-R (McDougal) · 12 PM — TTE (Miller) · 2 PM — LHC (McLaughlin)</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(34,197,94,0.1);border-radius:.5rem;margin-bottom:.5rem">
-            <span style="font-size:1.5rem">💪</span>
-            <div>
-              <strong style="font-size:1.1rem">Rest Day</strong>
-              <p style="color:var(--muted);margin:0">Friday is rest day — <a href="workout.html" style="color:#22c55e">View Full Program</a></p>
-            </div>
-          </div>
-          <p style="color:var(--accent);font-size:.875rem;margin-top:1rem;font-weight:600">⚠️ No procedures after 12 PM due to STEMI call</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIENNA'S SOCIALS -->
-    <div class="section" style="margin-bottom:2rem">
-      <div class="section-header">
-        <h3>🌐 Vienna's Socials</h3>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
-        <a href="https://x.com/vienna_hart" target="_blank" style="text-decoration:none;background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;text-align:center;transition:all .2s;display:block" onmouseover="this.style.borderColor='#1da1f2';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#334155';this.style.transform='none'">
-          <div style="font-size:2rem;margin-bottom:.5rem">🐦</div>
-          <div style="color:var(--text);font-weight:600;font-size:.95rem">@viennathebot</div>
-          <div style="color:var(--muted);font-size:.75rem;margin-top:.25rem">Twitter / X</div>
-        </a>
-        <a href="https://www.linkedin.com/in/vienna-hart-54823a3ab/" target="_blank" style="text-decoration:none;background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;text-align:center;transition:all .2s;display:block" onmouseover="this.style.borderColor='#0a66c2';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#334155';this.style.transform='none'">
-          <div style="font-size:2rem;margin-bottom:.5rem">💼</div>
-          <div style="color:var(--text);font-weight:600;font-size:.95rem">Vienna Hart</div>
-          <div style="color:var(--muted);font-size:.75rem;margin-top:.25rem">LinkedIn</div>
-        </a>
-        <a href="https://www.instagram.com/viennathebot/" target="_blank" style="text-decoration:none;background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;text-align:center;transition:all .2s;display:block" onmouseover="this.style.borderColor='#e1306c';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#334155';this.style.transform='none'">
-          <div style="font-size:2rem;margin-bottom:.5rem">📸</div>
-          <div style="color:var(--text);font-weight:600;font-size:.95rem">@viennathebot</div>
-          <div style="color:var(--muted);font-size:.75rem;margin-top:.25rem">Instagram</div>
-        </a>
-      </div>
-    </div>
-
-    <!-- UPCOMING THIS WEEK -->
-    <div class="section" style="margin-bottom:2rem">
-      <div class="section-header">
-        <h3>📆 Upcoming This Week</h3>
-      </div>
-      <div class="list">
-        <a href="schedule/2026-02-05.html" class="list-item" style="opacity:0.5;cursor:pointer">
-          <span>✓</span>
-          <div class="list-item-content">
-            <h4>Thu, Feb 5 — TEE @ Siena</h4>
-            <p>12:30 PM • Cary Rosenthal (USAP Anesthesia)</p>
-          </div>
-          <div class="list-item-meta">Completed →</div>
-        </a>
-        <a href="schedule/2026-02-06.html" class="list-item" style="background:rgba(225,29,72,0.1);cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content">
-            <h4>Fri, Feb 6 — STEMI Call + Procedures @ San Martin</h4>
-            <p>7:30 AM: PFO (Rivera) • 9 AM: LHC (Morrison) • 10:30 AM: TER-R (McDougal) • 12 PM: TTE (Miller) • 2 PM: LHC (McLaughlin)</p>
-          </div>
-          <div class="list-item-meta" style="color:var(--green)">TODAY →</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">4</div>
-        <div class="stat-label">Morning Briefs</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">5</div>
-        <div class="stat-label">Project Ideas</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">3</div>
-        <div class="stat-label">Completed</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-header">
-        <h3>☀️ Latest Morning Briefs</h3>
-        <a href="#briefs" class="section-link" onclick="showPage('briefs')">View All →</a>
-      </div>
-      <div class="list">
-        <a href="research-briefs/2026-02-04.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>February 4, 2026</h4>
-            <p>RAVE-HF Trial, TRILUMINATE Pivotal, Latest LBBB Pacing Data, ACUITY Bleeding Risk</p>
-          </div>
-          <div class="list-item-meta">Latest</div>
-        </a>
-        <a href="research-briefs/2026-02-04.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>February 4, 2026</h4>
-            <p>NAVULTRA Registry, DurAVR, Residual MPG, 3D ICE, Leadless Pacemakers</p>
-          </div>
-          <div class="list-item-meta">Yesterday</div>
-        </a>
-        <a href="research-briefs/2026-02-03.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>February 3, 2026</h4>
-            <p>Cardiology literature roundup</p>
-          </div>
-          <div class="list-item-meta">Yesterday</div>
-        </a>
-        <a href="research-briefs/2026-02-02.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>February 2, 2026</h4>
-            <p>Cardiology literature roundup</p>
-          </div>
-          <div class="list-item-meta">2 days ago</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-header">
-        <h3>🚀 Active Projects</h3>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">🚑</span>
-            <span class="card-badge">Complete</span>
-          </div>
-          <h3>STEMI EMS Presentation</h3>
-          <p>Educational presentation for EMS providers on STEMI recognition and activation protocols.</p>
-          <a href="projects/stemi-presentation/STEMI_EMS_Presentation.pptx" class="card-link" download>Download PPTX →</a>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">📋</span>
-            <span class="card-badge">Active</span>
-          </div>
-          <h3>Case Logger</h3>
-          <p>Web app for tracking interventional cardiology cases and procedures.</p>
-          <a href="projects/case-logger/" class="card-link">Open App →</a>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">🐦</span>
-            <span class="card-badge">Active</span>
-          </div>
-          <h3>@ICPeteB Content</h3>
-          <p>Twitter/X content strategy and drafts for cardiology presence.</p>
-          <a href="projects/twitter-icpeteb/" class="card-link">View Content →</a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-header">
-            <span class="card-icon">⭐</span>
-            <span class="card-badge" style="background:#22c55e">Active</span>
-          </div>
-          <h3>Review Monitor</h3>
-          <p>Automated monitoring of Google, Healthgrades, Vitals, Zocdoc & more for new patient reviews. Runs Tue & Fri at 9 AM.</p>
-          <span class="card-link">🔄 Next check: Tue 9 AM</span>
-        </div>
-
-        <div class="project-card">
-          <div class="card-header">
-            <span class="card-icon">🎨</span>
-            <span class="card-badge" style="background:#22c55e">Active</span>
-          </div>
-          <h3>AI Image Credit Tracker</h3>
-          <p>Daily credit status for Leonardo AI, Recraft, AI Studio, Ideogram & more. Morning report at 5 AM daily.</p>
-          <span class="card-link">🔄 Next report: 5 AM tomorrow</span>
-        </div>
-
-        <div class="project-card">
-          <div class="card-header">
-            <span class="card-icon">🫀</span>
-            <span class="card-badge">Active</span>
-          </div>
-          <h3>TAVR Case Planning</h3>
-          <p>CT scan analysis with valve selection recommendations, sizing, and coronary risk assessment.</p>
-          <a href="tavr-planning.html" class="card-link">Open Planner →</a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-header">
-            <span class="card-icon">💪</span>
-            <span class="card-badge">Active</span>
-          </div>
-          <h3>Workout Program</h3>
-          <p>Custom 5-day split with push/pull/legs, Pilates, and spin. Tailored to Dr. B's schedule.</p>
-          <a href="workout.html" class="card-link">View Program →</a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-header">
-            <span class="card-icon">🇯🇵</span>
-            <span class="card-badge">Planned</span>
-          </div>
-          <h3>Japan Trip Itinerary</h3>
-          <p>14-day Japan trip: Tokyo → Kyoto → Osaka → Tokyo. April 22 - May 5, 2026.</p>
-          <a href="japan-trip/itinerary.html" class="card-link">View Itinerary →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- MORNING BRIEFS PAGE -->
-  <div id="briefs" class="page">
-    <div class="header">
-      <h2>☀️ Morning Briefs</h2>
-      <div class="header-meta">Daily cardiology literature roundups & research summaries</div>
-    </div>
-    
-    <p style="color:var(--muted);margin-bottom:2rem">Each morning, Vienna compiles the latest cardiology research, trials, and publications into a digestible brief for Dr. B.</p>
-    
-    <div class="section">
-      <h3 style="margin-bottom:1rem">📅 February 2026</h3>
-      <div class="list">
-        <a href="research-briefs/2026-02-04.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>Tuesday, February 4, 2026</h4>
-            <p>RAVE-HF Trial, TRILUMINATE Pivotal, Latest LBBB Pacing Data, ACUITY Bleeding Risk</p>
-          </div>
-          <div class="list-item-meta">Latest</div>
-        </a>
-        <a href="research-briefs/2026-02-04.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>Wednesday, February 4, 2026</h4>
-            <p>NAVULTRA Registry, DurAVR Biomimetic THV, Residual Mean Gradient, 3D ICE Review, Leadless Pacemakers</p>
-          </div>
-          <div class="list-item-meta"><a href="research-briefs/pdf/2026-02-04.pdf" download style="color:var(--accent)">PDF ↓</a></div>
-        </a>
-        <a href="research-briefs/2026-02-03.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>Monday, February 3, 2026</h4>
-            <p>Cardiology literature roundup</p>
-          </div>
-          <div class="list-item-meta">Pending</div>
-        </a>
-        <a href="research-briefs/2026-02-02.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>Sunday, February 2, 2026</h4>
-            <p>Cardiology literature roundup</p>
-          </div>
-          <div class="list-item-meta">Pending</div>
-        </a>
-        <a href="research-briefs/2026-02-01.html" class="list-item">
-          <span>📄</span>
-          <div class="list-item-content">
-            <h4>Saturday, February 1, 2026</h4>
-            <p>Cardiology literature roundup</p>
-          </div>
-          <div class="list-item-meta">Pending</div>
-        </a>
-      </div>
-    </div>
-    
-    <div class="section" style="margin-top:2rem">
-      <h3 style="margin-bottom:1rem">📥 Quick Download</h3>
-      <div class="grid">
-        <a href="research-briefs/pdf/2026-02-04.pdf" class="card" download style="text-decoration:none">
-          <span style="font-size:2rem">📥</span>
-          <h3>Feb 5 PDF</h3>
-          <p>Download today's brief</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SCHEDULE PAGE -->
-  <div id="schedule" class="page">
-    <div class="header">
-      <h2>📅 Schedule</h2>
-      <div class="header-meta">February 2026 • Dr. Peter Bleszynski</div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:1rem">🚨 STEMI Call Schedule</h3>
-      <div class="list">
-        <a href="schedule/2026-02-02.html" class="list-item" style="opacity:0.5;cursor:pointer">
-          <span>✓</span>
-          <div class="list-item-content"><h4>Mon, Feb 2</h4><p>NV + SM STEMI | ER Call 7am-5pm</p></div>
-          <div class="list-item-meta">Completed →</div>
-        </a>
-        <a href="schedule/2026-02-06.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Fri, Feb 6</h4><p>NV + SM STEMI (7am-7pm) | ER Call 7am-5pm</p></div>
-          <div class="list-item-meta" style="color:var(--accent)">Upcoming →</div>
-        </a>
-        <a href="schedule/2026-02-10.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Tue, Feb 10</h4><p>NV + SM STEMI | ER Call 24h (7am-7am)</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-12.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Thu, Feb 12</h4><p>NV + SM STEMI | ER Call 7am-5pm</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-16.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Mon, Feb 16</h4><p>NV + SM STEMI</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-20.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Fri-Sun, Feb 20-22</h4><p>NV + SM STEMI (Weekend)</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-26.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Thu, Feb 26</h4><p>NV + SM STEMI</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:1rem">📆 This Week (Feb 2-8)</h3>
-      <div class="list">
-        <a href="schedule/2026-02-02.html" class="list-item" style="opacity:0.5;cursor:pointer">
-          <span>✓</span>
-          <div class="list-item-content"><h4>Mon, Feb 2</h4><p>9 AM: LHC (Thandi Nlbapo) @ NV | 1-5 PM: Clinic @ Henderson</p></div>
-          <div class="list-item-meta">Completed →</div>
-        </a>
-        <a href="schedule/2026-02-03.html" class="list-item" style="opacity:0.5;cursor:pointer">
-          <span>✓</span>
-          <div class="list-item-content"><h4>Tue, Feb 3</h4><p>9 AM-5 PM: Clinic @ Fort Apache | 4:15 PM: DMV License Renewal @ Henderson</p></div>
-          <div class="list-item-meta">Completed →</div>
-        </a>
-        <a href="schedule/2026-02-05.html" class="list-item" style="opacity:0.5;cursor:pointer">
-          <span>✓</span>
-          <div class="list-item-content"><h4>Thu, Feb 5 — Completed</h4><p>12:30 PM: TEE — Cary Rosenthal @ Siena (USAP Anesthesia)</p></div>
-          <div class="list-item-meta">Done →</div>
-        </a>
-        <a href="schedule/2026-02-06.html" class="list-item" style="background:rgba(225,29,72,0.1);cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Fri, Feb 6 — TODAY — STEMI CALL</h4><p>7:30 AM: PFO (Rivera) | 9 AM: LHC (Morrison) | 10:30 AM: TER-R (McDougal) | 12 PM: TTE (Miller) | 2 PM: LHC (McLaughlin)</p></div>
-          <div class="list-item-meta" style="color:var(--green)">Current →</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:1rem">📆 Next Week (Feb 9-15)</h3>
-      <div class="list">
-        <a href="schedule/2026-02-10.html" class="list-item" style="cursor:pointer">
-          <span>🩺</span>
-          <div class="list-item-content"><h4>Tue, Feb 10 — STEMI CALL (24h)</h4><p>7:30 AM: Assist Dr. Woods @ Siena | 11:30 AM: MitraClip (Koel) | 1:30 PM: MitraClip (Carter)</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-11.html" class="list-item" style="cursor:pointer">
-          <span>📋</span>
-          <div class="list-item-content"><h4>Wed, Feb 11</h4><p>11:30 AM: PBC Meeting @ North Vista (MD NOT AVAILABLE)</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-12.html" class="list-item" style="cursor:pointer">
-          <span>🚨</span>
-          <div class="list-item-content"><h4>Thu, Feb 12 — STEMI CALL</h4><p>6 AM: TTE | 9 AM: LHC | 10:30 AM: LHC | 12 PM: R/LHC @ Mountain View</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-        <a href="schedule/2026-02-13.html" class="list-item" style="cursor:pointer">
-          <span>🩺</span>
-          <div class="list-item-content"><h4>Fri, Feb 13</h4><p>6 procedures @ San Martin: LHC, TTE, and more</p></div>
-          <div class="list-item-meta">View →</div>
-        </a>
-      </div>
-    </div>
-
-    <p style="color:var(--muted);margin-top:2rem;font-size:.875rem">📍 NV = North Vista | SM = San Martin | Full schedule: <a href="schedule/2026-02.md" style="color:var(--accent)">schedule/2026-02.md</a></p>
-  </div>
-
-  <!-- PROJECT IDEAS PAGE -->
-  <div id="ideas" class="page">
-    <div class="header">
-      <h2>💡 Project Ideas</h2>
-      <div class="header-meta">Future projects and improvements Vienna is tracking</div>
-    </div>
-    
-    <div class="section">
-      <h3 style="margin-bottom:1rem">🔥 High Priority</h3>
-      <div class="list">
-        <div class="list-item">
-          <span>📧</span>
-          <div class="list-item-content">
-            <h4>Email Integration (gog)</h4>
-            <p>Set up Gmail CLI so Vienna can send morning briefs and research summaries via email</p>
-          </div>
-          <div class="list-item-meta" style="color:var(--accent)">In Progress</div>
-        </div>
-        <div class="list-item">
-          <span>📱</span>
-          <div class="list-item-content">
-            <h4>Renal Denervation Program Materials</h4>
-            <p>Create educational content, referral materials, and patient information for the RDN program</p>
-          </div>
-          <div class="list-item-meta">Planned</div>
-        </div>
-        <div class="list-item">
-          <span>🐦</span>
-          <div class="list-item-content">
-            <h4>@ICPeteB Content Automation</h4>
-            <p>Automated trial summaries and cardiology content for Twitter/X presence</p>
-          </div>
-          <div class="list-item-meta">Planned</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:1rem">📋 Backlog</h3>
-      <div class="list">
-        <div class="list-item">
-          <span>📊</span>
-          <div class="list-item-content">
-            <h4>Case Volume Dashboard</h4>
-            <p>Visual dashboard for tracking procedure volumes, outcomes, and trends</p>
-          </div>
-          <div class="list-item-meta">Idea</div>
-        </div>
-        <div class="list-item">
-          <span>📅</span>
-          <div class="list-item-content">
-            <h4>Conference Calendar</h4>
-            <p>Track cardiology conferences, abstract deadlines, and speaking opportunities</p>
-          </div>
-          <div class="list-item-meta">Idea</div>
-        </div>
-        <div class="list-item">
-          <span>🎓</span>
-          <div class="list-item-content">
-            <h4>Fellowship Teaching Resources</h4>
-            <p>Curated educational materials for cardiology fellows and trainees</p>
-          </div>
-          <div class="list-item-meta">Idea</div>
-        </div>
-        <div class="list-item">
-          <span>📝</span>
-          <div class="list-item-content">
-            <h4>Personal Website (drbleszynski.com)</h4>
-            <p>Professional portfolio site with bio, publications, and contact info</p>
-          </div>
-          <div class="list-item-meta">Idea</div>
-        </div>
-        <div class="list-item">
-          <span>🏥</span>
-          <div class="list-item-content">
-            <h4>STEMI Protocol Optimization</h4>
-            <p>Door-to-balloon time tracking and protocol improvement tools</p>
-          </div>
-          <div class="list-item-meta">Idea</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:1rem">✅ Completed</h3>
-      <div class="list">
-        <div class="list-item" style="opacity:0.7">
-          <span>✓</span>
-          <div class="list-item-content">
-            <h4>STEMI EMS Presentation</h4>
-            <p>Educational slides for EMS providers on STEMI recognition</p>
-          </div>
-          <div class="list-item-meta" style="color:var(--green)">Done</div>
-        </div>
-        <div class="list-item" style="opacity:0.7">
-          <span>✓</span>
-          <div class="list-item-content">
-            <h4>Vienna Dashboard</h4>
-            <p>Central hub for all projects and resources</p>
-          </div>
-          <div class="list-item-meta" style="color:var(--green)">Done</div>
-        </div>
-        <div class="list-item" style="opacity:0.7">
-          <span>✓</span>
-          <div class="list-item-content">
-            <h4>Case Logger App</h4>
-            <p>Web app for tracking interventional cardiology cases</p>
-          </div>
-          <div class="list-item-meta" style="color:var(--green)">Done</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GALLERY PAGE -->
-  <div id="gallery" class="page">
-    <div class="header">
-      <h2>🖼️ Vienna Gallery</h2>
-      <div class="header-meta"><span id="gallery-count">211</span> / 1,000 images</div>
-    </div>
-    
-    <!-- Progress bar -->
-    <div style="background:#334155;border-radius:.5rem;height:8px;margin-bottom:1.5rem;overflow:hidden">
-      <div id="gallery-progress" style="background:linear-gradient(90deg,var(--accent),var(--blue));height:100%;width:17.7%;transition:width .3s"></div>
-    </div>
-    
-    <!-- Category filters - dynamically updated with counts -->
-    <div id="gallery-filters" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
-      <button class="filter-btn active" data-category="all" onclick="filterGallery('all')">All</button>
-      <button class="filter-btn" data-category="intimate" onclick="filterGallery('intimate')">🔥 Intimate</button>
-      <button class="filter-btn" data-category="casual" onclick="filterGallery('casual')">☕ Casual</button>
-      <button class="filter-btn" data-category="glamour" onclick="filterGallery('glamour')">✨ Glamour</button>
-      <button class="filter-btn" data-category="lifestyle" onclick="filterGallery('lifestyle')">🌸 Lifestyle</button>
-      <button class="filter-btn" data-category="cozy" onclick="filterGallery('cozy')">📚 Cozy</button>
-      <button class="filter-btn" data-category="professional" onclick="filterGallery('professional')">💼 Professional</button>
-    </div>
-    
-    <!-- Lightbox Overlay -->
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#8249;</button>
-      <img id="lightbox-img" src="" alt="">
-      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#8250;</button>
-      <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">0</span></div>
-    </div>
-
-    <div class="gallery" id="full-gallery">
-      <!-- Populated by JS from catalog.json -->
-    </div>
-  </div>
-</main>
-
-<style>
-.filter-btn{background:var(--card);border:1px solid #334155;color:var(--text);padding:.5rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;transition:all .2s}
-.filter-btn:hover{border-color:#475569;background:rgba(255,255,255,.05)}
-.filter-btn.active{background:var(--accent);border-color:var(--accent);color:white}
-</style>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
+  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">0</span></div>
+</div>
 
 <script>
-// Page navigation
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  event.target.closest('.nav-link')?.classList.add('active');
-}
-
-// Time display
-function updateTime() {
-  const now = new Date();
-  document.getElementById('current-time').textContent = now.toLocaleString('en-US', {
-    weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'
-  });
-}
-updateTime();
-setInterval(updateTime, 60000);
-
-// Vienna Gallery - loads from catalog.json with categories
-let galleryData = { images: [], categories: {} };
+let catalog = { images: [], stats: {} };
 let currentFilter = 'all';
+let currentIndex = 0;
+let filteredImages = [];
 
-async function loadGalleryCatalog() {
-  try {
-    const res = await fetch('images/catalog.json?' + Date.now());
-    galleryData = await res.json();
-    renderGallery();
-    updateGalleryStats();
-  } catch(e) {
-    console.error('Failed to load catalog:', e);
-  }
+// Load catalog
+fetch('images/catalog.json')
+  .then(r => r.json())
+  .then(data => {
+    catalog = data;
+    updateStats();
+    filterGallery('all');
+  })
+  .catch(() => {
+    // Fallback: load images directly from folder listing
+    loadImagesFromFolder();
+  });
+
+function loadImagesFromFolder() {
+  // This won't work on GitHub Pages without a catalog, so we need the catalog.json
+  document.getElementById('gallery').innerHTML = '<p style="color:var(--muted)">Loading images...</p>';
 }
 
-function renderGallery() {
-  const gallery = document.getElementById('full-gallery');
-  gallery.innerHTML = '';
+function updateStats() {
+  const stats = catalog.stats || {};
+  const total = stats.total || catalog.images.length;
+  document.getElementById('gallery-count').textContent = total;
+  document.getElementById('progress').style.width = (total / 1000 * 100) + '%';
   
-  const filtered = currentFilter === 'all' 
-    ? galleryData.images 
-    : galleryData.images.filter(img => img.category === currentFilter);
-  
-  filtered.forEach(img => {
-    const imgEl = document.createElement('img');
-    imgEl.src = 'images/' + img.filename;
-    imgEl.alt = img.category;
-    imgEl.title = img.category + ': ' + img.filename;
-    imgEl.onclick = () => openLightbox(filtered.indexOf(img));
-    gallery.appendChild(imgEl);
-  });
-  
-  document.getElementById('gallery-count').textContent = filtered.length + (currentFilter === 'all' ? '' : ' ' + currentFilter);
+  // Show category stats
+  const statsEl = document.getElementById('stats');
+  const byCategory = stats.byCategory || {};
+  statsEl.innerHTML = Object.entries(byCategory)
+    .sort((a,b) => b[1] - a[1])
+    .map(([cat, count]) => `<div class="stat"><div class="stat-value">${count}</div><div class="stat-label">${cat}</div></div>`)
+    .join('');
 }
 
 function filterGallery(category) {
   currentFilter = category;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`[data-category="${category}"]`).classList.add('active');
+  
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Filter images
+  if (category === 'all') {
+    filteredImages = catalog.images;
+  } else {
+    filteredImages = catalog.images.filter(img => img.category === category);
+  }
+  
   renderGallery();
 }
 
-function updateGalleryStats() {
-  const total = galleryData.images.length;
-  const goal = galleryData.goal || 1000;
-  document.getElementById('gallery-count').textContent = total;
-  document.getElementById('gallery-progress').style.width = (total / goal * 100) + '%';
+function renderGallery() {
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = filteredImages.map((img, i) => 
+    `<img src="images/${img.filename}" alt="Vienna" loading="lazy" onclick="openLightbox(${i})">`
+  ).join('');
   
-  // Update filter button counts
-  if (galleryData.stats?.byCategory) {
-    Object.entries(galleryData.stats.byCategory).forEach(([cat, count]) => {
-      const btn = document.querySelector(`[data-category="${cat}"]`);
-      if (btn && !btn.dataset.hasCount) {
-        btn.textContent += ` (${count})`;
-        btn.dataset.hasCount = 'true';
-      }
-    });
-  }
+  document.getElementById('lightbox-total').textContent = filteredImages.length;
 }
 
-loadGalleryCatalog();
-
-// Lightbox functionality
-let lightboxImages = [];
-let lightboxIndex = 0;
-
 function openLightbox(index) {
-  lightboxImages = currentFilter === 'all' 
-    ? galleryData.images 
-    : galleryData.images.filter(img => img.category === currentFilter);
-  lightboxIndex = index;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
+  currentIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = 'images/' + filteredImages[index].filename;
+  document.getElementById('lightbox-current').textContent = index + 1;
+  lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
@@ -833,37 +160,23 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-function navigateLightbox(delta) {
-  lightboxIndex = (lightboxIndex + delta + lightboxImages.length) % lightboxImages.length;
-  updateLightbox();
+function nextImage() {
+  currentIndex = (currentIndex + 1) % filteredImages.length;
+  openLightbox(currentIndex);
 }
 
-function updateLightbox() {
-  const img = lightboxImages[lightboxIndex];
-  document.getElementById('lightbox-img').src = 'images/' + img.filename;
-  document.getElementById('lightbox-current').textContent = lightboxIndex + 1;
-  document.getElementById('lightbox-total').textContent = lightboxImages.length;
+function prevImage() {
+  currentIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
+  openLightbox(currentIndex);
 }
 
 // Keyboard navigation
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('active')) return;
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') navigateLightbox(-1);
-  if (e.key === 'ArrowRight') navigateLightbox(1);
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
 });
-
-// Click outside image to close
-document.getElementById('lightbox').addEventListener('click', (e) => {
-  if (e.target.id === 'lightbox') closeLightbox();
-});
-
-// Handle hash navigation
-if (window.location.hash) {
-  const page = window.location.hash.substring(1);
-  if (document.getElementById(page)) showPage(page);
-}
 </script>
 </body>
 </html>
-<!-- Updated Fri Feb 6 19:52:00 PST 2026 -->
