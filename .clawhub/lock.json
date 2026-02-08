@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "skills": {
+    "last30days-lite": {
+      "version": "1.0.0",
+      "installedAt": 1770472202087
+    },
+    "email-daily-summary": {
+      "version": "0.1.0",
+      "installedAt": 1770530284960
+    },
+    "apple-mail": {
+      "version": "1.2.0",
+      "installedAt": 1770530287020
+    },
+    "gcalcli-calendar": {
+      "version": "2.1.0",
+      "installedAt": 1770530288334
+    },
+    "x-twitter": {
+      "version": "2.3.1",
+      "installedAt": 1770530289881
+    },
+    "computer-use": {
+      "version": "1.2.0",
+      "installedAt": 1770530291794
+    },
+    "youtube-transcript": {
+      "version": "1.0.1",
+      "installedAt": 1770530293156
+    },
+    "macbook-optimizer": {
+      "version": "1.0.1",
+      "installedAt": 1770530294484
+    },
+    "agent-selfie": {
+      "version": "1.2.0",
+      "installedAt": 1770530296015
+    },
+    "openclaw-social-scheduler": {
+      "version": "0.1.0",
+      "installedAt": 1770530298573
+    },
+    "yahoo-finance": {
+      "version": "1.0.0",
+      "installedAt": 1770530299799
+    },
+    "rescuetime": {
+      "version": "1.0.0",
+      "installedAt": 1770530309223
+    },
+    "focus-deep-work": {
+      "version": "1.0.0",
+      "installedAt": 1770530310757
+    },
+    "automation-workflows": {
+      "version": "0.1.0",
+      "installedAt": 1770530311838
+    },
+    "omnifocus-automation": {
+      "version": "1.0.0",
+      "installedAt": 1770530313221
+    },
+    "better-notion": {
+      "version": "1.1.0",
+      "installedAt": 1770530314750
+    },
+    "google-imagen-3-portrait-photography": {
+      "version": "1.0.0",
+      "installedAt": 1770530316190
+    },
+    "antigravity-image-gen": {
+      "version": "1.0.0",
+      "installedAt": 1770530317267
+    },
+    "veo": {
+      "version": "1.0.1",
+      "installedAt": 1770530318747
+    },
+    "demo-video": {
+      "version": "1.0.0",
+      "installedAt": 1770530320185
+    },
+    "pinchsocial": {
+      "version": "2.0.0",
+      "installedAt": 1770530321718
+    },
+    "social-card-gen": {
+      "version": "1.0.2",
+      "installedAt": 1770530329394
+    },
+    "tg-history": {
+      "version": "1.0.1",
+      "installedAt": 1770530330725
+    },
+    "agentledger": {
+      "version": "1.1.1",
+      "installedAt": 1770530332347
+    },
+    "finance": {
+      "version": "1.1.2",
+      "installedAt": 1770530334208
+    },
+    "home-assistant": {
+      "version": "1.0.0",
+      "installedAt": 1770530335446
+    },
+    "mole-mac-cleanup": {
+      "version": "1.1.0",
+      "installedAt": 1770530336881
+    },
+    "frinkiac": {
+      "version": "1.0.0",
+      "installedAt": 1770530338153
+    },
+    "sendclaw": {
+      "version": "1.0.10",
+      "installedAt": 1770530339539
+    },
+    "accli": {
+      "version": "1.0.0",
+      "installedAt": 1770530340972
+    },
+    "browser-automation": {
+      "version": "1.0.1",
+      "installedAt": 1770530350188
+    }
+  }
+}

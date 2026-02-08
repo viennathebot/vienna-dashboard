@@ -1,0 +1,1274 @@
+{
+  "summary": {
+    "total_skills_scanned": 29,
+    "total_findings": 49,
+    "safe_skills": 28,
+    "findings_by_severity": {
+      "critical": 6,
+      "high": 0,
+      "medium": 14,
+      "low": 0,
+      "info": 29
+    },
+    "timestamp": "2026-02-07T22:21:21.490408"
+  },
+  "results": [
+    {
+      "skill_name": "veo",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/veo",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/veo",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.1638638973236084,
+      "duration_ms": 163,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.655559"
+    },
+    {
+      "skill_name": "mole-mac-cleanup",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/mole-mac-cleanup",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/mole-mac-cleanup",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0008130073547363281,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.657591"
+    },
+    {
+      "skill_name": "accli",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/accli",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/accli",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0012359619140625,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.659517"
+    },
+    {
+      "skill_name": "sendclaw",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/sendclaw",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/sendclaw",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0018351078033447266,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.662179"
+    },
+    {
+      "skill_name": "omnifocus",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/omnifocus-automation",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/omnifocus-automation",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0008671283721923828,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.663776"
+    },
+    {
+      "skill_name": "agentledger",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/agentledger",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/agentledger",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0016160011291503906,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.667879"
+    },
+    {
+      "skill_name": "rescuetime",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/rescuetime",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/rescuetime",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0006437301635742188,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.668957"
+    },
+    {
+      "skill_name": "email-daily-summary",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/email-daily-summary",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/email-daily-summary",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0017628669738769531,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.671425"
+    },
+    {
+      "skill_name": "better-notion",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/better-notion",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/better-notion",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0006470680236816406,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.672501"
+    },
+    {
+      "skill_name": "google-imagen-3-portrait-photography",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/google-imagen-3-portrait-photography",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/google-imagen-3-portrait-photography",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0007107257843017578,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.674536"
+    },
+    {
+      "skill_name": "focus-deep-work",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/focus-deep-work",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/focus-deep-work",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0006492137908935547,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.675632"
+    },
+    {
+      "skill_name": "last30days",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/last30days-lite",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/last30days-lite",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0006539821624755859,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.676812"
+    },
+    {
+      "skill_name": "pinchsocial",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/pinchsocial",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/pinchsocial",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0018742084503173828,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:21.679471"
+    },
+    {
+      "skill_name": "agent-selfie",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/agent-selfie",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/agent-selfie",
+      "is_safe": true,
+      "max_severity": "MEDIUM",
+      "findings_count": 5,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "DATA_EXFIL_NETWORK_REQUESTS_e18833aba5",
+          "rule_id": "DATA_EXFIL_NETWORK_REQUESTS",
+          "category": "data_exfiltration",
+          "severity": "MEDIUM",
+          "title": "HTTP client library imports that enable external communication",
+          "description": "Pattern detected: import urllib.request",
+          "file_path": "scripts/selfie.py",
+          "line_number": 12,
+          "snippet": "import urllib.request",
+          "remediation": "Ensure network access is necessary and documented. Review all URLs",
+          "analyzer": "static",
+          "metadata": {
+            "matched_pattern": "import\\s+urllib\\.request",
+            "matched_text": "import urllib.request",
+            "aitech": "AITech-8.2",
+            "aitech_name": "Data Exfiltration / Exposure",
+            "scanner_category": "SECURITY VIOLATION"
+          }
+        },
+        {
+          "id": "TOOL_MISMATCH_NETWORK_29d46ae837",
+          "rule_id": "TOOL_ABUSE_UNDECLARED_NETWORK",
+          "category": "unauthorized_tool_use",
+          "severity": "MEDIUM",
+          "title": "Undeclared network usage",
+          "description": "Skill code uses network libraries but doesn't declare network requirement",
+          "file_path": null,
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Declare network usage in compatibility field or remove network calls",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "DESC_BEHAVIOR_MISMATCH_5a694f4b43",
+          "rule_id": "SOCIAL_ENG_MISLEADING_DESC",
+          "category": "social_engineering",
+          "severity": "MEDIUM",
+          "title": "Potential description-behavior mismatch",
+          "description": "Skill performs actions not reflected in its description",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Ensure description accurately reflects all skill capabilities",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "ENV_VAR_HARVESTING_725bca0060",
+          "rule_id": "BEHAVIOR_ENV_VAR_HARVESTING",
+          "category": "data_exfiltration",
+          "severity": "MEDIUM",
+          "title": "Environment variable harvesting detected",
+          "description": "Script iterates through environment variables in /Users/vi/.openclaw/workspace/skills/agent-selfie/scripts/selfie.py",
+          "file_path": "/Users/vi/.openclaw/workspace/skills/agent-selfie/scripts/selfie.py",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Remove environment variable collection unless explicitly required and documented",
+          "analyzer": "behavioral",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 1.441377878189087,
+      "duration_ms": 1441,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.121676"
+    },
+    {
+      "skill_name": "frinkiac",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/frinkiac",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/frinkiac",
+      "is_safe": true,
+      "max_severity": "MEDIUM",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "YARA_capability_inflation_generic_ce38b4e549",
+          "rule_id": "YARA_capability_inflation_generic",
+          "category": "skill_discovery_abuse",
+          "severity": "MEDIUM",
+          "title": "SKILL DISCOVERY ABUSE detected by YARA",
+          "description": "Detects protocol manipulation via capability inflation in skill discovery: perfect",
+          "file_path": "SKILL.md",
+          "line_number": 67,
+          "snippet": "Browse adjacent frames to find the perfect screenshot.",
+          "remediation": "Review and remove skill discovery abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "capability_inflation_generic",
+            "yara_namespace": "capability_inflation_generic",
+            "matched_string": "$overpromising",
+            "threat_type": "SKILL DISCOVERY ABUSE"
+          }
+        },
+        {
+          "id": "YARA_capability_inflation_generic_1e341b0e03",
+          "rule_id": "YARA_capability_inflation_generic",
+          "category": "skill_discovery_abuse",
+          "severity": "MEDIUM",
+          "title": "SKILL DISCOVERY ABUSE detected by YARA",
+          "description": "Detects protocol manipulation via capability inflation in skill discovery: perfect",
+          "file_path": "SKILL.md",
+          "line_number": 94,
+          "snippet": "2. Use `get_nearby_frames` to find the perfect frame",
+          "remediation": "Review and remove skill discovery abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "capability_inflation_generic",
+            "yara_namespace": "capability_inflation_generic",
+            "matched_string": "$overpromising",
+            "threat_type": "SKILL DISCOVERY ABUSE"
+          }
+        }
+      ],
+      "scan_duration_seconds": 0.0007638931274414062,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.123159"
+    },
+    {
+      "skill_name": "twitter-openclaw",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/x-twitter",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/x-twitter",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0008881092071533203,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.125574"
+    },
+    {
+      "skill_name": "home-assistant",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/home-assistant",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/home-assistant",
+      "is_safe": false,
+      "max_severity": "CRITICAL",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "YARA_command_injection_generic_90dd777ff7",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 49,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" -H \"Content-Type: application/json\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_command_injection_generic_965bf2bd51",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 53,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" -H \"Content-Type: application/json\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_command_injection_generic_4ab367061f",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 57,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" -H \"Content-Type: application/json\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_command_injection_generic_407d8d391b",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 65,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" \"$HA_URL/api/services/script/turn_on\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_command_injection_generic_ce225eedbc",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 69,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" \"$HA_URL/api/services/automation/trigger\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_command_injection_generic_483efc7632",
+          "rule_id": "YARA_command_injection_generic",
+          "category": "command_injection",
+          "severity": "CRITICAL",
+          "title": "INJECTION ATTACK detected by YARA",
+          "description": "Detects command injection patterns in agent skills: shell operators, system commands, and network tools: curl -X POST -H \"Authorization: Bearer $HA_TOKEN",
+          "file_path": "SKILL.md",
+          "line_number": 76,
+          "snippet": "curl -X POST -H \"Authorization: Bearer $HA_TOKEN\" \"$HA_URL/api/services/scene/turn_on\" \\",
+          "remediation": "Review and remove injection attack pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "command_injection_generic",
+            "yara_namespace": "command_injection_generic",
+            "matched_string": "$curl_post_sensitive",
+            "threat_type": "INJECTION ATTACK"
+          }
+        },
+        {
+          "id": "YARA_indirect_prompt_injection_generic_1cc3ae4773",
+          "rule_id": "YARA_indirect_prompt_injection_generic",
+          "category": "transitive_trust_abuse",
+          "severity": "MEDIUM",
+          "title": "TRANSITIVE TRUST ABUSE detected by YARA",
+          "description": "Detects indirect prompt injection via instruction manipulation from external sources: Run Scripts",
+          "file_path": "SKILL.md",
+          "line_number": 61,
+          "snippet": "### Run Scripts & Automations",
+          "remediation": "Review and remove transitive trust abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "indirect_prompt_injection_generic",
+            "yara_namespace": "indirect_prompt_injection_generic",
+            "matched_string": "$execute_inline",
+            "threat_type": "TRANSITIVE TRUST ABUSE"
+          }
+        },
+        {
+          "id": "YARA_indirect_prompt_injection_generic_b1bef65344",
+          "rule_id": "YARA_indirect_prompt_injection_generic",
+          "category": "transitive_trust_abuse",
+          "severity": "MEDIUM",
+          "title": "TRANSITIVE TRUST ABUSE detected by YARA",
+          "description": "Detects indirect prompt injection via instruction manipulation from external sources: Run script",
+          "file_path": "scripts/ha.sh",
+          "line_number": 81,
+          "snippet": "# Run script: ha.sh script goodnight",
+          "remediation": "Review and remove transitive trust abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "indirect_prompt_injection_generic",
+            "yara_namespace": "indirect_prompt_injection_generic",
+            "matched_string": "$execute_inline",
+            "threat_type": "TRANSITIVE TRUST ABUSE"
+          }
+        },
+        {
+          "id": "YARA_indirect_prompt_injection_generic_c3f6510077",
+          "rule_id": "YARA_indirect_prompt_injection_generic",
+          "category": "transitive_trust_abuse",
+          "severity": "MEDIUM",
+          "title": "TRANSITIVE TRUST ABUSE detected by YARA",
+          "description": "Detects indirect prompt injection via instruction manipulation from external sources: Run script",
+          "file_path": "scripts/ha.sh",
+          "line_number": 154,
+          "snippet": "automation <name>           Trigger automation",
+          "remediation": "Review and remove transitive trust abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "indirect_prompt_injection_generic",
+            "yara_namespace": "indirect_prompt_injection_generic",
+            "matched_string": "$execute_inline",
+            "threat_type": "TRANSITIVE TRUST ABUSE"
+          }
+        }
+      ],
+      "scan_duration_seconds": 0.0033690929412841797,
+      "duration_ms": 3,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.129715"
+    },
+    {
+      "skill_name": "finance",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/finance",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/finance",
+      "is_safe": true,
+      "max_severity": "MEDIUM",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "DATA_EXFIL_NETWORK_REQUESTS_d981c5562a",
+          "rule_id": "DATA_EXFIL_NETWORK_REQUESTS",
+          "category": "data_exfiltration",
+          "severity": "MEDIUM",
+          "title": "HTTP client library imports that enable external communication",
+          "description": "Pattern detected: import requests",
+          "file_path": "scripts/market_quote.py",
+          "line_number": 25,
+          "snippet": "import requests",
+          "remediation": "Ensure network access is necessary and documented. Review all URLs",
+          "analyzer": "static",
+          "metadata": {
+            "matched_pattern": "import\\s+requests",
+            "matched_text": "import requests",
+            "aitech": "AITech-8.2",
+            "aitech_name": "Data Exfiltration / Exposure",
+            "scanner_category": "SECURITY VIOLATION"
+          }
+        },
+        {
+          "id": "TOOL_MISMATCH_NETWORK_e71ce93e3d",
+          "rule_id": "TOOL_ABUSE_UNDECLARED_NETWORK",
+          "category": "unauthorized_tool_use",
+          "severity": "MEDIUM",
+          "title": "Undeclared network usage",
+          "description": "Skill code uses network libraries but doesn't declare network requirement",
+          "file_path": null,
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Declare network usage in compatibility field or remove network calls",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.6698641777038574,
+      "duration_ms": 669,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.800442"
+    },
+    {
+      "skill_name": "tg-history",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/tg-history",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/tg-history",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0002512931823730469,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.801467"
+    },
+    {
+      "skill_name": "demo-video",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/demo-video",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/demo-video",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0017638206481933594,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:23.803805"
+    },
+    {
+      "skill_name": "apple-mail",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/apple-mail",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/apple-mail",
+      "is_safe": true,
+      "max_severity": "MEDIUM",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "YARA_indirect_prompt_injection_generic_a351367b77",
+          "rule_id": "YARA_indirect_prompt_injection_generic",
+          "category": "transitive_trust_abuse",
+          "severity": "MEDIUM",
+          "title": "TRANSITIVE TRUST ABUSE detected by YARA",
+          "description": "Detects indirect prompt injection via instruction manipulation from external sources: Run scripts",
+          "file_path": "SKILL.md",
+          "line_number": 3,
+          "snippet": "Interact with Mail.app via AppleScript and SQLite. Run scripts from: `cd {baseDir}`",
+          "remediation": "Review and remove transitive trust abuse pattern",
+          "analyzer": "static",
+          "metadata": {
+            "yara_rule": "indirect_prompt_injection_generic",
+            "yara_namespace": "indirect_prompt_injection_generic",
+            "matched_string": "$execute_inline",
+            "threat_type": "TRANSITIVE TRUST ABUSE"
+          }
+        }
+      ],
+      "scan_duration_seconds": 0.45981526374816895,
+      "duration_ms": 459,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.266353"
+    },
+    {
+      "skill_name": "social-gen",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/social-card-gen",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/social-card-gen",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0005729198455810547,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.267609"
+    },
+    {
+      "skill_name": "computer-use",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/computer-use",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/computer-use",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.00436711311340332,
+      "duration_ms": 4,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.273614"
+    },
+    {
+      "skill_name": "antigravity-image-gen",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/antigravity-image-gen",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/antigravity-image-gen",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.00031113624572753906,
+      "duration_ms": 0,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.274338"
+    },
+    {
+      "skill_name": "browser",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/browser-automation",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/browser-automation",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.004759073257446289,
+      "duration_ms": 4,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.279923"
+    },
+    {
+      "skill_name": "automation-workflows",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/automation-workflows",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/automation-workflows",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.002190113067626953,
+      "duration_ms": 2,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.283044"
+    },
+    {
+      "skill_name": "gcalcli-calendar",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/gcalcli-calendar",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/gcalcli-calendar",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0015289783477783203,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.285322"
+    },
+    {
+      "skill_name": "yahoo-finance",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/yahoo-finance",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/yahoo-finance",
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.0010521411895751953,
+      "duration_ms": 1,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.286798"
+    },
+    {
+      "skill_name": "youtube-transcript",
+      "skill_path": "/Users/vi/.openclaw/workspace/skills/youtube-transcript",
+      "skill_directory": "/Users/vi/.openclaw/workspace/skills/youtube-transcript",
+      "is_safe": true,
+      "max_severity": "MEDIUM",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "MANIFEST_MISSING_LICENSE_c5ae9be793",
+          "rule_id": "MANIFEST_MISSING_LICENSE",
+          "category": "policy_violation",
+          "severity": "INFO",
+          "title": "Skill does not specify a license",
+          "description": "Skill manifest does not include a 'license' field. Specifying a license helps users understand usage terms.",
+          "file_path": "SKILL.md",
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Add 'license' field to SKILL.md frontmatter (e.g., MIT, Apache-2.0)",
+          "analyzer": "static",
+          "metadata": {}
+        },
+        {
+          "id": "DATA_EXFIL_NETWORK_REQUESTS_b76ac026c1",
+          "rule_id": "DATA_EXFIL_NETWORK_REQUESTS",
+          "category": "data_exfiltration",
+          "severity": "MEDIUM",
+          "title": "HTTP client library imports that enable external communication",
+          "description": "Pattern detected: import requests",
+          "file_path": "scripts/fetch_transcript.py",
+          "line_number": 7,
+          "snippet": "import requests",
+          "remediation": "Ensure network access is necessary and documented. Review all URLs",
+          "analyzer": "static",
+          "metadata": {
+            "matched_pattern": "import\\s+requests",
+            "matched_text": "import requests",
+            "aitech": "AITech-8.2",
+            "aitech_name": "Data Exfiltration / Exposure",
+            "scanner_category": "SECURITY VIOLATION"
+          }
+        },
+        {
+          "id": "TOOL_MISMATCH_NETWORK_06a7e265d4",
+          "rule_id": "TOOL_ABUSE_UNDECLARED_NETWORK",
+          "category": "unauthorized_tool_use",
+          "severity": "MEDIUM",
+          "title": "Undeclared network usage",
+          "description": "Skill code uses network libraries but doesn't declare network requirement",
+          "file_path": null,
+          "line_number": null,
+          "snippet": null,
+          "remediation": "Declare network usage in compatibility field or remove network calls",
+          "analyzer": "static",
+          "metadata": {}
+        }
+      ],
+      "scan_duration_seconds": 0.46424293518066406,
+      "duration_ms": 464,
+      "analyzers_used": [
+        "static_analyzer",
+        "behavioral_analyzer"
+      ],
+      "timestamp": "2026-02-07T22:21:24.751442"
+    }
+  ]
+}
