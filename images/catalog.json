@@ -1,20 +1,20 @@
 {
   "goal": 1000,
-  "lastUpdated": "2026-02-08T03:51:17.208Z",
+  "lastUpdated": "2026-02-08T03:40:42.807Z",
   "stats": {
-    "total": 132,
+    "total": 211,
     "byCategory": {
-      "intimate": 44,
-      "casual": 81,
-      "cozy": 3,
+      "intimate": 57,
+      "casual": 143,
+      "cozy": 6,
       "glamour": 1,
-      "professional": 2,
-      "lifestyle": 1
+      "lifestyle": 2,
+      "professional": 2
     },
     "bySource": {
-      "gemini": 7,
-      "recraft": 73,
-      "unknown": 34,
+      "gemini": 11,
+      "unknown": 66,
+      "recraft": 116,
       "seaart": 16,
       "mage": 2
     }
@@ -63,6 +63,16 @@
       "source": "gemini"
     },
     {
+      "filename": "leonardo-manual-20260207-001.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "leonardo-manual-20260207-002.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "recraft-black-corset-garter-01.jpg",
       "category": "intimate",
       "source": "recraft"
@@ -79,6 +89,16 @@
     },
     {
       "filename": "recraft-black-harness-02.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-black-mesh-bending-01.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-black-mesh-bending-02.jpg",
       "category": "intimate",
       "source": "recraft"
     },
@@ -119,6 +139,36 @@
     },
     {
       "filename": "recraft-lingerie-black-teddy-02.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-burgundy-01.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-burgundy-02.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-gold-01.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-gold-02.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-green-01.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-lingerie-green-02.jpg",
       "category": "intimate",
       "source": "recraft"
     },
@@ -173,6 +223,16 @@
       "source": "recraft"
     },
     {
+      "filename": "recraft-pink-bustier-01.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-pink-bustier-02.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
       "filename": "recraft-pink-highcut-01.jpg",
       "category": "casual",
       "source": "recraft"
@@ -213,12 +273,42 @@
       "source": "recraft"
     },
     {
+      "filename": "recraft-red-garter-set-01.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-red-garter-set-02.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
       "filename": "recraft-vienna-20260207-1017-1.png",
       "category": "casual",
       "source": "recraft"
     },
     {
       "filename": "recraft-vienna-20260207-1017-2.png",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-1019-3.png",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-1019-4.png",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-1030-1.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-1030-2.jpg",
       "category": "casual",
       "source": "recraft"
     },
@@ -233,12 +323,37 @@
       "source": "recraft"
     },
     {
+      "filename": "recraft-vienna-20260207-batch3-01.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-batch3-02.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-batch3-09.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
       "filename": "recraft-vienna-20260207-batch3-13.jpg",
       "category": "casual",
       "source": "recraft"
     },
     {
       "filename": "recraft-vienna-20260207-batch3-14.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-batch3-15.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-batch3-16.jpg",
       "category": "casual",
       "source": "recraft"
     },
@@ -283,6 +398,11 @@
       "source": "recraft"
     },
     {
+      "filename": "recraft-vienna-20260207-edge-17.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
       "filename": "recraft-vienna-20260207-edge-18.jpg",
       "category": "intimate",
       "source": "recraft"
@@ -308,7 +428,32 @@
       "source": "recraft"
     },
     {
+      "filename": "recraft-vienna-20260207-final-05.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-06.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-07.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-08.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
       "filename": "recraft-vienna-20260207-final-09.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "recraft-vienna-20260207-final-10.jpg",
       "category": "casual",
       "source": "recraft"
     },
@@ -350,6 +495,11 @@
     {
       "filename": "reference-fireside-reading.png",
       "category": "cozy",
+      "source": "unknown"
+    },
+    {
+      "filename": "reference-style.png",
+      "category": "casual",
       "source": "unknown"
     },
     {
@@ -433,6 +583,26 @@
       "source": "seaart"
     },
     {
+      "filename": "vienna-023-1770243068900.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-024-1770243200000.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-025-1770243319602.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-026-1770243333740.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "vienna-027-1770243347855.png",
       "category": "casual",
       "source": "unknown"
@@ -453,7 +623,27 @@
       "source": "unknown"
     },
     {
+      "filename": "vienna-031-1770243589044.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-032-1770243603526.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "vienna-033-1770247221085.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-034-1770268467107.png",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-034-filmnoir.png",
       "category": "casual",
       "source": "unknown"
     },
@@ -463,7 +653,17 @@
       "source": "unknown"
     },
     {
+      "filename": "vienna-auto-20260206-1354-001.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "vienna-before-bed.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-casual-weekend.jpg",
       "category": "casual",
       "source": "unknown"
     },
@@ -473,7 +673,37 @@
       "source": "gemini"
     },
     {
+      "filename": "vienna-coffee-shop-nanob.png",
+      "category": "casual",
+      "source": "gemini"
+    },
+    {
       "filename": "vienna-craiyon.webp",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-date-night-nanob.png",
+      "category": "casual",
+      "source": "gemini"
+    },
+    {
+      "filename": "vienna-early-morning.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-fitness-nanob.png",
+      "category": "casual",
+      "source": "gemini"
+    },
+    {
+      "filename": "vienna-fitness.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-fullbody-portrait.jpg",
       "category": "casual",
       "source": "unknown"
     },
@@ -483,7 +713,47 @@
       "source": "unknown"
     },
     {
+      "filename": "vienna-getting-ready.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-grid.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-late-night-nanob.png",
+      "category": "casual",
+      "source": "gemini"
+    },
+    {
+      "filename": "vienna-leo-001.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-002.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-003.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "vienna-leo-004.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-005.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-006.jpg",
       "category": "casual",
       "source": "unknown"
     },
@@ -498,7 +768,52 @@
       "source": "unknown"
     },
     {
+      "filename": "vienna-leo-009-wine.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
       "filename": "vienna-leo-010-yoga.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-011-beach.jpg",
+      "category": "lifestyle",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-012-night.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-013-boxing.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-014-museum.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-015-cobblestone.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-016-library-v3.jpg",
+      "category": "cozy",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-017-rainy-street.jpg",
+      "category": "casual",
+      "source": "unknown"
+    },
+    {
+      "filename": "vienna-leo-018-paris-cafe.jpg",
       "category": "casual",
       "source": "unknown"
     },
@@ -628,12 +943,92 @@
       "source": "recraft"
     },
     {
+      "filename": "vienna-recraft-bikini-sitting-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bikini-sitting-002.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bikini-tropical-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bikini-tropical-002.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bikini-yacht-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bikini-yacht-002.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-bookshop-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-boxing-gym.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-fireside-wine.jpg",
+      "category": "cozy",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-fitness-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-library-globe.jpg",
+      "category": "cozy",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-lingerie-001.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-lingerie-002.jpg",
+      "category": "intimate",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-london-noir.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
       "filename": "vienna-recraft-maid-001.jpg",
       "category": "casual",
       "source": "recraft"
     },
     {
       "filename": "vienna-recraft-maid-002.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-nurse-001.jpg",
+      "category": "casual",
+      "source": "recraft"
+    },
+    {
+      "filename": "vienna-recraft-nurse-002.jpg",
       "category": "casual",
       "source": "recraft"
     },
