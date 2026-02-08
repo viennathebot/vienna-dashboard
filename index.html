@@ -8,7 +8,7 @@
 :root{--bg:#0f172a;--sidebar:#1e293b;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#e11d48;--green:#22c55e;--blue:#3b82f6}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
-.sidebar{width:240px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
+.sidebar{width:260px;background:var(--sidebar);padding:1.5rem;border-right:1px solid #334155;position:fixed;height:100vh;overflow-y:auto}
 .logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #334155}
 .logo h1{font-size:1.25rem}
 .nav-section{margin-bottom:1.5rem}
@@ -16,33 +16,54 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .nav-link{display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:.5rem;color:var(--text);text-decoration:none;transition:all .2s;margin-bottom:.25rem;font-size:.9rem}
 .nav-link:hover{background:rgba(255,255,255,.05)}
 .nav-link.active{background:var(--accent)}
-.nav-sub{margin-left:1.5rem}
+.nav-sub{margin-left:1.25rem;border-left:2px solid #334155;padding-left:.5rem}
 .nav-sub .nav-link{font-size:.85rem;padding:.4rem .75rem}
-.main{margin-left:240px;flex:1;padding:2rem}
+.main{margin-left:260px;flex:1;padding:2rem}
 .page{display:none}
 .page.active{display:block}
 .card{background:var(--card);border-radius:1rem;padding:1.5rem;border:1px solid #334155;margin-bottom:1.5rem}
 .card h2{font-size:1.1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{color:var(--muted);line-height:1.6}
+.quick-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+.quick-link{background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;text-decoration:none;color:var(--text);transition:all .2s;text-align:center}
+.quick-link:hover{border-color:var(--accent);transform:translateY(-2px)}
+.quick-link .icon{font-size:2rem;margin-bottom:.5rem}
+.quick-link .label{font-size:.9rem;font-weight:600}
+.brief-section{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border:1px solid var(--accent);border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem}
+.brief-section h2{color:var(--accent);margin-bottom:1rem}
+.brief-item{padding:.75rem 0;border-bottom:1px solid #334155}
+.brief-item:last-child{border:none}
+.brief-item .label{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.brief-item .value{margin-top:.25rem;font-size:1rem}
+.workout-card{background:linear-gradient(135deg,#22c55e20 0%,#0f172a 100%);border:1px solid var(--green)}
+.workout-card h2{color:var(--green)}
 .schedule-item{padding:.75rem;border-left:3px solid var(--accent);margin-bottom:.75rem;background:rgba(0,0,0,.2);border-radius:0 .5rem .5rem 0}
 .schedule-item .time{color:var(--accent);font-weight:600;font-size:.85rem}
 .schedule-item .title{margin-top:.25rem}
-.workout-day{display:inline-block;padding:.25rem .75rem;background:var(--accent);border-radius:.25rem;font-size:.8rem;margin-bottom:1rem}
-.exercise{padding:.5rem 0;border-bottom:1px solid #334155}
-.exercise:last-child{border:none}
-.exercise .name{font-weight:600}
-.exercise .sets{color:var(--muted);font-size:.85rem}
 .btn{display:inline-block;padding:.5rem 1rem;background:var(--accent);color:white;text-decoration:none;border-radius:.5rem;font-size:.875rem;transition:opacity .2s}
 .btn:hover{opacity:.9}
-.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
-.project-card{background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.25rem;transition:all .2s;text-decoration:none;color:var(--text)}
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn-outline:hover{background:var(--accent);color:white}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.project-card{background:var(--card);border:1px solid #334155;border-radius:1rem;padding:1.5rem;transition:all .2s;text-decoration:none;color:var(--text)}
 .project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.project-card h3{font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.project-card h3{font-size:1.1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .project-card p{font-size:.85rem;color:var(--muted)}
-.automation-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:rgba(0,0,0,.2);border-radius:.5rem;margin-bottom:.5rem}
-.automation-status{font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem}
+.project-card .status{display:inline-block;padding:.25rem .5rem;border-radius:.25rem;font-size:.75rem;margin-top:.75rem}
+.project-card .status.active{background:rgba(34,197,94,.2);color:var(--green)}
+.project-card .status.planning{background:rgba(59,130,246,.2);color:var(--blue)}
+.automation-item{display:flex;justify-content:space-between;align-items:center;padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;margin-bottom:.75rem}
+.automation-item .info{flex:1}
+.automation-item .info strong{display:block;margin-bottom:.25rem}
+.automation-item .info p{font-size:.8rem;color:var(--muted)}
+.automation-status{font-size:.75rem;padding:.25rem .75rem;border-radius:.25rem;font-weight:600}
 .automation-status.active{background:rgba(34,197,94,.2);color:var(--green)}
 .automation-status.inactive{background:rgba(220,38,38,.2);color:#ef4444}
+.brief-archive{max-height:400px;overflow-y:auto}
+.brief-archive-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:rgba(0,0,0,.2);border-radius:.5rem;margin-bottom:.5rem;text-decoration:none;color:var(--text);transition:all .2s}
+.brief-archive-item:hover{background:rgba(255,255,255,.05)}
+.brief-archive-item .date{font-weight:600}
+.brief-archive-item .preview{color:var(--muted);font-size:.85rem}
 .empty-state{text-align:center;padding:2rem;color:var(--muted)}
 @media(max-width:768px){.sidebar{width:100%;height:auto;position:relative}.main{margin-left:0}body{flex-direction:column}}
 </style>
@@ -57,13 +78,21 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <h3>Main</h3>
     <a href="#home" class="nav-link active" onclick="showPage('home')">🏠 Home</a>
     <a href="#schedule" class="nav-link" onclick="showPage('schedule')">📅 Schedule</a>
-    <a href="#notes" class="nav-link" onclick="showPage('notes')">📝 Notes</a>
-    <a href="#tasks" class="nav-link" onclick="showPage('tasks')">✅ Tasks</a>
   </div>
   
   <div class="nav-section">
     <h3>Projects</h3>
-    <a href="#vienna-gallery" class="nav-link" onclick="showPage('vienna-gallery')">🖼️ Vienna Gallery</a>
+    <a href="#projects" class="nav-link" onclick="showPage('projects')">📁 All Projects</a>
+    <div class="nav-sub">
+      <a href="#twitter" class="nav-link" onclick="showPage('twitter')">🐦 Twitter / X</a>
+      <a href="#surrey-clinic" class="nav-link" onclick="showPage('surrey-clinic')">🏥 Surrey Women's Clinic</a>
+      <a href="#vienna-gallery" class="nav-link" onclick="showPage('vienna-gallery')">🖼️ Vienna Gallery</a>
+      <a href="#daily-briefs" class="nav-link" onclick="showPage('daily-briefs')">📋 Daily Briefs Archive</a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <h3>System</h3>
     <a href="#automations" class="nav-link" onclick="showPage('automations')">⚙️ Automations</a>
   </div>
   
@@ -78,21 +107,150 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <div id="home" class="page active">
     <h1 style="margin-bottom:1.5rem">Good Evening, Dr. B 👋</h1>
     
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <a href="#workout" class="quick-link" onclick="showPage('workout')">
+        <div class="icon">💪</div>
+        <div class="label">Workout Plan</div>
+      </a>
+      <a href="#twitter" class="quick-link" onclick="showPage('twitter')">
+        <div class="icon">🐦</div>
+        <div class="label">Twitter</div>
+      </a>
+      <a href="#vienna-gallery" class="quick-link" onclick="showPage('vienna-gallery')">
+        <div class="icon">🖼️</div>
+        <div class="label">Vienna Gallery</div>
+      </a>
+      <a href="#automations" class="quick-link" onclick="showPage('automations')">
+        <div class="icon">⚙️</div>
+        <div class="label">Automations</div>
+      </a>
+    </div>
+    
+    <!-- Daily Brief -->
+    <div class="brief-section">
+      <h2>📋 Daily Brief — <span id="brief-date">Saturday, February 8, 2026</span></h2>
+      <div id="daily-brief-content">
+        <div class="brief-item">
+          <div class="label">Schedule</div>
+          <div class="value">Rest day. No procedures scheduled.</div>
+        </div>
+        <div class="brief-item">
+          <div class="label">Workout</div>
+          <div class="value">Saturday: Mat Pilates/Yoga + Push (optional)</div>
+        </div>
+        <div class="brief-item">
+          <div class="label">Projects Status</div>
+          <div class="value">Vienna Gallery: 114 images • Twitter: @ICPeteB active • Surrey Clinic: In development</div>
+        </div>
+        <div class="brief-item">
+          <div class="label">Automations</div>
+          <div class="value">3 active: Cardiology Trials (Sun 8AM), Heartbeat (30min), Memory Backup (6hr)</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem">
+        <a href="#daily-briefs" class="btn btn-outline" onclick="showPage('daily-briefs')">View Past Briefs →</a>
+      </div>
+    </div>
+    
+    <!-- Today's Schedule Card -->
     <div class="card">
-      <h2>📅 Today's Schedule — Saturday, February 8</h2>
+      <h2>📅 Today's Schedule</h2>
       <div class="empty-state">
         <p>Nothing scheduled aside from your workout routine.</p>
         <p style="margin-top:.5rem;font-size:.9rem">Enjoy your weekend! 🫀</p>
       </div>
     </div>
+  </div>
+
+  <!-- WORKOUT PAGE -->
+  <div id="workout" class="page">
+    <h1 style="margin-bottom:1.5rem">💪 Workout Plan</h1>
+    
+    <div class="card workout-card">
+      <h2>Weekly Schedule</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin-top:1rem">
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Monday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🛋️</div>
+          <div style="font-size:.9rem">Rest Day</div>
+        </div>
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Tuesday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🏋️</div>
+          <div style="font-size:.9rem">Push Day</div>
+        </div>
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Wednesday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">💪</div>
+          <div style="font-size:.9rem">Pull Day</div>
+        </div>
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Thursday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🦵</div>
+          <div style="font-size:.9rem">Leg Day</div>
+        </div>
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Friday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🛋️</div>
+          <div style="font-size:.9rem">Rest Day</div>
+        </div>
+        <div style="padding:1rem;background:rgba(34,197,94,.1);border:1px solid var(--green);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--green)">Saturday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🧘</div>
+          <div style="font-size:.9rem">Pilates + Push</div>
+        </div>
+        <div style="padding:1rem;background:rgba(0,0,0,.2);border-radius:.75rem;text-align:center">
+          <div style="font-weight:600;color:var(--muted)">Sunday</div>
+          <div style="font-size:1.25rem;margin-top:.5rem">🚴</div>
+          <div style="font-size:.9rem">Spin + Pull</div>
+        </div>
+      </div>
+    </div>
     
     <div class="card">
-      <h2>💪 Today's Workout — Rest Day</h2>
-      <p>Saturday is your rest day (Mat Pilates/Yoga optional + Push if desired).</p>
-      <p style="margin-top:1rem;font-size:.9rem;color:var(--muted)">
-        <strong>Your weekly schedule:</strong><br>
-        Mon: Rest | Tue: Push | Wed: Pull | Thu: Legs | Fri: Rest | Sat: Pilates+Push | Sun: Spin+Pull
-      </p>
+      <h2>🎯 Current Goals</h2>
+      <div class="brief-item">
+        <div class="label">Weight Target</div>
+        <div class="value">Cut from 195 → 185 lbs while maintaining/building muscle</div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Nutrition</div>
+        <div class="value">Intermittent fasting • Noon eating window • Protein shake post-workout</div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Recovery</div>
+        <div class="value">Sauna 15-20 min → Shower → Cold finish</div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>💊 Supplements</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <div style="font-weight:600;color:var(--green);margin-bottom:.75rem">☀️ Daytime</div>
+          <ul style="list-style:none;color:var(--muted);line-height:1.8">
+            <li>• Creatine</li>
+            <li>• Omega-3</li>
+            <li>• CoQ10</li>
+            <li>• Vitamin D3+K</li>
+            <li>• Vitamin C</li>
+            <li>• Boron complex</li>
+            <li>• L-methylfolate</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--blue);margin-bottom:.75rem">🌙 Nighttime</div>
+          <ul style="list-style:none;color:var(--muted);line-height:1.8">
+            <li>• Magnesium</li>
+            <li>• L-theanine</li>
+            <li>• Arginine</li>
+            <li>• Cherry extract</li>
+            <li>• Apigenin</li>
+            <li>• NeuroMag</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -114,20 +272,117 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     </div>
   </div>
 
-  <!-- NOTES PAGE -->
-  <div id="notes" class="page">
-    <h1 style="margin-bottom:1.5rem">📝 Notes</h1>
-    <div class="card">
-      <p>Notes section coming soon. This will sync with your notes system.</p>
+  <!-- PROJECTS OVERVIEW PAGE -->
+  <div id="projects" class="page">
+    <h1 style="margin-bottom:1.5rem">📁 All Projects</h1>
+    <div class="project-grid">
+      <a href="#twitter" class="project-card" onclick="showPage('twitter')">
+        <h3>🐦 Twitter / X</h3>
+        <p>Building @ICPeteB presence in interventional cardiology community. Case posts, trial discussions, #CardioTwitter engagement.</p>
+        <span class="status active">Active</span>
+      </a>
+      <a href="#surrey-clinic" class="project-card" onclick="showPage('surrey-clinic')">
+        <h3>🏥 Surrey Women's Clinic</h3>
+        <p>Website development for Dr. Maria Bleszynski's gynecology practice in Surrey, BC.</p>
+        <span class="status planning">In Development</span>
+      </a>
+      <a href="#vienna-gallery" class="project-card" onclick="showPage('vienna-gallery')">
+        <h3>🖼️ Vienna Gallery</h3>
+        <p>Building to 1,000 AI-generated images. Currently 114 images. Password protected.</p>
+        <span class="status active">Active</span>
+      </a>
+      <a href="#daily-briefs" class="project-card" onclick="showPage('daily-briefs')">
+        <h3>📋 Daily Briefs Archive</h3>
+        <p>Historical daily briefings and summaries.</p>
+        <span class="status active">Active</span>
+      </a>
+      <a href="#japan" class="project-card" onclick="showPage('japan')">
+        <h3>🇯🇵 Japan Trip</h3>
+        <p>Planning for April/May 2026 trip to Japan.</p>
+        <span class="status planning">Planning</span>
+      </a>
     </div>
   </div>
 
-  <!-- TASKS PAGE -->
-  <div id="tasks" class="page">
-    <h1 style="margin-bottom:1.5rem">✅ Tasks</h1>
+  <!-- TWITTER PROJECT PAGE -->
+  <div id="twitter" class="page">
+    <h1 style="margin-bottom:1.5rem">🐦 Twitter / X — @ICPeteB</h1>
     <div class="card">
-      <h2>To-Do List</h2>
-      <p>Tasks section coming soon. This will sync with your task management.</p>
+      <h2>Strategy</h2>
+      <div class="brief-item">
+        <div class="label">Handle</div>
+        <div class="value"><a href="https://twitter.com/ICPeteB" target="_blank" style="color:var(--blue)">@ICPeteB</a></div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Goal</div>
+        <div class="value">Gain exposure through X, LinkedIn, and other platforms. Build interventional cardiology presence.</div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Content</div>
+        <div class="value">Case posts, trial discussions, educational content for #CardioTwitter</div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Posting Schedule</div>
+        <div class="value">3-5x/week, 7-9 AM PST (catch East Coast morning audience)</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Vienna's Role</h2>
+      <p>Following 10 cardiology accounts per heartbeat. Search terms: interventional cardiology, structural heart, TAVR, MitraClip, CTO.</p>
+      <p style="margin-top:.75rem">Weekly cardiology trials summary generated every Sunday 8 AM for content inspiration.</p>
+    </div>
+  </div>
+
+  <!-- SURREY CLINIC PROJECT PAGE -->
+  <div id="surrey-clinic" class="page">
+    <h1 style="margin-bottom:1.5rem">🏥 Surrey Women's Clinic</h1>
+    <div class="card">
+      <h2>Project Details</h2>
+      <div class="brief-item">
+        <div class="label">Client</div>
+        <div class="value">Dr. Maria E. Bleszynski — Surrey Women's Clinic, Surrey, BC</div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Current Website</div>
+        <div class="value"><a href="https://surreywomensclinic.ca" target="_blank" style="color:var(--blue)">surreywomensclinic.ca</a></div>
+      </div>
+      <div class="brief-item">
+        <div class="label">Status</div>
+        <div class="value">In development — modernizing the website</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Tasks</h2>
+      <p style="color:var(--muted)">Project tasks will be tracked here as development progresses.</p>
+    </div>
+  </div>
+
+  <!-- DAILY BRIEFS ARCHIVE PAGE -->
+  <div id="daily-briefs" class="page">
+    <h1 style="margin-bottom:1.5rem">📋 Daily Briefs Archive</h1>
+    <div class="card">
+      <h2>Past Briefs</h2>
+      <div class="brief-archive" id="briefs-archive">
+        <div class="brief-archive-item">
+          <div>
+            <div class="date">Saturday, February 8, 2026</div>
+            <div class="preview">Rest day • 114 gallery images • 3 active automations</div>
+          </div>
+          <span style="color:var(--green)">Today</span>
+        </div>
+        <div class="brief-archive-item">
+          <div>
+            <div class="date">Friday, February 7, 2026</div>
+            <div class="preview">Gallery reorganized • AnimateDiff videos • Telegram setup</div>
+          </div>
+        </div>
+        <div class="brief-archive-item">
+          <div>
+            <div class="date">Thursday, February 6, 2026</div>
+            <div class="preview">ComfyUI installed • First local image generation</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -137,7 +392,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
       <div style="color:var(--muted)"><span id="gallery-count">0</span> / 1,000 images</div>
       <div class="filters" style="display:flex;gap:.5rem">
-        <button class="filter-btn active" onclick="filterGallery('all')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">All</button>
+        <button class="filter-btn active" onclick="filterGallery('all')" style="background:var(--accent);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">All</button>
         <button class="filter-btn" onclick="filterGallery('intimate')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">🔥 Intimate</button>
         <button class="filter-btn" onclick="filterGallery('casual')" style="background:var(--card);border:1px solid #334155;color:var(--text);padding:.4rem .75rem;border-radius:.5rem;cursor:pointer;font-size:.8rem">☕ Casual</button>
       </div>
@@ -151,23 +406,34 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <div class="card">
       <h2>Active Automations</h2>
       <div class="automation-item">
-        <div>
-          <strong>Weekly Cardiology Trials Summary</strong>
-          <p style="font-size:.8rem;color:var(--muted)">Sundays 8 AM PST → Email to Dr. B</p>
+        <div class="info">
+          <strong>📊 Weekly Cardiology Trials Summary</strong>
+          <p>Fetches latest trials from ClinicalTrials.gov, PubMed, ACC RSS, Circulation RSS</p>
+          <p>Schedule: Sundays 8:00 AM PST → Email to Dr. B</p>
         </div>
         <span class="automation-status active">Active</span>
       </div>
       <div class="automation-item">
-        <div>
-          <strong>Heartbeat Monitor</strong>
-          <p style="font-size:.8rem;color:var(--muted)">Every 30 min → Check emails, calendar, mentions</p>
+        <div class="info">
+          <strong>💓 Heartbeat Monitor</strong>
+          <p>Checks emails, calendar, Twitter mentions, system health</p>
+          <p>Schedule: Every 30 minutes</p>
         </div>
         <span class="automation-status active">Active</span>
       </div>
       <div class="automation-item">
-        <div>
-          <strong>Memory Backup</strong>
-          <p style="font-size:.8rem;color:var(--muted)">Every 6 hours → Backup to ~/Documents/Vienna/</p>
+        <div class="info">
+          <strong>💾 Memory Backup</strong>
+          <p>Backs up memory files to ~/Documents/Vienna/Backups/</p>
+          <p>Schedule: Every 6 hours</p>
+        </div>
+        <span class="automation-status active">Active</span>
+      </div>
+      <div class="automation-item">
+        <div class="info">
+          <strong>🐦 Twitter Follow Builder</strong>
+          <p>Follows 10 cardiology accounts per heartbeat</p>
+          <p>Target: 50-100 new follows per day</p>
         </div>
         <span class="automation-status active">Active</span>
       </div>
@@ -200,7 +466,9 @@ function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
-  event.target.classList.add('active');
+  const navLink = document.querySelector(`[href="#${pageId}"]`);
+  if (navLink) navLink.classList.add('active');
+  window.location.hash = pageId;
 }
 
 // Gallery
@@ -214,18 +482,28 @@ fetch('images/catalog.json')
     catalog = data;
     document.getElementById('gallery-count').textContent = data.images.length;
     filterGallery('all');
+  })
+  .catch(() => {
+    document.getElementById('gallery').innerHTML = '<div class="empty-state">Gallery loading...</div>';
   });
 
 function filterGallery(cat) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.style.background = 'var(--card)');
-  event.target.style.background = 'var(--accent)';
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.style.background = 'var(--card)';
+  });
+  if (event && event.target) event.target.style.background = 'var(--accent)';
   filteredImages = cat === 'all' ? catalog.images : catalog.images.filter(i => i.category === cat);
   renderGallery();
 }
 
 function renderGallery() {
-  document.getElementById('gallery').innerHTML = filteredImages.map((img, i) => 
-    `<img src="images/${img.filename}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer" onclick="openLightbox(${i})">`
+  const gallery = document.getElementById('gallery');
+  if (filteredImages.length === 0) {
+    gallery.innerHTML = '<div class="empty-state">No images in this category.</div>';
+    return;
+  }
+  gallery.innerHTML = filteredImages.map((img, i) => 
+    `<img src="images/${img.filename}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:.75rem;cursor:pointer" onclick="openLightbox(${i})" loading="lazy">`
   ).join('');
   document.getElementById('lightbox-total').textContent = filteredImages.length;
 }
@@ -246,17 +524,25 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') prevImage();
 });
 
-// Handle hash navigation
-if (window.location.hash) {
-  const page = window.location.hash.slice(1);
-  const el = document.getElementById(page);
-  if (el) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelector(`[href="#${page}"]`)?.classList.add('active');
+// Handle hash navigation on load
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    const page = window.location.hash.slice(1);
+    const el = document.getElementById(page);
+    if (el) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      el.classList.add('active');
+      const navLink = document.querySelector(`[href="#${page}"]`);
+      if (navLink) navLink.classList.add('active');
+    }
   }
-}
+});
+
+// Update greeting based on time
+const hour = new Date().getHours();
+const greeting = hour < 12 ? 'Good Morning' : hour < 17 ? 'Good Afternoon' : 'Good Evening';
+document.querySelector('h1').textContent = `${greeting}, Dr. B 👋`;
 </script>
 </body>
 </html>
